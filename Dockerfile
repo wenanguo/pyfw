@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 5000
 
-CMD ["python","manage.py","runserver","--host 0.0.0.0"]
+CMD ["run.sh"]
