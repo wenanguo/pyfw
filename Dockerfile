@@ -2,7 +2,7 @@ FROM python:3.6
 
 ADD ./code /app 
 
-WORKDIR   /app
+WORKDIR   /app/code
 
 RUN pip install -r requirements.txt
 
