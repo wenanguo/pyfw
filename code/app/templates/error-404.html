@@ -1,0 +1,25 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Flasky - Page Not Found{% endblock %}
+
+{% block page_content %}
+    <div class="error-header"> </div>
+    <div class="container ">
+        <section class="error-container text-center">
+            <h1>404</h1>
+            <div class="error-divider">
+                <h2>page not found</h2>
+                <p class="description">We Couldn’t Find This Page</p>
+            </div>
+            <a href="index.html" class="return-btn"><i class="fa fa-home"></i>Home</a>
+        </section>
+    </div>
+    <!--Basic Scripts-->
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/slimscroll/jquery.slimscroll.min.js') }}"></script>
+
+    <!--Beyond Scripts-->
+    <script src="{{ url_for('static', filename='assets/js/beyond.min.js') }}"></script>
+
+{% endblock %}

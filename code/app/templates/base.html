@@ -1,11 +1,40 @@
 {% extends "bootstrap/base.html" %}
 
-{% block title %}Flasky{% endblock %}
+{% block title %}Crm{% endblock %}
 
 {% block head %}
 {{ super() }}
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+<!--beyond-admin-->
+    <meta name="description" content="alerts" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+    <!--Basic Styles-->
+
+
+    <link href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='assets/css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='assets/css/weather-icons.min.css') }}" rel="stylesheet" />
+
+    <!--Fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="{{ url_for('static', filename='assets/css/beyond.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='assets/css/demo.min.css" rel="stylesheet') }}" />
+    <link href="{{ url_for('static', filename='assets/css/typicons.min.css" rel="stylesheet') }}" />
+    <link href="{{ url_for('static', filename='assets/css/animate.min.css" rel="stylesheet') }}" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+    <script src="{{ url_for('static', filename='assets/js/skins.min.js') }}"></script>
+
 {% endblock %}
 
 {% block navbar %}

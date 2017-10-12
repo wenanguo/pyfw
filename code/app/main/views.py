@@ -28,6 +28,13 @@ def index():
 
 
 
+
+@main.route('/alert', methods=['GET', 'POST'])
+def alert():
+    return render_template('alerts.html')
+
+
+
 @main.route('/shutdown')
 def server_shutdown():
     if not current_app.testing:
