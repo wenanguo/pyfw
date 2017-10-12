@@ -13,6 +13,6 @@ CRM 应用简介
 
 
 数据库迁移
-python manage.py db init
-python manage.py db migrate -m "initial migration"
-python manage.py db upgrade
+初始化 python manage.py db init
+生成脚本 python manage.py db migrate -m "initial migration"
+更新数据库 python manage.py db upgrade

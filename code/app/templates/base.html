@@ -7,21 +7,23 @@
     <title>{% block title %}{% endblock title %}</title>
 
     {%- block metas %}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <meta name="description" content="crm" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {%- endblock metas %}
 
     {%- block styles %}
     <!-- Bootstrap -->
 {#    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet" media="screen">#}
 
-        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 
 <!--beyond-admin-->
-    <meta name="description" content="alerts" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 
 
     <!--Basic Styles-->
@@ -45,22 +47,58 @@
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="{{ url_for('static', filename='assets/js/skins.js') }}"></script>
 
+
+         <!--Basic Scripts-->
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/slimscroll/jquery.slimscroll.min.js') }}"></script>
+
+    <!--Beyond Scripts-->
+    <script src="{{ url_for('static', filename='assets/js/beyond.min.js') }}"></script>
+
+    <!--Page Related Scripts-->
+    <script src="{{ url_for('static', filename='assets/js/toastr/toastr.js') }}"></script>
+
+
+
     {%- endblock styles %}
     {%- endblock head %}
   </head>
   <body{% block body_attribs %}{% endblock body_attribs %}>
     {% block body -%}
+
     {% block navbar %}
     {%- endblock navbar %}
+
     {% block content -%}
     {%- endblock content %}
 
-    {% block page_content %}{% endblock %}
+    {% block page_content %}
+    {% endblock %}
 
     {% block scripts %}
-{#    <script src="{{bootstrap_find_resource('jquery.js', cdn='jquery')}}"></script>#}
-{#    <script src="{{bootstrap_find_resource('js/bootstrap.js', cdn='bootstrap')}}"></script>#}
+
+
     {%- endblock scripts %}
+
+
+     {% block flash_msg %}
+
+         <script type="application/javascript">
+
+          {% for message in get_flashed_messages() %}
+	            Notify('{{ message }}', 'bottom-right', '5000', 'blue', 'fa-desktop', true);
+		  {% endfor %}
+
+
+         </script>
+
+
+    {%- endblock flash_msg %}
+
+
+
+
     {%- endblock body %}
   </body>
 {%- endblock html %}
@@ -68,67 +106,3 @@
 
 
 
-
-
-
-
-{##}
-{##}
-{#{% block title %}Crm{% endblock %}#}
-{##}
-{#{% block head %}#}
-{#{{ super() }}#}
-{#<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">#}
-{#<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">#}
-{##}
-{#<!--beyond-admin-->#}
-{#    <meta name="description" content="alerts" />#}
-{#    <meta name="viewport" content="width=device-width, initial-scale=1.0" />#}
-{#    <meta http-equiv="X-UA-Compatible" content="IE=edge" />#}
-{#    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
-{##}
-{##}
-{#    <!--Basic Styles-->#}
-{##}
-{##}
-{#    <link href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}" rel="stylesheet" />#}
-{#    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />#}
-{#    <link href="{{ url_for('static', filename='assets/css/font-awesome.min.css') }}" rel="stylesheet" />#}
-{#    <link href="{{ url_for('static', filename='assets/css/weather-icons.min.css') }}" rel="stylesheet" />#}
-{##}
-{#    <!--Fonts-->#}
-{#    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">#}
-{##}
-{#    <!--Beyond styles-->#}
-{#    <link id="beyond-link" href="{{ url_for('static', filename='assets/css/beyond.min.css') }}" rel="stylesheet" />#}
-{#    <link href="{{ url_for('static', filename='assets/css/demo.min.css" rel="stylesheet') }}" />#}
-{#    <link href="{{ url_for('static', filename='assets/css/typicons.min.css" rel="stylesheet') }}" />#}
-{#    <link href="{{ url_for('static', filename='assets/css/animate.min.css" rel="stylesheet') }}" />#}
-{#    <link id="skin-link" href="" rel="stylesheet" type="text/css" />#}
-{##}
-{#    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->#}
-{#    <script src="{{ url_for('static', filename='assets/js/skins.js') }}"></script>#}
-{##}
-{#{% endblock %}#}
-{##}
-{#{% block navbar %}#}
-{##}
-{#{% endblock %}#}
-{##}
-{#{% block content %}#}
-{#<div class="container">#}
-{#    {% for message in get_flashed_messages() %}#}
-{#    <div class="alert alert-warning">#}
-{#        <button type="button" class="close" data-dismiss="alert">&times;</button>#}
-{#        {{ message }}#}
-{#    </div>#}
-{#    {% endfor %}#}
-{##}
-{#    {% block page_content %}{% endblock %}#}
-{#</div>#}
-{#{% endblock %}#}
-
-{#{% block scripts %}#}
-{#{{ super() }}#}
-{#{{ moment.include_moment() }}#}
-{#{% endblock %}#}

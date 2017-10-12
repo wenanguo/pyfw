@@ -1,4 +1,4 @@
-from flask import render_template, session, abort,request,redirect, url_for, current_app
+from flask import render_template, session, abort,request,redirect, url_for, current_app ,flash
 from .. import db
 from ..models import User
 from ..email import send_email
@@ -6,7 +6,7 @@ from . import main
 from .forms import NameForm
 
 
-@main.route('/', methods=['GET', 'POST'])
+@main.route('/index', methods=['GET', 'POST'])
 def index():
     form = NameForm()
     if form.validate_on_submit():
@@ -25,6 +25,47 @@ def index():
     return render_template('index.html',
                            form=form, name=session.get('name'),
                            known=session.get('known', False))
+
+
+@main.route('/login', methods=['GET', 'POST'])
+def login():
+
+    if request.method == 'POST':
+
+
+            if request.form['username'] == "wenanguo" and request.form['password'] == "123":
+
+                session['logged_in'] = True
+                flash('登录成功！')
+                return redirect(url_for('main.index'))
+            else:
+                session['logged_in'] = False
+                flash('登录失败，请重新登录！')
+                return redirect(url_for('main.login'))
+
+    return render_template('login.html')
+
+
+@main.route('/register', methods=['GET', 'POST'])
+def register():
+    error = None
+    if request.method == 'POST':
+        for aa in request.form.keys():
+            print(aa+"="+request.form[aa])
+
+            if request.form['username'] == "wenanguo" and request.form['password'] == "123":
+
+                session['logged_in'] = True
+                flash('注册成功，请登录！')
+                return redirect(url_for('main.login'))
+            else:
+                session['logged_in'] = False
+                flash('注册失败，请重新注册！')
+                return redirect(url_for('main.register'))
+
+    return render_template('register.html')
+
+
 
 
 

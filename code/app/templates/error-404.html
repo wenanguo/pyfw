@@ -2,8 +2,10 @@
 
 {% block title %}Flasky - Page Not Found{% endblock %}
 
+{% block body_attribs %} class="body-404" {% endblock body_attribs %}
+
 {% block page_content %}
-    <div class="body-404">
+
     <div class="error-header"> </div>
     <div class="container ">
         <section class="error-container text-center">
@@ -24,5 +26,5 @@
 
     <!--Beyond Scripts-->
     <script src="{{ url_for('static', filename='assets/js/beyond.min.js') }}"></script>
-</div>
+
 {% endblock %}
