@@ -8,7 +8,7 @@ if (readCookie("current-skin")) {
     a.href = readCookie("current-skin");
 
     a.rel = "stylesheet";
-    console.log(a);
+
     document.getElementsByTagName("head")[0].appendChild(a);
 }
 

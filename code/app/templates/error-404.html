@@ -3,15 +3,18 @@
 {% block title %}Flasky - Page Not Found{% endblock %}
 
 {% block page_content %}
+    <div class="body-404">
     <div class="error-header"> </div>
     <div class="container ">
         <section class="error-container text-center">
             <h1>404</h1>
-            <div class="error-divider">
-                <h2>page not found</h2>
+            </br>
+            <div class="error-divider" style="margin-top: 10px;">
+                <h2>找不到页面</h2>
+</br>
                 <p class="description">We Couldn’t Find This Page</p>
             </div>
-            <a href="index.html" class="return-btn"><i class="fa fa-home"></i>Home</a>
+            <a href="alert" class="return-btn"><i class="fa fa-home"></i>Home</a>
         </section>
     </div>
     <!--Basic Scripts-->
@@ -21,5 +24,5 @@
 
     <!--Beyond Scripts-->
     <script src="{{ url_for('static', filename='assets/js/beyond.min.js') }}"></script>
-
+</div>
 {% endblock %}
