@@ -4,19 +4,21 @@ import time
 import unittest
 from selenium import webdriver
 from app import create_app, db
+import os
 
-
+path =os.path.join(os.path.abspath(os.path.dirname(os.path.realpath(__file__))+os.path.sep+".."),"driver/chromedriver_mac64")
 
 class SeleniumTestCase(unittest.TestCase):
     client = None
-    
+
+
     @classmethod
     def setUpClass(cls):
         # start Firefox
         try:
 
             print(webdriver)
-            cls.client = webdriver.Safari()
+            cls.client = webdriver.Chrome(path)
         except:
             pass
 
@@ -34,7 +36,7 @@ class SeleniumTestCase(unittest.TestCase):
             logger.setLevel("ERROR")
 
             # create the database and populate with some fake data
-            db.create_all()
+            #db.create_all()
             # Role.insert_roles()
             # User.generate_fake(10)
             # Post.generate_fake(10)
@@ -61,8 +63,8 @@ class SeleniumTestCase(unittest.TestCase):
             cls.client.close()
 
             # destroy database
-            db.drop_all()
-            db.session.remove()
+            # db.drop_all()
+            # db.session.remove()
 
             # remove application context
             cls.app_context.pop()
@@ -76,7 +78,7 @@ class SeleniumTestCase(unittest.TestCase):
     
     def test_admin_home_page(self):
         # navigate to home page
-        self.client.get('http://localhost:5000/')
+        self.client.get('http://localhost:5000/index')
         self.assertTrue(re.search('Hello,\s+Stranger!',
                                   self.client.page_source))
 

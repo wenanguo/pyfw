@@ -17,8 +17,9 @@ class EmailTestCase(unittest.TestCase):
 
 
     def test_app_email(self):
-        user = User()
-        user.username="wenanguo"
-        send_email("79912844@qq.com", 'New User',
-                   'mail/new_user',user=user)
+        pass
+        # user = User()
+        # user.username="wenanguo"
+        # send_email("79912844@qq.com", 'New User',
+        #            'mail/new_user',user=user)
 
