@@ -86,8 +86,25 @@
 
          <script type="application/javascript">
 
-          {% for message in get_flashed_messages() %}
-	            Notify('{{ message }}', 'bottom-right', '5000', 'blue', 'fa-desktop', true);
+          {% for message in get_flashed_messages(True) %}
+
+              var _catalog_="blue"
+              if('{{ message[0] }}'=="danger"){
+                    _catalog_='danger'
+              }
+              else if('{{ message[0] }}'=="success")
+              {
+                    _catalog_='success'
+              }else if('{{ message[0] }}'=="warning")
+              {
+                    _catalog_='warning'
+              }
+              else
+              {
+                    _catalog_="blue"
+              }
+
+	            Notify('{{ message[1] }}', 'bottom-right', '5000', _catalog_, 'fa-desktop', true);
 		  {% endfor %}
 
 
