@@ -26,7 +26,7 @@ migrate = Migrate(app, db)
 日志配置
 定义一个RotatingFileHandler，最多备份5个日志文件，每个日志文件最大10M
 """
-Rthandler = RotatingFileHandler('log/myapp.log', maxBytes=10*1024*1024,backupCount=5)
+Rthandler = RotatingFileHandler('logs/myapp.log', maxBytes=10*1024*1024,backupCount=5)
 Rthandler.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
 Rthandler.setFormatter(formatter)

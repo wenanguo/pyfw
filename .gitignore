@@ -16,6 +16,8 @@
 /code/**/test-output/
 /code/**/.apt_generated/
 /code/**/logs/
+/code/**/tmp/
+/code/**/migrations/
 /code/**/src/main/webapp/META-INF/
 /code/**/src/main/webapp/WEB-INF/classes/
 /code/**/src/main/webapp/WEB-INF/lib/
