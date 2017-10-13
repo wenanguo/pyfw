@@ -6,6 +6,6 @@ WORKDIR   /app
 
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+EXPOSE 8000
 
 CMD ["/bin/bash","./run.sh"]

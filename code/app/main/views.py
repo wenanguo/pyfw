@@ -6,7 +6,19 @@ from .forms import NameForm
 from .. import db
 from ..email import send_email
 from ..models import User
+from flask_sqlalchemy import get_debug_queries
 
+
+
+@main.after_app_request
+def after_request(response):
+    for query in get_debug_queries():
+        if query.duration >= current_app.config['FLASKY_SLOW_DB_QUERY_TIME']:
+            current_app.logger.warning(
+                'Slow query: %s\nParameters: %s\nDuration: %fs\nContext: %s\n'
+                % (query.statement, query.parameters, query.duration,
+                   query.context))
+    return response
 
 
 @main.route('/index', methods=['GET', 'POST'])
@@ -41,7 +53,7 @@ def login():
         user = User.query.filter_by(username=request.form['username'],password=request.form['password']).first()
 
         if user is None:
-
+            current_app.logger.warning("===登录日志===")
             flash('用户名或密码错误，请重新登录！','danger')
         else:
             return redirect(url_for('main.index'))
