@@ -1,3 +1,65 @@
 11
 
-fasfs
+fasfs2017-10-13 21:00:47,816 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.sex AS users_sex, users.role_id AS users_role_id 
+FROM users 
+WHERE users.id = %(param_1)s
+Parameters: {'param_1': 1}
+Duration: 0.066817s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/api_1_0/users.py:8 (get_user)
+
+2017-10-13 21:02:37,149 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.sex AS users_sex, users.role_id AS users_role_id 
+FROM users 
+WHERE users.id = %(param_1)s
+Parameters: {'param_1': 2}
+Duration: 0.073046s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/api_1_0/users.py:8 (get_user)
+
+2017-10-13 21:02:40,542 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.sex AS users_sex, users.role_id AS users_role_id 
+FROM users 
+WHERE users.id = %(param_1)s
+Parameters: {'param_1': 3}
+Duration: 0.066428s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/api_1_0/users.py:8 (get_user)
+
+2017-10-13 21:02:43,781 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.sex AS users_sex, users.role_id AS users_role_id 
+FROM users 
+WHERE users.id = %(param_1)s
+Parameters: {'param_1': 4}
+Duration: 0.065047s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/api_1_0/users.py:8 (get_user)
+
+2017-10-13 21:06:00,697 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.sex AS users_sex, users.role_id AS users_role_id 
+FROM users 
+WHERE users.id = %(param_1)s
+Parameters: {'param_1': 4}
+Duration: 0.067976s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/api_1_0/users.py:8 (get_user)
+
+2017-10-13 21:37:14,788 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.sex AS users_sex, users.role_id AS users_role_id 
+FROM users ORDER BY users.id DESC 
+ LIMIT %(param_1)s, %(param_2)s
+Parameters: {'param_1': 0, 'param_2': 20}
+Duration: 0.073315s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/api_1_0/users.py:18 (get_user_list)
+
+2017-10-13 21:37:14,788 views.py[line:20] WARNING Slow query: SELECT count(*) AS count_1 
+FROM (SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.sex AS users_sex, users.role_id AS users_role_id 
+FROM users) AS anon_1
+Parameters: {}
+Duration: 0.073018s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/api_1_0/users.py:18 (get_user_list)
+
+2017-10-13 21:41:32,552 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.sex AS users_sex, users.role_id AS users_role_id 
+FROM users ORDER BY users.id DESC 
+ LIMIT %(param_1)s, %(param_2)s
+Parameters: {'param_1': 0, 'param_2': 20}
+Duration: 0.067173s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/api_1_0/users.py:18 (get_user_list)
+
+2017-10-13 21:41:32,553 views.py[line:20] WARNING Slow query: SELECT count(*) AS count_1 
+FROM (SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.sex AS users_sex, users.role_id AS users_role_id 
+FROM users) AS anon_1
+Parameters: {}
+Duration: 0.067113s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/api_1_0/users.py:18 (get_user_list)
+
