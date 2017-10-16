@@ -5,13 +5,13 @@
 
 __author__ = 'Andrew Wen'
 
-from apscheduler.schedulers.blocking import BlockingScheduler
+
 
 
 
 import requests
 import csv
-
+from flask import render_template, session, abort, request, redirect, url_for, current_app, flash
 import time
 
 from influxdb import InfluxDBClient
@@ -20,7 +20,10 @@ from influxdb import InfluxDBClient
 URL1="http://192.168.9.61:9090/haproxy?stats;csv"
 
 
-def getLl():
+def getll():
+
+    print("请求："+URL1)
+
     response=requests.get(URL1)
 
     #print(response.headers)
@@ -84,14 +87,11 @@ def writedata(json_body):
 
 
 if __name__ =='__main__':
+    pass
 
 
 
 
-
-    sched = BlockingScheduler()
-    sched.add_job(getLl, 'interval', seconds=5)
-    sched.start()
 
     # while True:
     #      get1()

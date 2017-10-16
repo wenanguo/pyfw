@@ -35,6 +35,16 @@ app.logger.addHandler(Rthandler)
 
 
 
+"""
+配置作业
+"""
+from apscheduler.schedulers.blocking import BlockingScheduler
+from app.jobs.flow import getll
+sched = BlockingScheduler()
+sched.add_job(getll, 'interval', seconds=5)
+sched.start()
+
+
 
 
 
