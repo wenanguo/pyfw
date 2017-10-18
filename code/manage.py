@@ -4,6 +4,8 @@ from app import create_app, db
 from app.models import User, Role
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
+from flask import render_template, session, abort, request, redirect, url_for, current_app, flash
+
 
 import logging
 from logging.handlers import RotatingFileHandler
@@ -16,21 +18,18 @@ migrate = Migrate(app, db)
 
 
 
-
-
-
-
-
-
 """
 日志配置
 定义一个RotatingFileHandler，最多备份5个日志文件，每个日志文件最大10M
 """
-Rthandler = RotatingFileHandler('logs/myapp.log', maxBytes=10*1024*1024,backupCount=5)
-Rthandler.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
-Rthandler.setFormatter(formatter)
-app.logger.addHandler(Rthandler)
+if not app.config["LOGS"]:
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    logdir = os.path.join(basedir, 'logs/myapp.log')
+    Rthandler = RotatingFileHandler(logdir, maxBytes=10*1024*1024,backupCount=5)
+    Rthandler.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
+    Rthandler.setFormatter(formatter)
+    app.logger.addHandler(Rthandler)
 
 
 
@@ -38,11 +37,12 @@ app.logger.addHandler(Rthandler)
 """
 配置作业
 """
-from apscheduler.schedulers.blocking import BlockingScheduler
-from app.jobs.flow import getll
-sched = BlockingScheduler()
-sched.add_job(getll, 'interval', seconds=5)
-sched.start()
+if not app.config["JOBS"]:
+    from apscheduler.schedulers.blocking import BlockingScheduler
+    from app.jobs.flow import getll
+    sched = BlockingScheduler()
+    sched.add_job(getll, 'interval', seconds=5)
+    sched.start()
 
 
 
@@ -52,6 +52,8 @@ def make_shell_context():
     return dict(app=app, db=db, User=User, Role=Role)
 manager.add_command("shell", Shell(make_context=make_shell_context))
 manager.add_command('db', MigrateCommand)
+
+
 
 
 COV = None
