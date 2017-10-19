@@ -13,7 +13,7 @@ from logging.handlers import RotatingFileHandler
 
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
-#app = create_app('development')
+#app = create_app('production')
 manager = Manager(app)
 migrate = Migrate(app, db)
 

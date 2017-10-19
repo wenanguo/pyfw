@@ -4,7 +4,7 @@
   "cpus": 1,
   "mem": 1024,
   "disk": 0,
-  "instances": 0,
+  "instances": 1,
   "acceptedResourceRoles": [
     "*"
   ],
@@ -12,7 +12,7 @@
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "daocloud.io/wenanguo/crm:master-5c59b02",
+      "image": "daocloud.io/wenanguo/crm:v1.0.3",
       "network": "BRIDGE",
       "portMappings": [
         {
