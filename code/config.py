@@ -16,8 +16,8 @@ class Config:
     FLASKY_MAIL_SENDER = '系统通知-Admin <wenanguo1@163.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
     FLASKY_SLOW_DB_QUERY_TIME = 0.05
-    JOBS = True  #是否启动作业
-    LOGS = True  #是否启动日志
+    JOBS_START = True  #是否启动作业
+    LOGS_START = True  #是否启动日志
 
     @staticmethod
     def init_app(app):
@@ -25,14 +25,14 @@ class Config:
 
 
 class DevelopmentConfig(Config):
-    #JOBS = False
+    JOBS_START = False
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
                               "mysql+pymysql://root:Matrining81215@586f85cf61241.sh.cdb.myqcloud.com:3759/crpy"
 
 
 class TestingConfig(Config):
-    JOBS=False
+    JOBS_START=False
     TESTING = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
                               "mysql+pymysql://root:Matrining81215@586f85cf61241.sh.cdb.myqcloud.com:3759/crpy"

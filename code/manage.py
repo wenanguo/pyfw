@@ -13,6 +13,7 @@ from logging.handlers import RotatingFileHandler
 
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
+#app = create_app('development')
 manager = Manager(app)
 migrate = Migrate(app, db)
 
@@ -22,7 +23,7 @@ migrate = Migrate(app, db)
 日志配置
 定义一个RotatingFileHandler，最多备份5个日志文件，每个日志文件最大10M
 """
-if not app.config["LOGS"]:
+if app.config["LOGS_START"]:
     basedir = os.path.abspath(os.path.dirname(__file__))
     logdir = os.path.join(basedir, 'logs/myapp.log')
     Rthandler = RotatingFileHandler(logdir, maxBytes=10*1024*1024,backupCount=5)
@@ -37,7 +38,7 @@ if not app.config["LOGS"]:
 """
 配置作业
 """
-if not app.config["JOBS"]:
+if app.config["JOBS_START"]:
     from apscheduler.schedulers.blocking import BlockingScheduler
     from app.jobs.flow import getll
     sched = BlockingScheduler()
