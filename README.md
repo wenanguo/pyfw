@@ -21,3 +21,6 @@ CRM 应用简介
 更新数据库 python manage.py db upgrade
 
 代码性能分析 python manage.py profile  启动，浏览器请求
+
+服务器启动命令 gunicorn -b 0.0.0.0:8000  manage:app
+
