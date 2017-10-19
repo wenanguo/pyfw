@@ -38,12 +38,12 @@ if app.config["LOGS_START"]:
 """
 配置作业
 """
-if app.config["JOBS_START"]:
-    from apscheduler.schedulers.blocking import BlockingScheduler
-    from app.jobs.flow import getll
-    sched = BlockingScheduler()
-    sched.add_job(getll, 'interval', seconds=5)
-    sched.start()
+# if app.config["JOBS_START"]:
+#     from apscheduler.schedulers.blocking import BlockingScheduler
+#     from app.jobs.flow import getll
+#     sched = BlockingScheduler()
+#     sched.add_job(getll, 'interval', seconds=5)
+#     sched.start()
 
 
 
