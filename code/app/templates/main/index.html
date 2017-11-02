@@ -53,6 +53,11 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                     <a href="#" class="navbar-brand">
                         <small>
                             <img src="static/assets/img/logo.png" alt="" />
+
+
+
+
+
                         </small>
                     </a>
                 </div>
@@ -297,20 +302,20 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                             <li>
                                 <a class="login-area dropdown-toggle" data-toggle="dropdown">
                                     <div class="avatar" title="View your public profile">
-                                        <img src="../static/assets/img/avatars/adam-jansen.jpg">
+                                        <img src="../../static/assets/img/avatars/adam-jansen.jpg">
                                     </div>
                                     <section>
-                                        <h2><span class="profile"><span>David Stevenson</span></span></h2>
+                                        <h2><span class="profile"><span style="width: 110px;">{% if current_user.is_authenticated %}{{ current_user.username }}{% else %}未登录{% endif %}</span></span></h2>
                                     </section>
                                 </a>
                                 <!--Login Area Dropdown-->
                                 <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
-                                    <li class="username"><a>David Stevenson</a></li>
-                                    <li class="email"><a>David.Stevenson@live.com</a></li>
+                                    <li class="username"><a>{{ current_user.username }}</a></li>
+                                    <li class="email"><a>{{ current_user.email }}</a></li>
                                     <!--Avatar Area-->
                                     <li>
                                         <div class="avatar-area">
-                                            <img src="../static/assets/img/avatars/adam-jansen.jpg" class="avatar">
+                                            <img src="../../static/assets/img/avatars/adam-jansen.jpg" class="avatar">
                                             <span class="caption">Change Photo</span>
                                         </div>
                                     </li>
@@ -338,7 +343,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                     </li>
                                     <!--/Theme Selector Area-->
                                     <li class="dropdown-footer">
-                                        <a href="login.html">
+                                        <a href="{{ url_for('auth.logout') }}">
                                             Sign out
                                         </a>
                                     </li>
@@ -396,7 +401,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                 <ul class="nav sidebar-menu">
                     <!--Dashboard-->
                     <li>
-                        <a href="flask.html">
+                        <a href="../flask.html">
                             <i class="menu-icon glyphicon glyphicon-home"></i>
                             <span class="menu-text"> Dashboard </span>
                         </a>
@@ -677,12 +682,12 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                             </li>
 
                             <li>
-                                <a href="login.html">
+                                <a href="../login.html">
                                     <span class="menu-text">Login</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="register.html">
+                                <a href="../register.html">
                                     <span class="menu-text">Register</span>
                                 </a>
                             </li>
@@ -712,13 +717,13 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
 
                         <ul class="submenu">
                             <li>
-                                <a href="error-404.html">
+                                <a href="../error-404.html">
                                     <span class="menu-text">Error 404</span>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="error-500.html">
+                                <a href="../error-500.html">
                                     <span class="menu-text"> Error 500</span>
                                 </a>
                             </li>
@@ -832,7 +837,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                     <ul class="contacts-list">
                         <li class="contact">
                             <div class="contact-avatar">
-                                <img src="../static/assets/img/avatars/divyia.jpg" />
+                                <img src="../../static/assets/img/avatars/divyia.jpg" />
                             </div>
                             <div class="contact-info">
                                 <div class="contact-name">Divyia Philips</div>
@@ -847,7 +852,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                         </li>
                         <li class="contact">
                             <div class="contact-avatar">
-                                <img src="../static/assets/img/avatars/Nicolai-Larson.jpg" />
+                                <img src="../../static/assets/img/avatars/Nicolai-Larson.jpg" />
                             </div>
                             <div class="contact-info">
                                 <div class="contact-name">Adam Johnson</div>
@@ -862,7 +867,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                         </li>
                         <li class="contact">
                             <div class="contact-avatar">
-                                <img src="../static/assets/img/avatars/John-Smith.jpg" />
+                                <img src="../../static/assets/img/avatars/John-Smith.jpg" />
                             </div>
                             <div class="contact-info">
                                 <div class="contact-name">John Smith</div>
@@ -877,7 +882,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                         </li>
                         <li class="contact">
                             <div class="contact-avatar">
-                                <img src="../static/assets/img/avatars/Osvaldus-Valutis.jpg" />
+                                <img src="../../static/assets/img/avatars/Osvaldus-Valutis.jpg" />
                             </div>
                             <div class="contact-info">
                                 <div class="contact-name">Osvaldus Valutis</div>
@@ -892,7 +897,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                         </li>
                         <li class="contact">
                             <div class="contact-avatar">
-                                <img src="../static/assets/img/avatars/Javi-Jimenez.jpg" />
+                                <img src="../../static/assets/img/avatars/Javi-Jimenez.jpg" />
                             </div>
                             <div class="contact-info">
                                 <div class="contact-name">Javi Jimenez</div>
@@ -907,7 +912,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                         </li>
                         <li class="contact">
                             <div class="contact-avatar">
-                                <img src="../static/assets/img/avatars/Stephanie-Walter.jpg" />
+                                <img src="../../static/assets/img/avatars/Stephanie-Walter.jpg" />
                             </div>
                             <div class="contact-info">
                                 <div class="contact-name">Stephanie Walter</div>
@@ -922,7 +927,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                         </li>
                         <li class="contact">
                             <div class="contact-avatar">
-                                <img src="../static/assets/img/avatars/Sergey-Azovskiy.jpg" />
+                                <img src="../../static/assets/img/avatars/Sergey-Azovskiy.jpg" />
                             </div>
                             <div class="contact-info">
                                 <div class="contact-name">Sergey Azovskiy</div>
@@ -937,7 +942,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                         </li>
                         <li class="contact">
                             <div class="contact-avatar">
-                                <img src="../static/assets/img/avatars/Lee-Munroe.jpg" />
+                                <img src="../../static/assets/img/avatars/Lee-Munroe.jpg" />
                             </div>
                             <div class="contact-info">
                                 <div class="contact-name">Lee Munroe</div>
@@ -952,7 +957,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                         </li>
                         <li class="contact">
                             <div class="contact-avatar">
-                                <img src="../static/assets/img/avatars/divyia.jpg" />
+                                <img src="../../static/assets/img/avatars/divyia.jpg" />
                             </div>
                             <div class="contact-info">
                                 <div class="contact-name">Divyia Philips</div>
@@ -970,7 +975,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                 <div class="chatbar-messages" style="display: none;">
                     <div class="messages-contact">
                         <div class="contact-avatar">
-                            <img src="../static/assets/img/avatars/divyia.jpg" />
+                            <img src="../../static/assets/img/avatars/divyia.jpg" />
                         </div>
                         <div class="contact-info">
                             <div class="contact-name">Divyia Philips</div>
@@ -1255,7 +1260,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                         <h5>Notification With Html Content</h5>
                                         <div class="buttons-preview">
                                             <button class="btn btn-default" onclick="javascript: Notify($(imgdiv).html(), 'top-right', '5000', 'blueberry', 'fa-gift', true); return false;">With Html</button>
-                                            <div id="imgdiv" style="display:none"><img width="24px" height="24px" src="../static/assets/img/avatars/divyia.jpg"><span style="padding-left:10px;">John has sent you a gift</span></div>
+                                            <div id="imgdiv" style="display:none"><img width="24px" height="24px" src="../../static/assets/img/avatars/divyia.jpg"><span style="padding-left:10px;">John has sent you a gift</span></div>
                                         </div>
                                     </div>
                                 </div>

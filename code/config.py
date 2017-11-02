@@ -15,7 +15,7 @@ class Config:
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
     FLASKY_MAIL_SENDER = '系统通知-Admin <wenanguo1@163.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
-    FLASKY_SLOW_DB_QUERY_TIME = 0.05
+    FLASKY_SLOW_DB_QUERY_TIME = 2
     JOBS_START = True  #是否启动作业
     LOGS_START = True  #是否启动日志
 

@@ -39,12 +39,12 @@ def login():
 
         if user is not None and user.verify_password(request.form['password']):
             login_user(user, True)
-            return redirect(url_for('auth.login'))
+            return redirect(url_for('main.index'))
 
         else:
             flash('用户名或密码错误，请重新登录！', 'danger')
 
-            return redirect(request.args.get('next') or url_for('main.index'))
+            return redirect(request.args.get('next') or url_for('auth.login'))
 
     #
     #
@@ -61,7 +61,7 @@ def login():
 def logout():
     logout_user()
     flash('You have been logged out.')
-    return redirect(url_for('main.index'))
+    return redirect(url_for('auth.login'))
 
 
 
@@ -79,9 +79,9 @@ def register():
                     password=form.password.data)
         db.session.add(user)
         db.session.commit()
-        token = user.generate_confirmation_token()
-        send_email(user.email, 'Confirm Your Account',
-                   'auth/email/confirm', user=user, token=token)
+        # token = user.generate_confirmation_token()
+        # send_email(user.email, 'Confirm Your Account',
+        #            'auth/email/confirm', user=user, token=token)
         flash('A confirmation email has been sent to you by email.')
         return redirect(url_for('auth.login'))
     return render_template('auth/register.html', form=form)
