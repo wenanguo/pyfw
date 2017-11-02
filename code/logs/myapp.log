@@ -88,3 +88,67 @@ Parameters: {'username_1': 'admin', 'param_1': 1}
 Duration: 0.060156s
 Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/auth/views.py:33 (login)
 
+2017-11-02 12:40:10,602 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.role_id AS users_role_id, users.password_hash AS users_password_hash, users.confirmed AS users_confirmed, users.name AS users_name, users.location AS users_location, users.about_me AS users_about_me, users.member_since AS users_member_since, users.last_seen AS users_last_seen, users.avatar_hash AS users_avatar_hash 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s
+Parameters: {'email_1': '1', 'param_1': 1}
+Duration: 0.057904s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/auth/forms.py:29 (validate_email)
+
+2017-11-02 12:40:10,602 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.role_id AS users_role_id, users.password_hash AS users_password_hash, users.confirmed AS users_confirmed, users.name AS users_name, users.location AS users_location, users.about_me AS users_about_me, users.member_since AS users_member_since, users.last_seen AS users_last_seen, users.avatar_hash AS users_avatar_hash 
+FROM users 
+WHERE users.username = %(username_1)s 
+ LIMIT %(param_1)s
+Parameters: {'username_1': '2', 'param_1': 1}
+Duration: 0.057515s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/auth/forms.py:33 (validate_username)
+
+2017-11-02 12:40:17,173 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.role_id AS users_role_id, users.password_hash AS users_password_hash, users.confirmed AS users_confirmed, users.name AS users_name, users.location AS users_location, users.about_me AS users_about_me, users.member_since AS users_member_since, users.last_seen AS users_last_seen, users.avatar_hash AS users_avatar_hash 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s
+Parameters: {'email_1': '1', 'param_1': 1}
+Duration: 0.058017s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/auth/forms.py:29 (validate_email)
+
+2017-11-02 12:40:17,174 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.role_id AS users_role_id, users.password_hash AS users_password_hash, users.confirmed AS users_confirmed, users.name AS users_name, users.location AS users_location, users.about_me AS users_about_me, users.member_since AS users_member_since, users.last_seen AS users_last_seen, users.avatar_hash AS users_avatar_hash 
+FROM users 
+WHERE users.username = %(username_1)s 
+ LIMIT %(param_1)s
+Parameters: {'username_1': '2', 'param_1': 1}
+Duration: 0.057701s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/auth/forms.py:33 (validate_username)
+
+2017-11-02 12:40:49,928 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.role_id AS users_role_id, users.password_hash AS users_password_hash, users.confirmed AS users_confirmed, users.name AS users_name, users.location AS users_location, users.about_me AS users_about_me, users.member_since AS users_member_since, users.last_seen AS users_last_seen, users.avatar_hash AS users_avatar_hash 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s
+Parameters: {'email_1': '11', 'param_1': 1}
+Duration: 0.257452s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/auth/forms.py:29 (validate_email)
+
+2017-11-02 12:40:49,928 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.role_id AS users_role_id, users.password_hash AS users_password_hash, users.confirmed AS users_confirmed, users.name AS users_name, users.location AS users_location, users.about_me AS users_about_me, users.member_since AS users_member_since, users.last_seen AS users_last_seen, users.avatar_hash AS users_avatar_hash 
+FROM users 
+WHERE users.username = %(username_1)s 
+ LIMIT %(param_1)s
+Parameters: {'username_1': '22', 'param_1': 1}
+Duration: 0.055288s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/auth/forms.py:33 (validate_username)
+
+2017-11-02 12:57:25,644 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.role_id AS users_role_id, users.password_hash AS users_password_hash, users.confirmed AS users_confirmed, users.name AS users_name, users.location AS users_location, users.about_me AS users_about_me, users.member_since AS users_member_since, users.last_seen AS users_last_seen, users.avatar_hash AS users_avatar_hash 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s
+Parameters: {'email_1': 'wenanguo110@163.com', 'param_1': 1}
+Duration: 0.062972s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/auth/forms.py:29 (validate_email)
+
+2017-11-02 12:57:25,644 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.role_id AS users_role_id, users.password_hash AS users_password_hash, users.confirmed AS users_confirmed, users.name AS users_name, users.location AS users_location, users.about_me AS users_about_me, users.member_since AS users_member_since, users.last_seen AS users_last_seen, users.avatar_hash AS users_avatar_hash 
+FROM users 
+WHERE users.username = %(username_1)s 
+ LIMIT %(param_1)s
+Parameters: {'username_1': 'wenanguo', 'param_1': 1}
+Duration: 0.062940s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/auth/forms.py:33 (validate_username)
+
