@@ -63,3 +63,28 @@ Parameters: {}
 Duration: 0.067113s
 Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/api_1_0/users.py:18 (get_user_list)
 
+2017-10-22 22:16:55,017 views.py[line:56] WARNING ===登录日志===
+2017-10-22 22:16:55,021 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.sex AS users_sex, users.role_id AS users_role_id 
+FROM users 
+WHERE users.username = %(username_1)s AND users.password = %(password_1)s 
+ LIMIT %(param_1)s
+Parameters: {'username_1': 'wenanguo', 'password_1': '123456', 'param_1': 1}
+Duration: 0.063331s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/main/views.py:53 (login)
+
+2017-11-01 15:49:30,297 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.username AS users_username, users.password_hash AS users_password_hash, users.sex AS users_sex, users.role_id AS users_role_id 
+FROM users 
+WHERE users.username = %(username_1)s 
+ LIMIT %(param_1)s
+Parameters: {'username_1': 'admin', 'param_1': 1}
+Duration: 0.056522s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/auth/views.py:33 (login)
+
+2017-11-01 15:51:38,270 views.py[line:20] WARNING Slow query: SELECT users.id AS users_id, users.username AS users_username, users.password_hash AS users_password_hash, users.sex AS users_sex, users.role_id AS users_role_id 
+FROM users 
+WHERE users.username = %(username_1)s 
+ LIMIT %(param_1)s
+Parameters: {'username_1': 'admin', 'param_1': 1}
+Duration: 0.060156s
+Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/auth/views.py:33 (login)
+
