@@ -1,4 +1,4 @@
-from flask import render_template, redirect, request, url_for, flash
+from flask import render_template, redirect, request, url_for, flash, current_app
 from flask_login import login_user, logout_user, login_required, \
     current_user
 from . import auth
@@ -18,6 +18,13 @@ from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
 #                 and request.endpoint[:5] != 'auth.' \
 #                 and request.endpoint != 'static':
 #             return redirect(url_for('auth.unconfirmed'))
+
+# @auth.before_app_request
+# def before_request():
+#     print(current_user.is_authenticated)
+#     if current_user.is_authenticated:
+#         flash('用户名或密码错误，请重新登录！', 'danger')
+#         return redirect(url_for('auth.login'))
 #
 #
 # @auth.route('/unconfirmed')
@@ -36,6 +43,8 @@ def login():
     if request.method == 'POST':
 
         user = User.query.filter_by(username=request.form['username']).first()
+
+        current_app.logger.warning("===登录日志===")
 
         if user is not None and user.verify_password(request.form['password']):
             login_user(user, True)
@@ -60,7 +69,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('You have been logged out.')
+    flash('系统注销成功！','success')
     return redirect(url_for('auth.login'))
 
 
@@ -84,7 +93,7 @@ def register():
         #            'auth/email/confirm', user=user, token=token)
         flash('A confirmation email has been sent to you by email.')
         return redirect(url_for('auth.login'))
-    return render_template('auth/register.html', form=form)
+    return render_template('auth/register2.html', form=form)
 #
 #
 # @auth.route('/confirm/<token>')
@@ -190,6 +199,5 @@ def register():
 
 from flask.ext.login import login_required
 @auth.route('/secret')
-@login_required
 def secret():
     return 'Only authenticated users are allowed!'
