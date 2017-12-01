@@ -94,6 +94,21 @@ def register():
         flash('A confirmation email has been sent to you by email.')
         return redirect(url_for('auth.login'))
     return render_template('auth/register2.html', form=form)
+
+
+
+@auth.route('/ytxtest', methods=['GET', 'POST'])
+def ytxtest():
+    error = None
+
+    
+    print("order_code:%s" % (request.form['order_code']))
+    print("FKEY:"+request.form['FKEY'])
+    print("=====")
+    print("imageFile:"+request.form['imageFile'][0:100])
+
+    return "{'flag':'true',msg:'测试图片上传成功'}"
+
 #
 #
 # @auth.route('/confirm/<token>')

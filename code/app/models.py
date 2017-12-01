@@ -37,9 +37,9 @@ class User(UserMixin, db.Model):
     def to_json(self):
         json_user = {
             'id': self.id,
-            'username': self.username,
-            'password': self.password,
-            'sex': self.sex
+            'username': self.username
+            #'password': self.password,
+            #'sex': self.sex
         }
         return json_user
 

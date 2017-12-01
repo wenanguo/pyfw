@@ -438,3 +438,5 @@ Parameters: {'param_1': 105}
 Duration: 0.056037s
 Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/models.py:81 (load_user)
 
+2017-12-01 16:08:07,454 views.py[line:47] WARNING ===登录日志===
+2017-12-01 16:08:12,428 views.py[line:47] WARNING ===登录日志===
