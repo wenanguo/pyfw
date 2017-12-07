@@ -212,7 +212,7 @@ def ytxtest():
 #         flash('Invalid request.')
 #     return redirect(url_for('main.index'))
 
-from flask.ext.login import login_required
+from flask_login import login_required
 @auth.route('/secret')
 def secret():
     return 'Only authenticated users are allowed!'
