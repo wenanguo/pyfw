@@ -79,7 +79,7 @@ class SeleniumTestCase(unittest.TestCase):
     def test_admin_home_page(self):
         # navigate to home page
         self.client.get('http://localhost:5000/index')
-        self.assertTrue(re.search('Hello,\s+Stranger!',
+        self.assertTrue(re.search('/auth/login',
                                   self.client.page_source))
 
         # # navigate to login page
