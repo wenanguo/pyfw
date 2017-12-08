@@ -2708,3 +2708,922 @@ Traceback (most recent call last):
     raise TemplateNotFound(template)
 jinja2.exceptions.TemplateNotFound: crm_base.html
 2017-12-08 14:36:39,219 views.py[line:47] WARNING ===登录日志===
+2017-12-08 14:53:29,513 views.py[line:47] WARNING ===登录日志===
+2017-12-08 14:54:56,935 views.py[line:47] WARNING ===登录日志===
+2017-12-08 15:45:53,319 app.py[line:1560] ERROR Exception on /index [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/views.py", line 43, in index
+    known=session.get('known', False))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 20, in template
+    {% block main-container %}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 896, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 264, in parse_block
+    self.fail('Block names in Jinja have to be valid Python '
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Block names in Jinja have to be valid Python identifiers and may not contain hyphens, use an underscore instead.
+2017-12-08 15:45:56,114 app.py[line:1560] ERROR Exception on /assets/css/beyond.min.css [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1590, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1573, in raise_routing_exception
+    raise request.routing_exception
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/ctx.py", line 294, in match_request
+    self.url_adapter.match(return_rule=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/werkzeug/routing.py", line 1563, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404: Not Found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1512, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1471, in handle_http_exception
+    return handler(e)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/errors.py", line 7, in page_not_found
+    return render_template('error-404.html'), 404
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 402, in template
+    {% block main-container -%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 1005, in render
+    return concat(self.root_render_func(self.new_context(vars)))
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/error-404.html", line 1, in top-level template code
+    {% extends "base_index.html" %}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 402, in template
+    {% block main-container -%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 896, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 264, in parse_block
+    self.fail('Block names in Jinja have to be valid Python '
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Block names in Jinja have to be valid Python identifiers and may not contain hyphens, use an underscore instead.
+2017-12-08 15:46:27,342 app.py[line:1560] ERROR Exception on /index [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/views.py", line 43, in index
+    known=session.get('known', False))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 20, in template
+    {% block main-container %}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 896, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 264, in parse_block
+    self.fail('Block names in Jinja have to be valid Python '
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Block names in Jinja have to be valid Python identifiers and may not contain hyphens, use an underscore instead.
+2017-12-08 15:46:29,897 app.py[line:1560] ERROR Exception on /assets/css/beyond.min.css [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1590, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1573, in raise_routing_exception
+    raise request.routing_exception
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/ctx.py", line 294, in match_request
+    self.url_adapter.match(return_rule=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/werkzeug/routing.py", line 1563, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404: Not Found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1512, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1471, in handle_http_exception
+    return handler(e)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/errors.py", line 7, in page_not_found
+    return render_template('error-404.html'), 404
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 402, in template
+    {% block main-container -%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 1005, in render
+    return concat(self.root_render_func(self.new_context(vars)))
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/error-404.html", line 1, in top-level template code
+    {% extends "base_index.html" %}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 402, in template
+    {% block main-container -%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 896, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 264, in parse_block
+    self.fail('Block names in Jinja have to be valid Python '
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Block names in Jinja have to be valid Python identifiers and may not contain hyphens, use an underscore instead.
+2017-12-08 15:47:40,019 app.py[line:1560] ERROR Exception on /index [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/views.py", line 43, in index
+    known=session.get('known', False))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 20, in template
+    {% block main-container %}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 896, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 264, in parse_block
+    self.fail('Block names in Jinja have to be valid Python '
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Block names in Jinja have to be valid Python identifiers and may not contain hyphens, use an underscore instead.
+2017-12-08 15:47:42,702 app.py[line:1560] ERROR Exception on /assets/css/beyond.min.css [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1590, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1573, in raise_routing_exception
+    raise request.routing_exception
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/ctx.py", line 294, in match_request
+    self.url_adapter.match(return_rule=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/werkzeug/routing.py", line 1563, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404: Not Found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1512, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1471, in handle_http_exception
+    return handler(e)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/errors.py", line 7, in page_not_found
+    return render_template('error-404.html'), 404
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 402, in template
+    {% block main-container -%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 1005, in render
+    return concat(self.root_render_func(self.new_context(vars)))
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/error-404.html", line 1, in top-level template code
+    {% extends "base_index.html" %}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 402, in template
+    {% block main-container -%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 896, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 264, in parse_block
+    self.fail('Block names in Jinja have to be valid Python '
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Block names in Jinja have to be valid Python identifiers and may not contain hyphens, use an underscore instead.
+2017-12-08 15:48:55,889 app.py[line:1560] ERROR Exception on /index [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/views.py", line 43, in index
+    known=session.get('known', False))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 20, in template
+    {% block main-container %}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 896, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 264, in parse_block
+    self.fail('Block names in Jinja have to be valid Python '
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Block names in Jinja have to be valid Python identifiers and may not contain hyphens, use an underscore instead.
+2017-12-08 15:48:58,446 app.py[line:1560] ERROR Exception on /assets/css/beyond.min.css [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1590, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1573, in raise_routing_exception
+    raise request.routing_exception
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/ctx.py", line 294, in match_request
+    self.url_adapter.match(return_rule=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/werkzeug/routing.py", line 1563, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404: Not Found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1512, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1471, in handle_http_exception
+    return handler(e)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/errors.py", line 7, in page_not_found
+    return render_template('error-404.html'), 404
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 402, in template
+    {% block main-container -%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 1005, in render
+    return concat(self.root_render_func(self.new_context(vars)))
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/error-404.html", line 1, in top-level template code
+    {% extends "base_index.html" %}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 402, in template
+    {% block main-container -%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 896, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 264, in parse_block
+    self.fail('Block names in Jinja have to be valid Python '
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Block names in Jinja have to be valid Python identifiers and may not contain hyphens, use an underscore instead.
+2017-12-08 15:49:13,115 app.py[line:1560] ERROR Exception on /index [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/views.py", line 43, in index
+    known=session.get('known', False))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 20, in template
+    {% block main-container %}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 896, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 264, in parse_block
+    self.fail('Block names in Jinja have to be valid Python '
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Block names in Jinja have to be valid Python identifiers and may not contain hyphens, use an underscore instead.
+2017-12-08 15:49:13,474 app.py[line:1560] ERROR Exception on /assets/css/beyond.min.css [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1590, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1573, in raise_routing_exception
+    raise request.routing_exception
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/ctx.py", line 294, in match_request
+    self.url_adapter.match(return_rule=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/werkzeug/routing.py", line 1563, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404: Not Found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1512, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1471, in handle_http_exception
+    return handler(e)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/errors.py", line 7, in page_not_found
+    return render_template('error-404.html'), 404
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 402, in template
+    {% block main-container -%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 1005, in render
+    return concat(self.root_render_func(self.new_context(vars)))
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/error-404.html", line 1, in top-level template code
+    {% extends "base_index.html" %}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 402, in template
+    {% block main-container -%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 896, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 264, in parse_block
+    self.fail('Block names in Jinja have to be valid Python '
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Block names in Jinja have to be valid Python identifiers and may not contain hyphens, use an underscore instead.
+2017-12-08 15:50:17,381 app.py[line:1560] ERROR Exception on /index [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/views.py", line 43, in index
+    known=session.get('known', False))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 25, in template
+    {% endblock main-container%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 896, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
+    self.stream.expect('block_end')
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/lexer.py", line 386, in expect
+    self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of statement block', got 'main'
+2017-12-08 15:51:10,028 app.py[line:1560] ERROR Exception on /index [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/views.py", line 43, in index
+    known=session.get('known', False))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 25, in template
+    {% endblock main-container%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 896, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 878, in subparse
+    rv = self.parse_statement()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
+    self.stream.expect('block_end')
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/lexer.py", line 386, in expect
+    self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of statement block', got 'main'
+2017-12-08 15:54:24,023 app.py[line:1560] ERROR Exception on /index [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/views.py", line 43, in index
+    known=session.get('known', False))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 1, in top-level template code
+    {% extends "base_index.html" %}
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 1, in top-level template code
+    {% extends "bootstrap/base.html" %}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 61, in block "html"
+    {% block body -%}
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 20, in block "body"
+    {% block maincontainer %}
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 23, in block "maincontainer"
+    {% block pagecontainer %}
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 25, in block "pagecontainer"
+    {% block page_sidebar %}
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 26, in block "page_sidebar"
+    {{ super() }}
+jinja2.exceptions.UndefinedError: there is no parent block called 'page_sidebar'.
+2017-12-08 15:54:48,466 app.py[line:1560] ERROR Exception on /index [GET]
+Traceback (most recent call last):
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_restful/__init__.py", line 273, in error_router
+    return original_handler(e)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/main/views.py", line 43, in index
+    known=session.get('known', False))
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 1, in top-level template code
+    {% extends "base_index.html" %}
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 1, in top-level template code
+    {% extends "bootstrap/base.html" %}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/Users/wenanguo/developer/tool/anaconda/envs/python36/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/base_index.html", line 61, in block "html"
+    {% block body -%}
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 20, in block "body"
+    {% block maincontainer %}
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 23, in block "maincontainer"
+    {% block pagecontainer %}
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 25, in block "pagecontainer"
+    {% block pagesidebar %}
+  File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 26, in block "page_sidebar"
+    {{ super() }}
+jinja2.exceptions.UndefinedError: there is no parent block called 'page_sidebar'.
