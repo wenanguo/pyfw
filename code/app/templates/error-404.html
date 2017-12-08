@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+﻿{% extends "crm_base.html" %}
 
 {% block title %}Flasky - Page Not Found{% endblock %}
 
@@ -13,7 +13,7 @@
             </br>
             <div class="error-divider" style="margin-top: 10px;">
                 <h2>找不到页面</h2>
-</br>
+    </br>
                 <p class="description">We Couldn’t Find This Page</p>
             </div>
             <a href="{{ url_for('auth.login') }}" class="return-btn"><i class="fa fa-home"></i>Home</a>

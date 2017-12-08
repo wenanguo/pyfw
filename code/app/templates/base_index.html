@@ -1,0 +1,147 @@
+{% extends "bootstrap/base.html" %}
+
+
+
+<!DOCTYPE html>
+<html{% block html_attribs %}{% endblock html_attribs %}>
+{%- block html %}
+  <head>
+    {%- block head %}
+    <title>{% block title %}{% endblock title %}</title>
+
+    {%- block metas %}
+        {{ super() }}
+
+    <meta name="description" content="crm" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    {%- endblock metas %}
+
+    {%- block styles %}
+
+        <!-- 原始 -->
+         {{ super() }}
+        <!-- 原始结束 -->
+
+
+
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+<!--beyond-admin-->
+
+
+
+    <!--Basic Styles-->
+
+
+    <link href="{{ url_for('static', filename='assets/css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='assets/css/weather-icons.min.css') }}" rel="stylesheet" />
+
+    <!--Fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="{{ url_for('static', filename='assets/css/beyond.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='assets/css/demo.min.css" rel="stylesheet') }}" />
+    <link href="{{ url_for('static', filename='assets/css/typicons.min.css" rel="stylesheet') }}" />
+    <link href="{{ url_for('static', filename='assets/css/animate.min.css" rel="stylesheet') }}" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+{#    <script src="{{ url_for('static', filename='assets/js/skins.js') }}"></script>#}
+        <script src="static/assets/js/skins.js"></script>
+
+
+
+    <!--Basic Scripts-->
+
+
+
+
+
+
+
+
+    {%- endblock styles %}
+    {%- endblock head %}
+  </head>
+  <body{% block body_attribs %}{% endblock body_attribs %}>
+    {% block body -%}
+
+{#     {% block loader %}#}
+{#    <!-- Loading Container -->#}
+{#    <div class="loading-container">#}
+{#        <div class="loader"></div>#}
+{#    </div>#}
+{#    <!--  /Loading Container -->#}
+{#    {%- endblock loader %}#}
+
+    {% block navbar %}
+    {%- endblock navbar %}
+
+    {% block content -%}
+    {%- endblock content %}
+
+    {% block page_content %}
+    {% endblock %}
+
+    {% block scripts %}
+        {{ super() }}
+
+
+
+    <script src="{{ url_for('static', filename='assets/js/slimscroll/jquery.slimscroll.min.js') }}"></script>
+
+    <!--Beyond Scripts-->
+    <script src="{{ url_for('static', filename='assets/js/beyond.min.js') }}"></script>
+
+    <!--Page Related Scripts-->
+    <script src="{{ url_for('static', filename='assets/js/toastr/toastr.js') }}"></script>
+
+
+    {%- endblock scripts %}
+
+
+     {% block flash_msg %}
+
+         <script type="application/javascript">
+
+          {% for message in get_flashed_messages(True) %}
+
+              var _catalog_="blue"
+              if('{{ message[0] }}'=="danger"){
+                    _catalog_='danger'
+              }
+              else if('{{ message[0] }}'=="success")
+              {
+                    _catalog_='success'
+              }else if('{{ message[0] }}'=="warning")
+              {
+                    _catalog_='warning'
+              }
+              else
+              {
+                    _catalog_="blue"
+              }
+
+	            Notify('{{ message[1] }}', 'bottom-right', '5000', _catalog_, 'fa-desktop', true);
+		  {% endfor %}
+
+
+         </script>
+
+
+    {%- endblock flash_msg %}
+
+
+
+
+    {%- endblock body %}
+  </body>
+{%- endblock html %}
+</html>
+
+
+
