@@ -17,9 +17,9 @@ if (readCookie("current-skin")) {
 if (location.pathname != "/index-rtl-fa.html" && location.pathname != "/index-rtl-ar.html") {
     if (readCookie("rtl-support")) {
         if (document.getElementById("beyond-link") != null)
-            document.getElementById("beyond-link").setAttribute("href", "assets/css/beyond-rtl.min.css");
+            document.getElementById("beyond-link").setAttribute("href", "static/assets/css/beyond-rtl.min.css");
         if (document.getElementById("bootstrap-rtl-link") != null)
-            document.getElementById("bootstrap-rtl-link").setAttribute("href", "assets/css/bootstrap-rtl.min.css");
+            document.getElementById("bootstrap-rtl-link").setAttribute("href", "static/assets/css/bootstrap-rtl.min.css");
         //Resolve 4095 Issue With IE<=9
         if (getInternetExplorerVersion() <= 9 && getInternetExplorerVersion() > 0) {
             var a = document.createElement('link');
