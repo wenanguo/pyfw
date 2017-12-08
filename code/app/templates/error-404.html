@@ -7,7 +7,7 @@
 {% block navbar %}
 {% endblock  %}
 
-{% block content %}
+{% block body %}
 
     <div class="error-header"> </div>
     <div class="container ">
@@ -22,12 +22,6 @@
             <a href="{{ url_for('auth.login') }}" class="return-btn"><i class="fa fa-home"></i>Home</a>
         </section>
     </div>
-    <!--Basic Scripts-->
-    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='assets/js/slimscroll/jquery.slimscroll.min.js') }}"></script>
 
-    <!--Beyond Scripts-->
-    <script src="{{ url_for('static', filename='assets/js/beyond.min.js') }}"></script>
 
 {% endblock %}
