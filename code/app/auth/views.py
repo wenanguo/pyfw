@@ -19,12 +19,12 @@ from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
 #                 and request.endpoint != 'static':
 #             return redirect(url_for('auth.unconfirmed'))
 
-# @auth.before_app_request
-# def before_request():
-#     print(current_user.is_authenticated)
-#     if current_user.is_authenticated:
-#         flash('用户名或密码错误，请重新登录！', 'danger')
-#         return redirect(url_for('auth.login'))
+@auth.before_app_request
+def before_request():
+    print(current_user.is_authenticated)
+    if current_user.is_authenticated:
+        flash('用户名或密码错误，请重新登录！', 'danger')
+        return redirect(url_for('auth.login'))
 #
 #
 # @auth.route('/unconfirmed')

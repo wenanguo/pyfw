@@ -25,7 +25,7 @@ class Config:
 
 
 class DevelopmentConfig(Config):
-    JOBS_START = False
+    JOBS_START = True
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
                               "mysql+pymysql://root:Matrining81215@586f85cf61241.sh.cdb.myqcloud.com:3759/crpy"

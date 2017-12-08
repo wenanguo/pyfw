@@ -1,6 +1,6 @@
 FROM python:3.6
 
-ADD ./code /app 
+ADD ./code /app
 
 WORKDIR   /app
 

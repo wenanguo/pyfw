@@ -2,7 +2,6 @@
 import os
 from app import create_app, db
 from app.models import User, Role
-
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 from flask import render_template, session, abort, request, redirect, url_for, current_app, flash
@@ -37,16 +36,16 @@ if app.config["LOGS_START"]:
 
 
 
-"""
-配置作业
-"""
-if app.config["JOBS_START"]:
-    print("启动作业")
-    from apscheduler.schedulers.blocking import BlockingScheduler
-    from app.jobs.flow import getll
-    sched = BlockingScheduler()
-    sched.add_job(getll, 'interval', seconds=5)
-    sched.start()
+# """
+# 配置作业
+# """
+# if app.config["JOBS_START"]:
+#     print("启动作业")
+#     from apscheduler.schedulers.blocking import BlockingScheduler
+#     from app.jobs.flow import getll
+#     sched = BlockingScheduler()
+#     sched.add_job(getll, 'interval', seconds=5)
+#     sched.start()
 
 
 
