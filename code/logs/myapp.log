@@ -3627,3 +3627,5 @@ Traceback (most recent call last):
   File "/Users/wenanguo/project/PycharmProjects/crm/code/app/templates/main/index.html", line 26, in block "page_sidebar"
     {{ super() }}
 jinja2.exceptions.UndefinedError: there is no parent block called 'page_sidebar'.
+2017-12-09 09:30:23,797 views.py[line:47] WARNING ===登录日志===
+2017-12-09 10:39:26,282 views.py[line:47] WARNING ===登录日志===
