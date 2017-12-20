@@ -108,7 +108,7 @@ def userlist():
     :return:
     """
 
-    return render_template('auth/users.html')
+    return render_template('app/user/users.html')
 
 
 

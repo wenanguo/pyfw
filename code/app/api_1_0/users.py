@@ -3,6 +3,7 @@ from . import api
 from ..models import User
 
 
+
 @api.route('/users/<int:id>')
 def get_user(id):
     user = User.query.get_or_404(id)
@@ -10,7 +11,8 @@ def get_user(id):
 
 
 
-@api.route('/userslist/<int:id>')
+
+@api.route('/userslist/<int:id>', methods=['GET', 'POST'])
 def get_user_list(id):
     page = request.args.get('page', 1, type=int)
     pagination = User.query.order_by(User.id.desc()).paginate(
@@ -20,9 +22,9 @@ def get_user_list(id):
 
     # print(userlist)
     return jsonify({
-        'posts': [user.to_json() for user in userlist],
+        'rows': [user.to_json() for user in userlist],
 
-        'count': pagination.total
+        'total': pagination.total
     })
 
 
