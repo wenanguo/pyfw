@@ -4,66 +4,47 @@
 {% block title %}CRM - 注册{% endblock %}
 
 
+{%- block styles %}
+   {{ super() }}
+<style>
+
+.login-container {
+    position: relative;
+    margin: 10% auto;
+    max-width: 500px;
+}
+
+.loginbox {
+    position: relative;
+    width: 500px !important;
+    height: auto !important;
+    padding: 0 20px 20px 0;
+    -webkit-box-shadow: 0 0 14px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 0 14px rgba(0,0,0,.1);
+    box-shadow: 0 0 14px rgba(0,0,0,.1);
+}
+
+</style>
+
+{%- endblock styles %}
 
 {% block body %}
 
 
+<div class="login-container animated fadeInDown">
+        <div class="loginbox bg-white">
+            <div class="loginbox-title">登录</div>
+
+           {{ wtf.quick_form(form) }}
+
+        </div>
+        <div class="logobox">
+
+        </div>
+    </div>
 
 
-<div class="register-container animated fadeInDown">
-{#    <form id="userinfo" action="{{ url_for('auth.register') }}" method="POST">#}
-{#        <div class="registerbox bg-white">#}
-{#            <div class="registerbox-title">注册</div>#}
-{##}
-{#            <div class="registerbox-caption ">请填写您的信息</div>#}
-{#            <div class="registerbox-textbox">#}
-{##}
-{#                <input type="text" id="username" name="username" class="form-control" placeholder="Username" />#}
-{#            </div>#}
-{#            <div class="registerbox-textbox">#}
-{#                <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />#}
-{#            </div>#}
-{#            <div class="registerbox-textbox">#}
-{#                <input type="password" id="confirmusername" class="form-control" placeholder="Confirm Password" />#}
-{#            </div>#}
-{#            <hr class="wide" />#}
-{#            <div class="registerbox-textbox">#}
-{#                <input type="text" class="form-control" placeholder="Name" />#}
-{#            </div>#}
-{#            <div class="registerbox-textbox">#}
-{#                <input type="text" class="form-control" placeholder="Family" />#}
-{#            </div>#}
-{#            <div class="registerbox-textbox">#}
-{#                <div class="row">#}
-{#                    <div class="col-lg-6 col-sm-6 col-xs-6 padding-right-10">#}
-{#                        <input type="text" class="form-control" placeholder="Month" />#}
-{#                    </div>#}
-{#                    <div class="col-lg-3 col-sm-3 col-xs-3 no-padding padding-right-10">#}
-{#                        <input type="text" class="form-control" placeholder="Day" />#}
-{#                    </div>#}
-{#                    <div class="col-lg-3 col-sm-3 col-xs-3 no-padding-left">#}
-{#                        <input type="text" class="form-control" placeholder="Year" />#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="registerbox-textbox no-padding-bottom">#}
-{#                <div class="checkbox">#}
-{#                    <label>#}
-{#                        <input type="checkbox" class="colored-primary" checked="checked">#}
-{#                        <span class="text darkgray">我同意 <a class="themeprimary">CRM</a> 相关协议</span>#}
-{#                    </label>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="registerbox-submit">#}
-{##}
-{#                <input type="submit" class="btn btn-primary pull-right" value="提交">#}
-{#            </div>#}
-{#        </div>#}
-{#    </form>#}
 
- {{ wtf.quick_form(form) }}
-
-</div>
 
 
      <div class="logobox">

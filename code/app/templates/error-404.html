@@ -7,6 +7,23 @@
 {% block navbar %}
 {% endblock  %}
 
+
+
+{%- block styles %}
+   {{ super() }}
+<style>
+
+.return-btn, .return-btn:hover {
+
+    margin-top: 10px;
+
+}
+
+</style>
+
+
+{%- endblock styles %}
+
 {% block body %}
 
     <div class="error-header"> </div>
@@ -25,3 +42,5 @@
 
 
 {% endblock %}
+
+

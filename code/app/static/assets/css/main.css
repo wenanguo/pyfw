@@ -1,0 +1,15 @@
+.menu-text {
+    height: 20px;
+    line-height: 20px;
+    float: none;
+    padding-left: 2px;
+}
+
+.menu-icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    left: 0px;
+    top: 0%;
+    margin-top: -8px;
+}
