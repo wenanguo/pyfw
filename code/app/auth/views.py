@@ -101,19 +101,6 @@ def register():
 
 
 
-@auth.route('/userlist', methods=['GET', 'POST'])
-def userlist():
-    """
-    获取用户列表
-    :return:
-    """
-
-    return render_template('app/user/users.html')
-
-
-
-
-
 
 @auth.route('/ytxtest', methods=['GET', 'POST'])
 def ytxtest():

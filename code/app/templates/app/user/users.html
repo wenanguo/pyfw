@@ -2,192 +2,67 @@
 
 {% block title %}基础开发框架{% endblock %}
 
+
+
 {% block pagebody %}
 
 
 
 <div class="row">
 
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-<div class="widget">
-                                <div class="widget-header bordered-bottom bordered-themeprimary">
-                                    <i class="widget-icon fa fa-tasks themeprimary"></i>
-                                    <span class="widget-caption themeprimary">Task Board</span>
-                                </div><!--Widget Header-->
-                                <div class="widget-body no-padding">
-                                    <div class="task-container">
-                                        <div class="task-search">
-                                            <span class="input-icon">
-                                                <input type="text" class="form-control" placeholder="Search Tasks">
-                                                <i class="fa fa-search gray"></i>
-                                            </span>
-                                        </div>
-                                        <ul class="tasks-list">
-                                            <li class="task-item">
-                                                <div class="task-check">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                        <span class="text"></span>
-                                                    </label>
-                                                </div>
-                                                <div class="task-state">
-                                                    <span class="label label-yellow">
-                                                        In Progress
-                                                    </span>
-                                                </div>
-                                                <div class="task-time">1 hour ago</div>
-                                                <div class="task-body">Ask to the sysadmins to install Python 3 on the server and run it</div>
-                                                <div class="task-creator"><a href="">Cameron Hetfield</a></div>
-                                                <div class="task-assignedto">assigned to you</div>
-                                            </li>
-                                            <li class="task-item">
-                                                <div class="task-check">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                        <span class="text"></span>
-                                                    </label>
-                                                </div>
-                                                <div class="task-state">
-                                                    <span class="label label-orange">
-                                                        Active
-                                                    </span>
-                                                </div>
-                                                <div class="task-time">2 hours ago</div>
-                                                <div class="task-body">Write documentation for the new API with test and deploy specifications</div>
-                                                <div class="task-creator"><a href="">Behrang Nitsche</a></div>
-                                                <div class="task-assignedto">assigned to you</div>
-                                            </li>
-                                            <li class="task-item">
-                                                <div class="task-check">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                        <span class="text"></span>
-                                                    </label>
-                                                </div>
-                                                <div class="task-state">
-                                                    <span class="label label-palegreen">
-                                                        Approved
-                                                    </span>
-                                                </div>
-                                                <div class="task-time">yesterday</div>
-                                                <div class="task-body">Code refactoring and rewriting silly codes and test it</div>
-                                                <div class="task-creator"><a href="">David Fincher</a></div>
-                                                <div class="task-assignedto">assigned to Kim</div>
-                                            </li>
-                                        </ul>
-                                        <table id="dg" title="My Users" class="easyui-datagrid" style="height:250px"
-                                                url="{{ url_for('api.get_user_list',id=1) }}"
-                                                toolbar="#toolbar" pagination="true"
-                                                rownumbers="true" fitColumns="true" singleSelect="true">
-                                            <thead>
-                                                <tr>
-                                                    <th field="id" width="50">First Name</th>
-                                                    <th field="username" width="50">Last Name</th>
-                                                    <th field="phone" width="50">Phone</th>
-                                                    <th field="email" width="50">Email <a href="#" class="btn btn-default btn-xs purple"><i class="fa fa-edit"></i> Edit</a></th>
-                                                </tr>
-                                            </thead>
-                                        </table>
+                                    <div class="widget">
+                                        <div class="widget-header bordered-bottom bordered-themeprimary">
+                                            <i class="widget-icon fa fa-tasks themeprimary"></i>
+                                            <span class="widget-caption themeprimary">用户列表</span>
+                                        </div><!--Widget Header-->
+
+                                        <div class="widget-body no-padding">
+                                            <div class="task-container" style="padding: 5px;">
+
+
+
+
+<div class="easyui-layout" style="height:350px;">
+        <div data-options="region:'north'" style="height:50px"></div>
+        <div data-options="region:'south',split:true" style="height:50px;"></div>
+        <div data-options="region:'east',split:true" title="East" style="width:100px;"></div>
+        <div data-options="region:'west',split:true" title="West" style="width:100px;"></div>
+        <div data-options="region:'center',title:'Main Title',iconCls:'icon-ok'">
+            <table class="easyui-datagrid"
+                    data-options="url:'datagrid_data1.json',method:'get',border:false,singleSelect:true,fit:true,fitColumns:true">
+                <thead>
+                    <tr>
+                        <th data-options="field:'itemid'" width="80">Item ID</th>
+                        <th data-options="field:'productid'" width="100">Product ID</th>
+                        <th data-options="field:'listprice',align:'right'" width="80">List Price</th>
+                        <th data-options="field:'unitcost',align:'right'" width="80">Unit Cost</th>
+                        <th data-options="field:'attr1'" width="150">Attribute</th>
+                        <th data-options="field:'status',align:'center'" width="60">Status</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+                                            </div>
+                                        </div><!--Widget Body-->
                                     </div>
-                                </div><!--Widget Body-->
-                            </div>
 
 
 
 
-</div>
-
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-
-<div class="widget">
-                                <div class="widget-header bordered-bottom bordered-themeprimary">
-                                    <i class="widget-icon fa fa-tasks themeprimary"></i>
-                                    <span class="widget-caption themeprimary">Task Board</span>
-                                </div><!--Widget Header-->
-                                <div class="widget-body no-padding">
-                                    <div class="task-container">
-                                        <div class="task-search">
-                                            <span class="input-icon">
-                                                <input type="text" class="form-control" placeholder="Search Tasks">
-                                                <i class="fa fa-search gray"></i>
-                                            </span>
-                                        </div>
-                                        <ul class="tasks-list">
-                                            <li class="task-item">
-                                                <div class="task-check">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                        <span class="text"></span>
-                                                    </label>
-                                                </div>
-                                                <div class="task-state">
-                                                    <span class="label label-yellow">
-                                                        In Progress
-                                                    </span>
-                                                </div>
-                                                <div class="task-time">1 hour ago</div>
-                                                <div class="task-body">Ask to the sysadmins to install Python 3 on the server and run it</div>
-                                                <div class="task-creator"><a href="">Cameron Hetfield</a></div>
-                                                <div class="task-assignedto">assigned to you</div>
-                                            </li>
-                                            <li class="task-item">
-                                                <div class="task-check">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                        <span class="text"></span>
-                                                    </label>
-                                                </div>
-                                                <div class="task-state">
-                                                    <span class="label label-orange">
-                                                        Active
-                                                    </span>
-                                                </div>
-                                                <div class="task-time">2 hours ago</div>
-                                                <div class="task-body">Write documentation for the new API with test and deploy specifications</div>
-                                                <div class="task-creator"><a href="">Behrang Nitsche</a></div>
-                                                <div class="task-assignedto">assigned to you</div>
-                                            </li>
-                                            <li class="task-item">
-                                                <div class="task-check">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                        <span class="text"></span>
-                                                    </label>
-                                                </div>
-                                                <div class="task-state">
-                                                    <span class="label label-palegreen">
-                                                        Approved
-                                                    </span>
-                                                </div>
-                                                <div class="task-time">yesterday</div>
-                                                <div class="task-body">Code refactoring and rewriting silly codes and test it</div>
-                                                <div class="task-creator"><a href="">David Fincher</a></div>
-                                                <div class="task-assignedto">assigned to Kim</div>
-                                            </li>
-                                        </ul>
-                                        <table id="dg" title="My Users" class="easyui-datagrid" style="height:250px"
-                                                url="{{ url_for('api.get_user_list',id=1) }}"
-                                                toolbar="#toolbar" pagination="true"
-                                                rownumbers="true" fitColumns="true" singleSelect="true">
-                                            <thead>
-                                                <tr>
-                                                    <th field="id" width="50">First Name</th>
-                                                    <th field="username" width="50">Last Name</th>
-                                                    <th field="phone" width="50">Phone</th>
-                                                    <th field="email" width="50">Email <a href="#" class="btn btn-default btn-xs purple"><i class="fa fa-edit"></i> Edit</a></th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                </div><!--Widget Body-->
-                            </div>
-
-
+        </div>
 
 
 </div>
-</div>
+
+
 
 
 
