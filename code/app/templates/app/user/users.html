@@ -10,7 +10,7 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 
-<div class="widget">
+            <div class="widget">
                                 <div class="widget-header bordered-bottom bordered-themeprimary">
                                     <i class="widget-icon fa fa-tasks themeprimary"></i>
                                     <span class="widget-caption themeprimary">Task Board</span>
@@ -23,59 +23,7 @@
                                                 <i class="fa fa-search gray"></i>
                                             </span>
                                         </div>
-                                        <ul class="tasks-list">
-                                            <li class="task-item">
-                                                <div class="task-check">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                        <span class="text"></span>
-                                                    </label>
-                                                </div>
-                                                <div class="task-state">
-                                                    <span class="label label-yellow">
-                                                        In Progress
-                                                    </span>
-                                                </div>
-                                                <div class="task-time">1 hour ago</div>
-                                                <div class="task-body">Ask to the sysadmins to install Python 3 on the server and run it</div>
-                                                <div class="task-creator"><a href="">Cameron Hetfield</a></div>
-                                                <div class="task-assignedto">assigned to you</div>
-                                            </li>
-                                            <li class="task-item">
-                                                <div class="task-check">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                        <span class="text"></span>
-                                                    </label>
-                                                </div>
-                                                <div class="task-state">
-                                                    <span class="label label-orange">
-                                                        Active
-                                                    </span>
-                                                </div>
-                                                <div class="task-time">2 hours ago</div>
-                                                <div class="task-body">Write documentation for the new API with test and deploy specifications</div>
-                                                <div class="task-creator"><a href="">Behrang Nitsche</a></div>
-                                                <div class="task-assignedto">assigned to you</div>
-                                            </li>
-                                            <li class="task-item">
-                                                <div class="task-check">
-                                                    <label>
-                                                        <input type="checkbox">
-                                                        <span class="text"></span>
-                                                    </label>
-                                                </div>
-                                                <div class="task-state">
-                                                    <span class="label label-palegreen">
-                                                        Approved
-                                                    </span>
-                                                </div>
-                                                <div class="task-time">yesterday</div>
-                                                <div class="task-body">Code refactoring and rewriting silly codes and test it</div>
-                                                <div class="task-creator"><a href="">David Fincher</a></div>
-                                                <div class="task-assignedto">assigned to Kim</div>
-                                            </li>
-                                        </ul>
+                                       
                                         <table id="dg" title="My Users" class="easyui-datagrid" style="height:250px"
                                                 url="{{ url_for('api.get_user_list',id=1) }}"
                                                 toolbar="#toolbar" pagination="true"
@@ -100,7 +48,7 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 
-<div class="widget">
+    <div class="widget">
                                 <div class="widget-header bordered-bottom bordered-themeprimary">
                                     <i class="widget-icon fa fa-tasks themeprimary"></i>
                                     <span class="widget-caption themeprimary">Task Board</span>
@@ -166,7 +114,8 @@
                                                 <div class="task-assignedto">assigned to Kim</div>
                                             </li>
                                         </ul>
-                                        <table id="dg" title="My Users" class="easyui-datagrid" style="height:250px"
+                                        <div style="height:250px;">
+                                            <table id="dg" title="My Users" class="easyui-datagrid" style="height:250px;"
                                                 url="{{ url_for('api.get_user_list',id=1) }}"
                                                 toolbar="#toolbar" pagination="true"
                                                 rownumbers="true" fitColumns="true" singleSelect="true">
@@ -179,14 +128,12 @@
                                                 </tr>
                                             </thead>
                                         </table>
+                                        </div>
+
                                     </div>
                                 </div><!--Widget Body-->
                             </div>
-
-
-
-
-</div>
+    </div>
 </div>
 
 

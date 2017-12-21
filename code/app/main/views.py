@@ -44,14 +44,14 @@ def index():
 
 
 
-@main.route('/user', methods=['GET', 'POST'])
-@login_required
-def user():
-    form = NameForm()
-
-    return render_template('system/user.html',
-                           form=form, name=session.get('name'),
-                           known=session.get('known', False))
+# @main.route('/user', methods=['GET', 'POST'])
+# @login_required
+# def user():
+#     form = NameForm()
+#
+#     return render_template('system/user.html',
+#                            form=form, name=session.get('name'),
+#                            known=session.get('known', False))
 
 
 
