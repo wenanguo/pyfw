@@ -18,6 +18,6 @@ def userlist():
     :return:
     """
 
-    return render_template('app/user/users.html')
+    return render_template('system/users.html')
 
 
