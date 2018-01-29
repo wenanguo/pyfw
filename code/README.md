@@ -24,3 +24,9 @@ CRM 应用简介
 
 服务器启动命令 gunicorn -b 0.0.0.0:8000  manage:app
 
+
+
+UI框架
+
+DOC http://spin.webkom.co/docs/docs.html
+
