@@ -7,7 +7,7 @@ $(function(){
 	 * 初始化菜单树
 	 */
 	$('#commonSysClassTree').tree({
-		url:'commonSysClass/tree.htm',
+		url:'/api/v1.0/users/tree',
 		method:'get',
 		animate:true,
 		onClick: function(node){
