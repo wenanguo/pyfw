@@ -45,7 +45,8 @@ def getHaproxyData(interval=5):
 
     for row in reader:
         try:
-            if row[1] not in ['FRONTEND', 'BACKEND']:
+            print(row)
+            if row[1] not in ['FRONTEND']:
                 flowmeterlist.append(row)
 
         except Exception as e:
@@ -60,6 +61,8 @@ def getHaproxyData(interval=5):
 
     for x in range(len(flowmeterlist)):
         temp=flowmeterlist[x]
+
+
         json_body = [
             {
                 "measurement": "flowmeter",
@@ -104,8 +107,8 @@ def stertFlowMonitoring():
 
 
 if __name__ =='__main__':
-    pass
-    #stertFlowMonitoring()
+    #pass
+    stertFlowMonitoring()
 
 
 
