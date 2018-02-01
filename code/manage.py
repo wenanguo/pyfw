@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 import os
+import threading
+
 from app import create_app, db
 from app.models import User, Role
 from flask_script import Manager, Shell
@@ -36,17 +38,26 @@ if app.config["LOGS_START"]:
 
 
 
-# """
-# 配置作业
-# """
-# if app.config["JOBS_START"]:
-#     print("启动作业")
-#     from apscheduler.schedulers.blocking import BlockingScheduler
-#     from app.jobs.flow import getll
-#     sched = BlockingScheduler()
-#     sched.add_job(getll, 'interval', seconds=5)
-#     sched.start()
+"""
+配置作业
+"""
+if app.config["JOBS_START"]:
+    print("启动作业")
+    from app.jobs.flow import stertFlowMonitoring
 
+    t = threading.Thread(target=stertFlowMonitoring, name='getHaproxyDataThread')
+    t.start()
+
+
+
+    #t.join()
+
+
+    # from apscheduler.schedulers.blocking import BlockingScheduler
+    # from app.jobs.flow import stertFlowMonitoring
+    # sched = BlockingScheduler()
+    # sched.add_job(stertFlowMonitoring, 'interval', seconds=5)
+    # sched.start()
 
 
 

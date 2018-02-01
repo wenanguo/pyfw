@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 '获取marathon流量数据，存储到influxdb'
+import threading
 
 __author__ = 'Andrew Wen'
 
@@ -20,10 +21,13 @@ from influxdb import InfluxDBClient
 URL1="http://192.168.9.61:9090/haproxy?stats;csv"
 
 
-def getll():
-
+def getHaproxyData(interval=5):
+    """
+    获取haproxy状态数据
+    :return:
+    """
     print("请求："+URL1)
-
+    print('thread %s start. ' % threading.current_thread().name)
     response=requests.get(URL1)
 
     #print(response.headers)
@@ -60,8 +64,7 @@ def getll():
             {
                 "measurement": "flowmeter",
                 "tags": {
-                    "app": temp[0],
-                    "docker":temp[1]
+                    "docker": temp[0]+"_"+temp[1]
                 },
                 # "time": "2017-03-12T22:00:00Z",
                 "fields": {
@@ -73,27 +76,36 @@ def getll():
             }
         ]
         print(json_body)
-        writedata(json_body)
+        insertInfluxDb(json_body)
+    #5秒取一次
+    time.sleep(interval)
 
 
-def writedata(json_body):
+def insertInfluxDb(json_body):
+    """
+    写入influxdb数据库
+    :param json_body: 写入数据
+    :return:
+    """
     client = InfluxDBClient('192.168.9.69', 8086,'root','','telegraf')  # 初始化
 
     client.write_points(json_body)  # 写入数据
 
 
+def stertFlowMonitoring():
+    """
+    启动流量监控
+    :return:
+    """
+    while True:
+        getHaproxyData()
 
 
 
 
 if __name__ =='__main__':
     pass
+    #stertFlowMonitoring()
 
 
 
-
-
-    # while True:
-    #      get1()
-    #      print('======================')
-    #      time.sleep(1)
