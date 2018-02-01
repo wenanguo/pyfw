@@ -25,11 +25,13 @@ class Config:
 
 
 class DevelopmentConfig(Config):
-    JOBS_START = True
+    JOBS_START = False
     DEBUG = True
 
+    #SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
+    #                          "mysql+pymysql://root:Matrining81215@586f85cf61241.sh.cdb.myqcloud.com:3759/crpy"
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-                              "mysql+pymysql://root:Matrining81215@586f85cf61241.sh.cdb.myqcloud.com:3759/crpy"
+                              "mysql+pymysql://root:root@192.168.9.48:3306/pass"
 
 
 class TestingConfig(Config):

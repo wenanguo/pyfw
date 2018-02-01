@@ -4,7 +4,7 @@ from ..models import User
 
 
 
-@api.route('/users/<int:id>')
+@api.route('/users/<int:id>', methods=['GET', 'POST'])
 def get_user(id):
     user = User.query.get_or_404(id)
     return jsonify(user.to_json())

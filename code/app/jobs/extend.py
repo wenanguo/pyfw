@@ -20,8 +20,11 @@ import numpy
 from influxdb import InfluxDBClient
 
 
-#URL1="http://192.168.9.61:9090/haproxy?stats;csv"
-
+InfluxDBHost="192.168.9.69"
+InfluxDBPort=8086
+InfluxDBUser="root"
+InfluxDBPass=""
+InfluxDBDatabase="telegraf"
 
 
 
@@ -39,7 +42,7 @@ def queryInfluxDb(appname="gdgl",serviceport="10009",interval=5,target=1000,outt
 
     SQL = "select * from flowmeter where docker='"+appname+"_"+serviceport+"_BACKEND'  order by time desc limit "+str(interval*6)+""
 
-    client = InfluxDBClient('192.168.9.69', 8086,'root','','telegraf')  # 初始化
+    client = InfluxDBClient(InfluxDBHost, InfluxDBPort,InfluxDBUser,InfluxDBPass,InfluxDBDatabase)  # 初始化
 
     rs=client.query(SQL)  # 查询数据
 
