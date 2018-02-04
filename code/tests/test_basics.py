@@ -3,6 +3,9 @@ from flask import current_app
 from app import create_app, db
 from flask import url_for
 
+from app.models import PassProjectContainerInfo
+
+
 class BasicsTestCase(unittest.TestCase):
     def setUp(self):
         self.app = create_app('testing')
@@ -16,6 +19,10 @@ class BasicsTestCase(unittest.TestCase):
         self.app_context.pop()
 
     def test_app_exists(self):
+
+
+
+
         self.assertFalse(current_app is None)
 
     def test_app_is_testing(self):

@@ -1,7 +1,7 @@
 import json
 import logging
 
-from apiclientbase import ApiClientBase
+from app.marathon_autoscaler.apiclientbase import ApiClientBase
 
 
 class Marathon(ApiClientBase):

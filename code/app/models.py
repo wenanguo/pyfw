@@ -6,6 +6,27 @@ from . import db, login_manager
 from datetime import datetime
 from flask import current_app, request, url_for
 
+
+
+class PassProjectContainerInfo(db.Model):
+    __tablename__ = 'pass_project_container_info'
+    id = db.Column(db.Integer, primary_key=True)
+    app_id = db.Column(db.Integer)
+    micro_service_id = db.Column(db.Integer)
+    container_name = db.Column(db.String(64))
+    container_ip = db.Column(db.String(64))
+    host_ip = db.Column(db.String(64))
+    hostname = db.Column(db.String(64))
+    port = db.Column(db.String(64))
+    status = db.Column(db.Integer)
+    update_time = db.Column(db.DateTime(), default=datetime.utcnow)
+
+
+    def __repr__(self):
+        return '<PassProjectContainerInfo %r>' % self.container_name
+
+
+
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)

@@ -26,8 +26,8 @@ def getHaproxyData(interval=5):
     获取haproxy状态数据
     :return:
     """
-    print("请求："+URL1)
-    print('thread %s start. ' % threading.current_thread().name)
+    #print("请求："+URL1)
+    #print('thread %s start. ' % threading.current_thread().name)
     response=requests.get(URL1)
 
     #print(response.headers)
@@ -45,7 +45,7 @@ def getHaproxyData(interval=5):
 
     for row in reader:
         try:
-            print(row)
+            #print(row)
             if row[1] not in ['FRONTEND']:
                 flowmeterlist.append(row)
 
@@ -62,7 +62,7 @@ def getHaproxyData(interval=5):
     for x in range(len(flowmeterlist)):
         temp=flowmeterlist[x]
 
-
+        #print(temp)
         json_body = [
             {
                 "measurement": "flowmeter",
@@ -78,7 +78,7 @@ def getHaproxyData(interval=5):
                 }
             }
         ]
-        print(json_body)
+        #print(json_body)
         insertInfluxDb(json_body)
     #5秒取一次
     time.sleep(interval)

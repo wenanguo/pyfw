@@ -3,6 +3,7 @@ import os
 import threading
 
 from app import create_app, db
+from app.jobs.extend import stertTxss
 from app.models import User, Role
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
@@ -18,7 +19,6 @@ app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 #app = create_app('production')
 manager = Manager(app)
 migrate = Migrate(app, db)
-
 
 
 
@@ -43,12 +43,17 @@ if app.config["LOGS_START"]:
 """
 if app.config["JOBS_START"]:
     print("启动作业")
+
+    #流量监控作业
     from app.jobs.flow import stertFlowMonitoring
 
     t = threading.Thread(target=stertFlowMonitoring, name='getHaproxyDataThread')
     t.start()
 
 
+    #智能扩缩容作业
+    t2 = threading.Thread(target=stertTxss, name='stertTxssThread')
+    t2.start()
 
     #t.join()
 
