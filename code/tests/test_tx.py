@@ -1,24 +1,24 @@
-import unittest
-from flask import current_app
-from app import create_app, db
-from flask import url_for
-
-class BasicsTestCase(unittest.TestCase):
-    def setUp(self):
-        self.app = create_app('testing')
-        self.app_context = self.app.app_context()
-        self.app_context.push()
-        #db.create_all()
-
-    def tearDown(self):
-        # db.session.remove()
-        # db.drop_all()
-        self.app_context.pop()
-
-    def test_app_exists(self):
-        self.assertFalse(current_app is None)
-
-    def test_app_is_testing(self):
-        self.assertTrue(current_app.config['TESTING'])
+import requests
+import time
 
 
+def health_Checks():
+    payload = {'appname': 'gdgl', 'serviceport': '10009', 'min': '200', 'max': '400'}
+    r = requests.post("http://127.0.0.1:5000/api/v1.0/autoextend", data=payload)
+    print(r.text)
+
+
+
+def auto_Extend():
+    r = requests.post("http://127.0.0.1:5000/api/v1.0/flowmonitoring")
+    print(r.text)
+    pass
+
+
+
+if __name__ =='__main__':
+    while True:
+        health_Checks()
+        auto_Extend()
+        # 5秒调动一次
+        time.sleep(5)

@@ -37,33 +37,33 @@ if app.config["LOGS_START"]:
 
 
 
-
-"""
-配置作业
-"""
-if app.config["JOBS_START"]:
-    print("启动作业")
-
-    #流量监控作业
-    from app.jobs.flow import stertFlowMonitoring
-
-    t = threading.Thread(target=stertFlowMonitoring, name='getHaproxyDataThread')
-    t.start()
-
-
-    #智能扩缩容作业
-    t2 = threading.Thread(target=stertTxss, name='stertTxssThread')
-    t2.start()
-
-    #t.join()
-
-
-    # from apscheduler.schedulers.blocking import BlockingScheduler
-    # from app.jobs.flow import stertFlowMonitoring
-    # sched = BlockingScheduler()
-    # sched.add_job(stertFlowMonitoring, 'interval', seconds=5)
-    # sched.start()
-
+#
+# """
+# 配置作业
+# """
+# if app.config["JOBS_START"]:
+#     print("启动作业")
+#
+#     #流量监控作业
+#     from app.jobs.flow import stertFlowMonitoring
+#
+#     t = threading.Thread(target=stertFlowMonitoring, name='getHaproxyDataThread')
+#     t.start()
+#
+#
+#     #智能扩缩容作业
+#     t2 = threading.Thread(target=stertTxss, name='stertTxssThread')
+#     t2.start()
+#
+#     #t.join()
+#
+#
+#     # from apscheduler.schedulers.blocking import BlockingScheduler
+#     # from app.jobs.flow import stertFlowMonitoring
+#     # sched = BlockingScheduler()
+#     # sched.add_job(stertFlowMonitoring, 'interval', seconds=5)
+#     # sched.start()
+#
 
 
 

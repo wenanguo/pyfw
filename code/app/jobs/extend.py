@@ -25,9 +25,6 @@ hostnamedict={
     "192.168.9.69":"db-service1"
 }
 
-appname="gdgl"
-serviceport="10009"
-
 
 interval=5
 
@@ -47,9 +44,11 @@ InfluxDBUser="root"
 InfluxDBPass=""
 InfluxDBDatabase="telegraf"
 
+MarathonUrl="http://192.168.9.62:8080"
 
 
-def queryInfluxDb(appname="gdgl",serviceport="10009",interval=5,min=200,max=1000,outtime=10,containerNum=3):
+
+def queryInfluxDb(appname="gdgl",serviceport="10009",min=200,max=1000,outtime=10,containerNum=3):
     """
     查询influxdb数据库
     :param appname: 应用名称
@@ -75,7 +74,7 @@ def queryInfluxDb(appname="gdgl",serviceport="10009",interval=5,min=200,max=1000
 
     x2 =numpy.array(x[:,3],dtype = numpy.int64)/containerNum
 
-    print(x2 )
+    print(x2)
 
 
     print("容器数:%s,目标最小流量：%s，目标最大流量：%s ",containerNum,str(min),str(max))
@@ -92,24 +91,21 @@ def queryInfluxDb(appname="gdgl",serviceport="10009",interval=5,min=200,max=1000
     #     return False,count
 
 
-def stertTxss():
+def stertTxss(appname="gdgl",serviceport="10009",min=200,max=400,outtime=5):
     """
     启动弹性伸缩监控
     :return:
     """
-    while True:
+    #while True:
+    try:
 
-
-        try:
-
-            marathon=Marathon("http://192.168.9.62:8080")
+            marathon=Marathon(MarathonUrl)
             appdetail=marathon.get_app_details(appname)
-
 
             ##获取当前容器数量
             containerNum=int(appdetail['app']['instances'])
 
-            maxT, maxcount,minT, mincount= queryInfluxDb(appname=appname, serviceport=serviceport, interval=5, min=200,max=400, outtime=5,containerNum=containerNum)
+            maxT, maxcount,minT, mincount= queryInfluxDb(appname=appname, serviceport=serviceport, min=min,max=max, outtime=outtime,containerNum=containerNum)
             print("是否超过最大值： %s，超过数量：%s，是否超过最小值：%s，超过数量：%s", maxT, maxcount,minT, mincount)
 
             #如果符合要求，动态扩缩容容器
@@ -140,23 +136,23 @@ def stertTxss():
                                                )
                 db.session.add(ppc)
                 db.session.commit()
-        except Exception as e:
-            print('except:', e)
-        finally:
-            print('finally...')
+    except Exception as e:
+        print('except:', e)
+    finally:
+        print('finally...')
 
 
 
 
 
 
-        # 5秒调动一次
-        time.sleep(interval)
+    # 5秒调动一次
+    #time.sleep(interval)
 
 
 
 if __name__ =='__main__':
-    stertTxss()
+    pass
 
 
 
