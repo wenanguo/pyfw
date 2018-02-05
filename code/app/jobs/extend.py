@@ -29,7 +29,7 @@ appname="gdgl"
 serviceport="10009"
 
 
-interval=10
+interval=5
 
 import requests
 import csv
