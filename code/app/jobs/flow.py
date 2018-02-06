@@ -21,7 +21,7 @@ from influxdb import InfluxDBClient
 URL1="http://192.168.9.61:9090/haproxy?stats;csv"
 
 
-def getHaproxyData(interval=5):
+def getHaproxyData():
     """
     获取haproxy状态数据
     :return:
@@ -78,10 +78,9 @@ def getHaproxyData(interval=5):
                 }
             }
         ]
-        #print(json_body)
+        print(json_body)
         insertInfluxDb(json_body)
-    #5秒取一次
-    time.sleep(interval)
+
 
 
 def insertInfluxDb(json_body):
@@ -95,13 +94,15 @@ def insertInfluxDb(json_body):
     client.write_points(json_body)  # 写入数据
 
 
-def stertFlowMonitoring():
+def stertFlowMonitoring(interval=5):
     """
     启动流量监控
     :return:
     """
     while True:
         getHaproxyData()
+        # 5秒取一次
+        time.sleep(interval)
 
 
 

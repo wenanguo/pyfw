@@ -18,7 +18,7 @@ def auto_Extend():
 
 if __name__ =='__main__':
     while True:
-        health_Checks()
+        #health_Checks()
         auto_Extend()
         # 5秒调动一次
         time.sleep(5)
