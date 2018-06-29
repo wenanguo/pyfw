@@ -45,10 +45,10 @@ if app.config["JOBS_START"]:
     print("启动作业")
 
     #流量监控作业
-    from app.jobs.flow import stertFlowMonitoring
-
-    t = threading.Thread(target=stertFlowMonitoring, name='getHaproxyDataThread')
-    t.start()
+    # from app.jobs.flow import stertFlowMonitoring
+    #
+    # t = threading.Thread(target=stertFlowMonitoring, name='getHaproxyDataThread')
+    # t.start()
 
 
     # #智能扩缩容作业
