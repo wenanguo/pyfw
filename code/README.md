@@ -1,9 +1,5 @@
-CRM 应用简介
+开发基础命令
 ======
-
-
-
-本应用为基础开发框架，进行相关基础工具的整合
 
 
 启动命令  python manage.py runserver --host 0.0.0.0
@@ -29,4 +25,11 @@ CRM 应用简介
 UI框架
 
 DOC http://spin.webkom.co/docs/docs.html
+
+
+
+#### 打包
+python setup.py sdist
+
+twine upload dist/SICA-2.1.4.tar.gz
 

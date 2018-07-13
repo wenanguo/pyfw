@@ -4,3 +4,5 @@
 ' module description'
 
 __author__ = 'Andrew Wen'
+
+__version__="v1.0.2"
