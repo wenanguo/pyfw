@@ -5,4 +5,4 @@
 
 __author__ = 'Andrew Wen'
 
-__version__="v1.0.2"
+__version__="v1.0.6"

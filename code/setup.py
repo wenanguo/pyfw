@@ -25,14 +25,14 @@ with open('README.md') as f:
 setup(
         name = "pyfw",
         version = version,
-        keywords = ("pip", "pathtool","timetool", "magetool", "mage"),
+        keywords = ("pip", "cmcc","python", "pyfw", "framework"),
         description = "python framework",
         long_description = readme,
         license = "MIT Licence",
 
-        url = "https://github.com/wenanguo/crm",
+        url = "https://github.com/wenanguo/pyfw",
         author = "Andrew Wen",
-        author_email = "wenanguo110@163.com",
+        author_email = "79912844@qq.com",
 
         packages = find_packages(),
         include_package_data = True,
@@ -40,15 +40,5 @@ setup(
         install_requires = requirements
 
 
-      # name='pyfw',
-      # author='Rapptz',
-      # url='https://github.com/Rapptz/discord.py',
-      # version=version,
-      # packages=['discord', 'discord.ext.commands'],
-      # license='MIT',
-      # description='A python wrapper for the Discord API',
-      # long_description=readme,
-      # include_package_data=True,
-      # install_requires=requirements
 )
 

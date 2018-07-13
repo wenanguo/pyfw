@@ -1,18 +1,14 @@
 Metadata-Version: 1.0
 Name: pyfw
-Version: 1.0.2
+Version: 1.0.6
 Summary: python framework
 Home-page: https://github.com/wenanguo/crm
 Author: Andrew Wen
 Author-email: wenanguo110@163.com
 License: MIT Licence
 Description-Content-Type: UNKNOWN
-Description: CRM 应用简介
+Description: 开发基础命令
         ======
-        
-        
-        
-        本应用为基础开发框架，进行相关基础工具的整合
         
         
         启动命令  python manage.py runserver --host 0.0.0.0
@@ -42,7 +38,9 @@ Description: CRM 应用简介
         
         
         #### 打包
+        python setup.py sdist
         
+        twine upload dist/SICA-2.1.4.tar.gz
         
         
 Keywords: pip,pathtool,timetool,magetool,mage

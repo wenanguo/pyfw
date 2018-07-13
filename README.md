@@ -1,19 +1,37 @@
 pyfw 应用简介
-======
+-------
+
+##### 一、应用介绍
+
+本应用为基础开发框架，进行相关基础工具的整合,实现快速进行应用开发
 
 
+---
 
-本应用为基础开发框架，进行相关基础工具的整合
+##### 二、启动命令
+
+###### 启动命令
+```
+python manage.py runserver --host 0.0.0.0
+```
+
+###### 测试命令
+```
+python manage.py test
+```
+
+###### 服务器启动命令
+```
+gunicorn -b 0.0.0.0:8000  manage:app
+```
 
 
-启动命令  python manage.py runserver --host 0.0.0.0
+##### 三、版本信息
 
+v1.0.1
+---
+1、完成基础开发功能
 
-测试命令  python manage.py test
+2、完成基础UI搭建
 
-
-服务器启动命令 gunicorn -b 0.0.0.0:8000  manage:app
-
-
-
-
+---
