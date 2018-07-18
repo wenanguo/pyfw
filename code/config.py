@@ -3,10 +3,17 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
+
+    #session配置
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
+
+    #数据库配置
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_RECORD_QUERIES = True
+    FLASKY_SLOW_DB_QUERY_TIME = 2
+
+    #邮件配置
     MAIL_SERVER = 'smtp.163.com'
     MAIL_PORT = 25
     MAIL_USE_TLS = True
@@ -15,9 +22,16 @@ class Config:
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
     FLASKY_MAIL_SENDER = '系统通知-Admin <wenanguo1@163.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
-    FLASKY_SLOW_DB_QUERY_TIME = 2
+
+
+
+
+    #其他配置
     JOBS_START = True  #是否启动作业
     LOGS_START = True  #是否启动日志
+
+    DEBUG = False
+    TESTING = False
 
     @staticmethod
     def init_app(app):
@@ -28,8 +42,6 @@ class DevelopmentConfig(Config):
     JOBS_START = True
     DEBUG = True
 
-    #SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-    #                          "mysql+pymysql://root:Matrining81215@586f85cf61241.sh.cdb.myqcloud.com:3759/crpy"
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
                               "mysql+pymysql://root:root@192.168.9.48:3306/pyfw"
 
@@ -37,17 +49,14 @@ class DevelopmentConfig(Config):
 class TestingConfig(Config):
     JOBS_START=False
     TESTING = True
-    #SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-    #                          "mysql+pymysql://root:Matrining81215@586f85cf61241.sh.cdb.myqcloud.com:3759/crpy"
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
                               "mysql+pymysql://root:root@192.168.9.48:3306/pyfw"
 
 class ProductionConfig(Config):
     JOBS_START = True
-    DEBUG = False
-    #SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-    #                          "mysql+pymysql://root:Matrining81215@586f85cf61241.sh.cdb.myqcloud.com:3759/crpy"
+
+
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
                               "mysql+pymysql://root:root@192.168.9.48:3306/pyfw"
 

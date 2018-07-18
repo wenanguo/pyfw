@@ -12,7 +12,10 @@ python manage.py runserver --host 0.0.0.0
 python manage.py test
 ```
 
-
+###### 覆盖报告
+```
+python manage.py test --coverage
+```
 
 ---
 ### 数据库迁移
@@ -57,4 +60,29 @@ DOC http://spin.webkom.co/docs/docs.html
 python setup.py sdist
 
 twine upload dist/pyfw-1.0.6.tar.gz
+```
+
+
+
+#### 使用pip生成依赖文件：
+
+
+```
+pip freeze >requirements.txt
+```
+
+
+
+安装或升级包后，最好更新这个文件。
+
+#### 根据依赖文件安装包：
+
+
+```
+pip install -r requirements.txt
+```
+
+### 移除所有包
+```
+pip freeze | xargs pip uninstall -y
 ```

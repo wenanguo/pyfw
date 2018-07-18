@@ -3,7 +3,6 @@ import os
 import threading
 
 from app import create_app, db
-from app.jobs.extend import stertTxss
 from app.models import User, Role
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
@@ -41,6 +40,10 @@ if app.config["LOGS_START"]:
 """
 配置作业
 """
+print("==1="*10)
+print(app.config["JOBS_START"])
+print("==1=" * 10)
+
 if app.config["JOBS_START"]:
     print("启动作业")
 

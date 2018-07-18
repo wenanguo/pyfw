@@ -1,5 +1,5 @@
 
-from flask_login import UserMixin, AnonymousUserMixin,url_for
+from flask_login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from . import db, login_manager
