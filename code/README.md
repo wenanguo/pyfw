@@ -32,6 +32,9 @@ python manage.py db migrate -m "initial migration"
 python manage.py db upgrade
 ```
 
+对第一个迁移来说， 其作用和调用db.create_all() 方法一样。但在后续的迁移中，
+upgrade 命令能把改动应用到数据库中，且不影响其中保存的数据。
+
 ###### 代码性能分析
 ```
 python manage.py profile  启动，浏览器请求

@@ -31,7 +31,7 @@ class DevelopmentConfig(Config):
     #SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
     #                          "mysql+pymysql://root:Matrining81215@586f85cf61241.sh.cdb.myqcloud.com:3759/crpy"
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-                              "mysql+pymysql://root:root@192.168.9.48:3306/pass"
+                              "mysql+pymysql://root:root@192.168.9.48:3306/pyfw"
 
 
 class TestingConfig(Config):
@@ -41,7 +41,7 @@ class TestingConfig(Config):
     #                          "mysql+pymysql://root:Matrining81215@586f85cf61241.sh.cdb.myqcloud.com:3759/crpy"
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-                              "mysql+pymysql://root:root@192.168.9.48:3306/pass"
+                              "mysql+pymysql://root:root@192.168.9.48:3306/pyfw"
 
 class ProductionConfig(Config):
     JOBS_START = True
@@ -49,7 +49,7 @@ class ProductionConfig(Config):
     #SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
     #                          "mysql+pymysql://root:Matrining81215@586f85cf61241.sh.cdb.myqcloud.com:3759/crpy"
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-                              "mysql+pymysql://root:root@192.168.9.48:3306/pass"
+                              "mysql+pymysql://root:root@192.168.9.48:3306/pyfw"
 
 
 config = {

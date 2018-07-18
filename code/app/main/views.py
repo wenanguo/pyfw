@@ -24,7 +24,15 @@ def after_request(response):
 @main.route('/index', methods=['GET', 'POST'])
 def index():
     form = NameForm()
-    # if form.validate_on_submit():
+    if form.validate_on_submit():
+
+
+        old_name = session.get('name')
+        if old_name is not None and old_name != form.name.data:
+            flash('Looks like you have changed your name!')
+        session['name'] = form.name.data
+
+        return redirect(url_for('.index'))
     #     user = User.query.filter_by(username=form.name.data).first()
     #     if user is None:
     #         user = User(username=form.name.data)
@@ -36,8 +44,8 @@ def index():
     #     else:
     #         session['known'] = True
     #     session['name'] = form.name.data
-    #     return redirect(url_for('.index'))
-    return render_template('main/index.html',
+    print("*"*10)
+    return render_template('main/index2.html',
                            form=form, name=session.get('name'),
                            known=session.get('known', False))
 
