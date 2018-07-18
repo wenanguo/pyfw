@@ -45,7 +45,7 @@ def index():
     #         session['known'] = True
     #     session['name'] = form.name.data
     print("*"*10)
-    return render_template('main/index2.html',
+    return render_template('main/index.html',
                            form=form, name=session.get('name'),
                            known=session.get('known', False))
 
