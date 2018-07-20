@@ -31,7 +31,7 @@ class CommonUserInfo(db.Model):
 
 
     #用户状态
-    user_status = db.Column(db.Integer)
+    status = db.Column(db.Integer)
     #操作人
     operate_user_id=db.Column(db.Integer)
     #操作时间
@@ -58,7 +58,7 @@ class CommonRoleInfo(db.Model):
     #备注
     role_remark=db.Column(db.Text)
     # 用户状态
-    user_status = db.Column(db.Integer)
+    status = db.Column(db.Integer)
     # 操作人
     operate_user_id = db.Column(db.Integer)
     # 操作时间
@@ -91,8 +91,54 @@ class CommonOrgInfo(db.Model):
     #备注
     role_remark=db.Column(db.Text)
 
-    # 用户状态
-    user_status = db.Column(db.Integer)
+    # 状态
+    status = db.Column(db.Integer)
+    # 操作人
+    operate_user_id = db.Column(db.Integer)
+    # 操作时间
+    operate_time = db.Column(db.DateTime(), default=datetime.utcnow)
+
+
+
+    def __repr__(self):
+        return '<common_org_info %r>' % self.role_name
+
+
+
+
+
+class CommonMenuInfo(db.Model):
+    """
+        菜单表
+    """
+    __tablename__ = 'common_menu_info'
+    id = db.Column(db.Integer, primary_key=True)
+    #菜单样式
+    menu_cls = db.Column(db.String(64), unique=True)
+    #菜单代码
+    menu_code = db.Column(db.String(64), unique=True)
+
+    #菜单级别
+    menu_level=db.Column(db.Integer)
+    #菜单名称
+    menu_name=db.Column(db.String(64))
+    #菜单导航
+    menu_nav=db.Column(db.String(64))
+    #菜单排序
+    menu_order=db.Column(db.Integer)
+    #父节点
+    menu_pid=db.Column(db.String(64))
+    #备注
+    menu_remark=db.Column(db.String(64))
+    #所属系统
+    menu_sysid=db.Column(db.String(64))
+    #类别
+    menu_type=db.Column(db.Integer)
+    #url
+    menu_url=db.Column(db.String(64))
+
+    # 状态
+    status = db.Column(db.Integer)
     # 操作人
     operate_user_id = db.Column(db.Integer)
     # 操作时间
