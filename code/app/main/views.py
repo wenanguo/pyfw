@@ -1,11 +1,12 @@
 from flask import render_template, session, abort, request, redirect, url_for, current_app, flash
 from flask_login import login_required
 
+from app.main.models import CommonUserInfo
 from . import main
 from .forms import NameForm
 from .. import db
 from ..email import send_email
-from ..models import User
+
 from flask_sqlalchemy import get_debug_queries
 
 
@@ -26,6 +27,7 @@ def index():
     form = NameForm()
     if form.validate_on_submit():
 
+        user=CommonUserInfo()
 
         old_name = session.get('name')
         if old_name is not None and old_name != form.name.data:

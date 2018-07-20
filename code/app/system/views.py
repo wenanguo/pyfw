@@ -3,7 +3,7 @@ from flask_login import login_required
 from . import system
 from .. import db
 from ..email import send_email
-from ..models import User
+
 from flask_sqlalchemy import get_debug_queries
 
 

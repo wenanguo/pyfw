@@ -153,27 +153,27 @@
           <ul class="nav">
             <li class="nav-item">
               <a class="nav-link" href="index.html">
-                <i class="nav-icon icon-speedometer"></i> Dashboard
+                <i class="nav-icon icon-speedometer"></i> 仪表盘
                 <span class="badge badge-primary">NEW</span>
               </a>
             </li>
-            <li class="nav-title">Theme</li>
+            <li class="nav-title">主题</li>
             <li class="nav-item">
               <a class="nav-link" href="colors.html">
-                <i class="nav-icon icon-drop"></i> Colors</a>
+                <i class="nav-icon icon-drop"></i> 颜色</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="typography.html">
-                <i class="nav-icon icon-pencil"></i> Typography</a>
+                <i class="nav-icon icon-pencil"></i> 排版</a>
             </li>
-            <li class="nav-title">Components</li>
+            <li class="nav-title">组件</li>
             <li class="nav-item nav-dropdown">
               <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon icon-puzzle"></i> Base</a>
+                <i class="nav-icon icon-puzzle"></i> 基础</a>
               <ul class="nav-dropdown-items">
                 <li class="nav-item">
                   <a class="nav-link" href="base/breadcrumb.html">
-                    <i class="nav-icon icon-puzzle"></i> Breadcrumb</a>
+                    <i class="nav-icon icon-pencil"></i> 面包屑</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="base/cards.html">
@@ -350,8 +350,11 @@
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>
       </div>
       {% endblock sidebar -%}
+
+      {% block main %}
       <main class="main">
         <!-- Breadcrumb-->
+        {% block breadcrumb %}
         <ol class="breadcrumb">
           <li class="breadcrumb-item">Home</li>
           <li class="breadcrumb-item">
@@ -371,6 +374,9 @@
             </div>
           </li>
         </ol>
+        {% endblock breadcrumb %}
+
+      {% block containerfluid %}
         <div class="container-fluid">
           <div class="animated fadeIn">
             <div class="row">
@@ -1090,7 +1096,10 @@
             <!-- /.row-->
           </div>
         </div>
+      {% endblock containerfluid %}
       </main>
+      {% endblock main %}
+
       <aside class="aside-menu">
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
