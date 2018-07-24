@@ -1,5 +1,7 @@
+from lib2to3.pytree import Base
 
 from flask_login import UserMixin, AnonymousUserMixin
+from sqlalchemy import Table, Column, Integer, ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
@@ -7,6 +9,15 @@ from datetime import datetime
 from flask import current_app, request, url_for
 
 from app import db
+
+
+
+#用户角色多对多关系表
+user_role_mapper = db.Table('user_role_mapper',
+                         db.Column('user_id', db.Integer, db.ForeignKey('common_user_info.id') , nullable=False, primary_key=True),
+                         db.Column('role_id', db.Integer, db.ForeignKey('common_role_info.id') , nullable=False, primary_key=True)
+                         )
+
 
 
 class CommonUserInfo(db.Model):
@@ -28,7 +39,9 @@ class CommonUserInfo(db.Model):
     #所属组织机构
     user_org = db.Column(db.Integer)
 
-
+    roles = db.relationship('CommonRoleInfo',
+                              secondary=user_role_mapper,
+                              lazy='dynamic')
 
     #用户状态
     status = db.Column(db.Integer)
@@ -40,6 +53,8 @@ class CommonUserInfo(db.Model):
 
     def __repr__(self):
         return '<common_user_info %r>' % self.login_account
+
+
 
 
 
@@ -70,6 +85,9 @@ class CommonRoleInfo(db.Model):
         return '<common_role_info %r>' % self.role_name
 
 
+
+
+
 class CommonOrgInfo(db.Model):
     """
         组织机构表
@@ -97,6 +115,8 @@ class CommonOrgInfo(db.Model):
     operate_user_id = db.Column(db.Integer)
     # 操作时间
     operate_time = db.Column(db.DateTime(), default=datetime.utcnow)
+
+
 
 
 

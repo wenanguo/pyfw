@@ -43,7 +43,7 @@ class DevelopmentConfig(Config):
     DEBUG = True
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-                              "mysql+pymysql://root:wenanguo@192.168.9.48:32767/pyfw"
+                              "mysql+pymysql://root:wenanguo@115.29.151.55:3306/pyfw"
 
 
 class TestingConfig(Config):
@@ -51,14 +51,14 @@ class TestingConfig(Config):
     TESTING = True
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-                              "mysql+pymysql://root:wenanguo@192.168.9.48:32767/pyfw"
+                              "mysql+pymysql://root:wenanguo@115.29.151.55:3306/pyfw"
 
 class ProductionConfig(Config):
     JOBS_START = True
 
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-                              "mysql+pymysql://root:wenanguo@192.168.9.48:32767/pyfw"
+                              "mysql+pymysql://root:wenanguo@115.29.151.55:3306/pyfw"
 
 
 config = {

@@ -1,90 +1,92 @@
 from flask import jsonify, request, current_app, url_for
+from flask_restful import Resource
+
 from . import api
 
 
 
-
-@api.route('/users/<int:id>', methods=['GET', 'POST'])
-def get_user(id):
-    pass
-    #user = User.query.get_or_404(id)
-    #return jsonify(user.to_json())
-
-
-
-@api.route('/users/tree')
-def get_user_tree():
-
-    return """
-[{
-	"id":1,
-	"text":"My Documents",
-	"children":[{
-		"id":11,
-		"text":"Photos",
-		"state":"closed",
-		"children":[{
-			"id":111,
-			"text":"Friend"
-		},{
-			"id":112,
-			"text":"Wife"
-		},{
-			"id":113,
-			"text":"Company"
-		}]
-	},{
-		"id":12,
-		"text":"Program Files",
-		"children":[{
-			"id":121,
-			"text":"Intel"
-		},{
-			"id":122,
-			"text":"Java",
-			"attributes":{
-				"p1":"Custom Attribute1",
-				"p2":"Custom Attribute2"
-			}
-		},{
-			"id":123,
-			"text":"Microsoft Office"
-		},{
-			"id":124,
-			"text":"Games",
-			"checked":true
-		}]
-	},{
-		"id":13,
-		"text":"index.html"
-	},{
-		"id":14,
-		"text":"about.html"
-	},{
-		"id":15,
-		"text":"welcome.html"
-	}]
-}]
-"""
-
-
-
-
-
-@api.route('/userslist/<int:id>', methods=['GET', 'POST'])
-def get_user_list(id):
-    page = request.args.get('page', 1, type=int)
-    pagination = User.query.order_by(User.id.desc()).paginate(
-        page,
-        error_out=False)
-    userlist = pagination.items
-
-    # print(userlist)
-    return jsonify({
-        'rows': [user.to_json() for user in userlist],
-
-        'total': pagination.total
-    })
+#
+# @api.route('/users/<int:id>', methods=['GET', 'POST'])
+# def get_user(id):
+#     pass
+#     #user = User.query.get_or_404(id)
+#     #return jsonify(user.to_json())
+#
+#
+#
+# @api.route('/users/tree')
+# def get_user_tree():
+#
+#     return """
+# [{
+# 	"id":1,
+# 	"text":"My Documents",
+# 	"children":[{
+# 		"id":11,
+# 		"text":"Photos",
+# 		"state":"closed",
+# 		"children":[{
+# 			"id":111,
+# 			"text":"Friend"
+# 		},{
+# 			"id":112,
+# 			"text":"Wife"
+# 		},{
+# 			"id":113,
+# 			"text":"Company"
+# 		}]
+# 	},{
+# 		"id":12,
+# 		"text":"Program Files",
+# 		"children":[{
+# 			"id":121,
+# 			"text":"Intel"
+# 		},{
+# 			"id":122,
+# 			"text":"Java",
+# 			"attributes":{
+# 				"p1":"Custom Attribute1",
+# 				"p2":"Custom Attribute2"
+# 			}
+# 		},{
+# 			"id":123,
+# 			"text":"Microsoft Office"
+# 		},{
+# 			"id":124,
+# 			"text":"Games",
+# 			"checked":true
+# 		}]
+# 	},{
+# 		"id":13,
+# 		"text":"index.html"
+# 	},{
+# 		"id":14,
+# 		"text":"about.html"
+# 	},{
+# 		"id":15,
+# 		"text":"welcome.html"
+# 	}]
+# }]
+# """
+#
+#
+#
+#
+#
+# @api.route('/userslist/<int:id>', methods=['GET', 'POST'])
+# def get_user_list(id):
+#     page = request.args.get('page', 1, type=int)
+#     pagination = User.query.order_by(User.id.desc()).paginate(
+#         page,
+#         error_out=False)
+#     userlist = pagination.items
+#
+#     # print(userlist)
+#     return jsonify({
+#         'rows': [user.to_json() for user in userlist],
+#
+#         'total': pagination.total
+#     })
 
 
 
