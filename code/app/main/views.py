@@ -23,6 +23,7 @@ def after_request(response):
 
 
 @main.route('/index', methods=['GET', 'POST'])
+@login_required
 def index():
     form = NameForm()
     if form.validate_on_submit():

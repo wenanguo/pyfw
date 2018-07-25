@@ -8,9 +8,7 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from datetime import datetime
 from flask import current_app, request, url_for
 
-from app import db
-
-
+from app import db, login_manager
 
 #用户角色多对多关系表
 user_role_mapper = db.Table('user_role_mapper',
@@ -20,7 +18,7 @@ user_role_mapper = db.Table('user_role_mapper',
 
 
 
-class CommonUserInfo(db.Model):
+class CommonUserInfo(UserMixin,db.Model):
     """
     用户表
     """
@@ -29,7 +27,9 @@ class CommonUserInfo(db.Model):
     #账户
     login_account = db.Column(db.String(64),unique=True)
     #密码
-    login_password = db.Column(db.String(64))
+    login_password = db.Column(db.String(128))
+    #邮箱
+    email = db.Column(db.String(64))
     #性别
     user_gender = db.Column(db.Integer)
     #真实名称
@@ -38,6 +38,7 @@ class CommonUserInfo(db.Model):
     user_no = db.Column(db.String(64))
     #所属组织机构
     user_org = db.Column(db.Integer)
+
 
     roles = db.relationship('CommonRoleInfo',
                               secondary=user_role_mapper,
@@ -53,6 +54,28 @@ class CommonUserInfo(db.Model):
 
     def __repr__(self):
         return '<common_user_info %r>' % self.login_account
+
+    @property
+    def password(self):
+        raise AttributeError('password is not a readable attribute')
+
+    @password.setter
+    def password(self, password):
+        self.login_password = generate_password_hash(password)
+
+    def verify_password(self, password):
+        """
+        密码验证方法
+        :param password: 需要验证的密码
+        :return:
+        """
+        return check_password_hash(self.login_password, password)
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return CommonUserInfo.query.get(int(user_id))
+
+
 
 
 

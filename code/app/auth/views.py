@@ -1,12 +1,13 @@
 from flask import render_template, redirect, request, url_for, flash, current_app
 from flask_login import login_user, logout_user, login_required, \
     current_user
+
+from app.auth.forms import RegistrationForm
+from app.main.models import CommonUserInfo
 from . import auth
 from .. import db
 
-from ..email import send_email
-from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
-    PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm
+
 
 #
 # @auth.before_app_request
@@ -42,7 +43,7 @@ def login():
        """
     if request.method == 'POST':
 
-        user = User.query.filter_by(username=request.form['username']).first()
+        user = CommonUserInfo.query.filter_by(login_account=request.form['login_account']).first()
 
         current_app.logger.warning("===登录日志===")
 
@@ -62,7 +63,7 @@ def login():
     #     login_user(user, True)
     #     return redirect(request.args.get('next') or url_for('main.index'))
     #     flash('Invalid username or password.')
-    return render_template('bey/auth/login.html')
+    return render_template('auth/login.html')
 
 
 @auth.route('/logout')
@@ -83,17 +84,17 @@ def register():
     """
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email=form.email.data,
-                    username=form.username.data,
+        user = CommonUserInfo(email=form.email.data,
+                    login_account=form.login_account.data,
                     password=form.password.data)
         db.session.add(user)
         db.session.commit()
         # token = user.generate_confirmation_token()
         # send_email(user.email, 'Confirm Your Account',
         #            'auth/email/confirm', user=user, token=token)
-        flash('A confirmation email has been sent to you by email.')
+        flash('注册成功')
         return redirect(url_for('auth.login'))
-    return render_template('bey/auth/register2.html', form=form)
+    return render_template('auth/register.html', form=form)
 
 
 
