@@ -33,6 +33,7 @@
                   <div class="card">
                   <div class="card-header">
                     <i class="fa fa-align-justify"></i> 用户管理</div>
+
                   <div class="card-body">
                     <table class="table table-responsive-sm">
 
@@ -97,8 +98,8 @@
                             <strong>10 sec ago</strong>
                           </td>
                           <td>
-                            <button class="btn btn-sm btn-primary" type="button">修改</button>
-                            <button class="btn btn-sm btn-danger" type="button">删除</button>
+                            <button class="btn btn-sm btn-primary" type="button" data-whatever="@mdo" onclick="updateData(1)">修改</button>
+                            <button class="btn btn-sm btn-danger" type="button" onclick="deleteData(1)">删除</button>
                           </td>
                         </tr>
                         {% endfor %}
@@ -325,7 +326,102 @@
 
 
 
-                    <ul class="pagination">
+
+
+
+                  </div>
+                </div>
+
+
+
+              </div>
+              <!-- /.col-->
+            </div>
+            <!-- /.row-->
+
+            <div class="card">
+                  <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Bootstrap Breadcrumb
+                    <div class="card-header-actions">
+                      <button class="btn btn-sm btn-primary" type="button" data-whatever="@mdo" onclick="updateData(1)">新增</button>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                        <table class="table table-responsive-sm table-striped">
+
+                      <thead class="">
+                        <tr>
+                          <th class="text-center">
+                            <i class="icon-people"></i>
+                          </th>
+                          <th>用户名</th>
+                          <th class="text-center">性别</th>
+                          <th>资料完善度</th>
+                          <th class="text-center">Payment Method</th>
+                          <th>Activity</th>
+                          <th>操作</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for user in userlist %}
+                        <tr>
+                          <td class="text-center">
+                            <div class="avatar">
+                              <img class="img-avatar" src="{{ url_for('static', filename=user.icon) }}" alt="admin@bootstrapmaster.com">
+                              <span class="avatar-status badge-success"></span>
+                            </div>
+                          </td>
+                          <td>
+                            <div>{{ user.user_name }}</div>
+                            <div class="small text-muted">
+                              <span>{{ user.login_account  }}</span> | 注册时间:
+
+                                {{ user.operate_time  }}</div>
+                          </td>
+                          <td class="text-center">
+
+                              {% if user.user_gender and user.user_gender == 1  %}
+                                <i class="icon-user-female icons font-2xl  mt-4" id="us" title="us"></i>
+                              {% elif user.user_gender %}
+                                <i class="icon-user icons font-2xl  mt-4" id="us" title="us"></i>
+                              {% else %}
+                                  {{ user.user_gender }}
+                              {% endif %}
+
+                          </td>
+                          <td>
+                            <div class="clearfix">
+                              <div class="float-left">
+                                <strong>50%</strong>
+                              </div>
+                              <div class="float-right">
+                                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                              </div>
+                            </div>
+                            <div class="progress progress-xs">
+                              <div class="progress-bar bg-success" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                          <td class="text-center">
+                            <i class="fa fa-cc-mastercard" style="font-size:24px"></i>
+                          </td>
+                          <td>
+                            <div class="small text-muted">Last login</div>
+                            <strong>10 sec ago</strong>
+                          </td>
+                          <td>
+                            <button class="btn btn-sm btn-primary" type="button" data-whatever="@mdo" onclick="updateData(1)">修改</button>
+                            <button class="btn btn-sm btn-danger" type="button" onclick="deleteData(1)">删除</button>
+                          </td>
+                        </tr>
+                        {% endfor %}
+
+
+                      </tbody>
+                    </table>
+
+                   <div>
+                    <ul class="pagination justify-content-center">
                       <li class="page-item">
                         <a class="page-link" href="#">Prev</a>
                       </li>
@@ -345,25 +441,19 @@
                         <a class="page-link" href="#">Next</a>
                       </li>
                     </ul>
-
-
+                  </div>
                   </div>
                 </div>
 
 
-
-              </div>
-              <!-- /.col-->
-            </div>
-            <!-- /.row-->
           </div>
         </div>
 
 
 
 
-<div  id="myModal" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+<div  id="myModal" class="modal fade" aria-hidden="true" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg"  role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -380,10 +470,7 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@mdo">Open modal for @mdo</button>
 
       {% endblock containerfluid %}
       </main>
@@ -395,6 +482,24 @@
 
      {{ super() }}
 
+<script type="application/javascript">
 
+    options={
+        backdrop:true
+    }
+
+    function newData(param){
+        console.log(111);
+         $('#myModal').modal('show');
+
+         var modal = $('#myModal')
+         modal.find('.modal-title').text('New message to ' + param)
+    }
+
+
+
+
+
+</script>
 
  {%- endblock scripts %}
