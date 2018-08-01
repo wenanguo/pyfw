@@ -40,7 +40,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     JOBS_START = True
-    DEBUG = True
+    DEBUG = False
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
                               "mysql+pymysql://root:wenanguo@115.29.151.55:3306/pyfw"

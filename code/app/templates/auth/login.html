@@ -1,32 +1,15 @@
 ﻿{% extends "coreui/coreui-base.html" %}
 
-{% block title %}CRM - 登录{% endblock %}
+{% block title %}登录{% endblock %}
 
 
 
 {% block body %}
-
-<div class="login-container animated fadeInDown">
+<div class="container">
+        <div class="login-container animated fadeInDown">
         <div class="loginbox bg-white">
             <div class="loginbox-title">登录</div>
-{#            <div class="loginbox-social">#}
-{#                <div class="social-title ">使用其他账户登录</div>#}
-{#                <div class="social-buttons">#}
-{#                    <a href="" class="button-facebook">#}
-{#                        <i class="social-icon fa fa-facebook"></i>#}
-{#                    </a>#}
-{#                    <a href="" class="button-twitter">#}
-{#                        <i class="social-icon fa fa-twitter"></i>#}
-{#                    </a>#}
-{#                    <a href="" class="button-google">#}
-{#                        <i class="social-icon fa fa-google-plus"></i>#}
-{#                    </a>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="loginbox-or">#}
-{#                <div class="or-line"></div>#}
-{#                <div class="or">OR</div>#}
-{#            </div>#}
+
             <form action="{{ url_for('auth.login') }}" method="post">
                 <div class="loginbox-textbox">
                     <input type="text" id="login_account" name="login_account" class="form-control" placeholder="用户名/邮箱" />
@@ -49,6 +32,16 @@
 
         </div>
     </div>
+</div>
 
+
+
+
+
+    {% block flash_msg %}
+
+         {{ super() }}
+
+    {%- endblock flash_msg %}
 
 {% endblock %}

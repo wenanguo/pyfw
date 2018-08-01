@@ -1,8 +1,6 @@
 import unittest
-import time
-from datetime import datetime
 from app import create_app, db
-from app.main.models import CommonUserInfo
+from app.auth.models import CommonUserInfo
 
 
 class UserModelTestCase(unittest.TestCase):

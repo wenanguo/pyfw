@@ -3,7 +3,7 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import Required, Length, Email, Regexp, EqualTo
 from wtforms import ValidationError
 
-from app.main.models import CommonUserInfo
+from app.auth.models import CommonUserInfo
 
 
 class LoginForm(FlaskForm):
@@ -24,7 +24,7 @@ class RegistrationForm(FlaskForm):
     password = PasswordField('Password', validators=[
         Required(), EqualTo('password2', message='Passwords must match.')])
     password2 = PasswordField('Confirm password', validators=[Required()])
-    submit = SubmitField('Register')
+    submit = SubmitField('注册')
 
     def validate_email(self, field):
         if CommonUserInfo.query.filter_by(email=field.data).first():
@@ -58,7 +58,7 @@ class PasswordResetForm(FlaskForm):
     submit = SubmitField('Reset Password')
 
     def validate_email(self, field):
-        if User.query.filter_by(email=field.data).first() is None:
+        if CommonUserInfo.query.filter_by(email=field.data).first() is None:
             raise ValidationError('Unknown email address.')
 
 
@@ -69,5 +69,5 @@ class ChangeEmailForm(FlaskForm):
     submit = SubmitField('Update Email Address')
 
     def validate_email(self, field):
-        if User.query.filter_by(email=field.data).first():
+        if CommonUserInfo.query.filter_by(email=field.data).first():
             raise ValidationError('Email already registered.')

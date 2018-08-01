@@ -1,11 +1,9 @@
 from flask import render_template, session, abort, request, redirect, url_for, current_app, flash
 from flask_login import login_required
 
-from app.main.models import CommonUserInfo
+from app.auth.models import CommonUserInfo
 from . import main
 from .forms import NameForm
-from .. import db
-from ..email import send_email
 
 from flask_sqlalchemy import get_debug_queries
 
@@ -54,14 +52,17 @@ def index():
 
 
 
-# @main.route('/user', methods=['GET', 'POST'])
-# @login_required
-# def user():
-#     form = NameForm()
-#
-#     return render_template('system/user.html',
-#                            form=form, name=session.get('name'),
-#                            known=session.get('known', False))
+@main.route('/userlist', methods=['GET', 'POST'])
+@login_required
+def userlist():
+
+    userlist = CommonUserInfo.query.all()
+
+    form = NameForm()
+
+    return render_template('main/userlist.html',
+                           form=form, name=session.get('name'),
+                           known=session.get('known', False),userlist=userlist)
 
 
 

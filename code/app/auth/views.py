@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user, login_required, \
     current_user
 
 from app.auth.forms import RegistrationForm
-from app.main.models import CommonUserInfo
+from app.auth.models import CommonUserInfo
 from . import auth
 from .. import db
 
@@ -22,7 +22,8 @@ from .. import db
 
 @auth.before_app_request
 def before_request():
-    print(current_user.is_authenticated)
+    pass
+    current_app.logger.warning(current_user)
     # if not current_user.is_authenticated:
     #     flash('用户名或密码错误，请重新登录！', 'danger')
     #     return redirect(url_for('auth.login'))
@@ -52,7 +53,7 @@ def login():
             return redirect(url_for('main.index'))
 
         else:
-            flash('用户名或密码错误，请重新登录！', 'danger')
+            flash('用户名或密码错误，请重新登录！', 'warning')
 
             return redirect(request.args.get('next') or url_for('auth.login'))
 
@@ -218,7 +219,6 @@ def ytxtest():
 #         flash('Invalid request.')
 #     return redirect(url_for('main.index'))
 
-from flask_login import login_required
 @auth.route('/secret')
 def secret():
     return 'Only authenticated users are allowed!'

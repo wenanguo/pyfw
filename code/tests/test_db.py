@@ -5,7 +5,7 @@
 import unittest
 
 from app import create_app, db
-from app.main.models import CommonUserInfo, CommonRoleInfo
+from app.auth.models import CommonUserInfo, CommonRoleInfo
 
 __author__ = 'Andrew Wen'
 
