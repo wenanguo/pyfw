@@ -65,6 +65,10 @@ def userlist():
                            known=session.get('known', False),userlist=userlist)
 
 
+@main.route('/test', methods=['GET', 'POST'])
+def test():
+
+    return render_template('main/test.html')
 
 @main.route('/shutdown')
 def server_shutdown():

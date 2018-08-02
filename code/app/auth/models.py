@@ -16,6 +16,30 @@ user_role_mapper = db.Table('user_role_mapper',
                          db.Column('role_id', db.Integer, db.ForeignKey('common_role_info.id') , nullable=False, primary_key=True)
                          )
 
+def obj2dict(obj):
+    d = {}
+    d['__class__'] = obj.__class__.__name__
+    d['__module__'] = obj.__module__
+    print(obj.__dict__)
+    dir(obj.__dict__)
+    d.update(obj.__dict__)
+
+
+
+    return d
+
+def dict2obj(d):
+    if '__class__' in d:
+        class_name = d.pop('__class__')
+        module_name = d.pop('__module__')
+        module = __import__(module_name)
+        class_ = getattr(module, class_name)
+        args = dict((key.encode('ascii'), value) for key, value in d.items())
+        instance = class_(**args)
+    else:
+        instance = d
+    return instance
+
 
 
 class CommonUserInfo(UserMixin,db.Model):
@@ -49,7 +73,7 @@ class CommonUserInfo(UserMixin,db.Model):
     icon = db.Column(db.String(64))
 
     #最后登录时间
-    Last_login=db.Column(db.DateTime(), default=datetime.utcnow)
+    last_login=db.Column(db.DateTime(), default=datetime.utcnow)
 
     #用户状态
     status = db.Column(db.Integer)
@@ -82,6 +106,36 @@ class CommonUserInfo(UserMixin,db.Model):
     def load_user(user_id):
         return CommonUserInfo.query.get(int(user_id))
 
+    def to_json(self):
+        json = {
+            'id' :self.id,
+            'login_account' : self.login_account,
+
+
+            # 邮箱
+            'email' : self.email,
+            # 性别
+            'user_gender' : self.user_gender,
+            # 真实名称
+            'user_name' : self.user_name,
+            # 用户编号
+            'user_no' : self.user_no,
+            # 所属组织机构
+            'user_org' : self.user_org,
+
+            # 真实名称
+            'icon' : self.icon,
+            # 最后登录时间
+            'last_login' : self.last_login,
+            # 用户状态
+            'status' : self.status,
+            # 操作人
+            'operate_user_id' : self.operate_user_id,
+            # 操作时间
+            'operate_time' : self.operate_time
+        }
+
+        return json
 
 
 

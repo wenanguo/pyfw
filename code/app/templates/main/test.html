@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+{#<script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>#}
+{#    <script src="{{ url_for('static', filename='common/js/jquery-3.3.1.min.js') }}"></script>#}
+    <script src="{{ url_for('static', filename='coreui/vendors/jquery/js/jquery.min.js') }}"></script>
+    <!-- 模板引擎插件 -->
+         <script type="text/javascript" src="{{ url_for('static', filename='jquery-tmpl/jquery.tmpl.js') }}"></script>
+
+</head>
+<body>
+<div id="div_demo"></div>
+{% raw %}
+
+
+<script id="demo" type="text/x-jquery-tmpl">
+    <div style="margin-bottom:10px;">
+    　　<span>${ID}</span>
+    　　<span style="margin-left:10px;">{{= Name}}</span>
+    　　<span style="margin-left:10px;">${Number(Num)+1}</span>
+    　　<span style="margin-left:10px;">${Status}</span>
+    </div>
+</script>
+{% endraw %}
+<script type="text/javascript">
+　　var users = [{ ID: 'think8848', Name: 'Joseph Chan', Num: '1', Status: 1 }, { ID: 'aCloud', Name: 'Mary Cheung', Num: '2'}];
+　　$("#demo").tmpl(users).appendTo('#div_demo');
+</script>
+</body>
+</html>

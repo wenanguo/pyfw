@@ -44,6 +44,22 @@
         <link href="{{ url_for('static', filename='common/css/main.css') }}" rel="stylesheet">
 
 
+        <!-- CoreUI and necessary plugins-->
+
+    <script src="{{ url_for('static', filename='coreui/vendors/jquery/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='coreui/vendors/popper.js/js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='coreui/vendors/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='coreui/vendors/pace-progress/js/pace.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='coreui/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='coreui/vendors/@coreui/coreui/js/coreui.min.js') }}"></script>
+    <!-- Plugins and scripts required by this view-->
+
+    <script src="{{ url_for('static', filename='coreui/vendors/@coreui/coreui-plugin-chartjs-custom-tooltips/js/custom-tooltips.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='toastr/build/toastr.min.js') }}"></script>
+
+
+    <script src="{{ url_for('static', filename='common.js') }}"></script>
 
 
 {#        <!-- jquery easy ui -->#}
@@ -59,6 +75,8 @@
         <script type="text/javascript" src="{{ url_for('static', filename='laydate/laydate.js') }}"></script>
 
 
+         <!-- 模板引擎插件 -->
+         <script type="text/javascript" src="{{ url_for('static', filename='jquery-tmpl/jquery.tmpl.js') }}"></script>
 
 
 
@@ -1029,21 +1047,7 @@
 
 
     {% block scripts %}
-    <!-- CoreUI and necessary plugins-->
-    <script src="{{ url_for('static', filename='coreui/vendors/jquery/js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='coreui/vendors/popper.js/js/popper.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='coreui/vendors/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='coreui/vendors/pace-progress/js/pace.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='coreui/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='coreui/vendors/@coreui/coreui/js/coreui.min.js') }}"></script>
-    <!-- Plugins and scripts required by this view-->
 
-    <script src="{{ url_for('static', filename='coreui/vendors/@coreui/coreui-plugin-chartjs-custom-tooltips/js/custom-tooltips.min.js') }}"></script>
-
-    <script src="{{ url_for('static', filename='toastr/build/toastr.min.js') }}"></script>
-
-
-    <script src="{{ url_for('static', filename='common.js') }}"></script>
 
 
 
