@@ -42,13 +42,69 @@
                     <div class="card-header-actions">
                       <button class="btn btn-sm  btn-success" type="button" onclick="newData(1)"><i class="fa fa-plus-square-o fa-lg"></i>&nbsp;新增</button>
 
-                      <button class="btn btn-sm  btn-secondary" type="button" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample"><i class="fa fa-search fa-lg"></i>&nbsp;筛选</button>
+
 
                     </div>
                   </div>
                   <div class="card-body">
 
-<div class="collapse show" id="collapseExample" style="">
+
+<!-- 筛选 -->
+<div class="row">
+  <div class="col-md-4">
+
+        <div class="input-group">
+        <div class="input-group-prepend">
+        <span class="input-group-text">
+        <i class="fa fa-user"></i>
+        </span>
+        </div>
+        <input type="text" id="input1-group1" name="input1-group1" class="form-control" placeholder="用户名/昵称/手机号/邮箱">
+        </div>
+
+
+
+  </div>
+
+  <div class="col-md-3">
+
+    <div class="input-group">
+    <span class="input-group-prepend">
+    <span class="input-group-text">
+    <i class="fa fa-calendar"></i>
+    </span>
+    </span>
+    <input type="text" id="test1" class="form-control" id="date" placeholder="开始时间">
+    </div>
+
+
+  </div>
+  <div class="col-md-3">
+
+    <div class="input-group">
+    <span class="input-group-prepend">
+    <span class="input-group-text">
+    <i class="fa fa-calendar"></i>
+    </span>
+    </span>
+    <input type="text" class="form-control" id="date" placeholder="结束时间">
+    </div>
+
+
+  </div>
+    <div class="col-md-2 text-right">
+
+
+    <button class="btn btn-sm  btn-secondary " type="button" ><i class="fa fa-search fa-lg"></i>&nbsp;查询</button>
+    <button class="btn btn-sm  btn-secondary" type="button" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+                          <i class="fa fa-chevron-circle-down fa-lg"></i>&nbsp;高级筛选</button>
+  </div>
+
+</div>
+<br>
+<!-- 高级筛选 -->
+
+<div class="collapse" id="collapseExample" style="">
 
 <div class="row">
   <div class="col-md-5">
@@ -95,7 +151,7 @@
     <div class="col-md-1 text-right">
 
 
-    <button class="btn btn-sm  btn-secondary " type="button" ><i class="fa fa-plus-square-o fa-lg"></i>&nbsp;查询</button>
+
 
   </div>
 
@@ -220,20 +276,65 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">编辑</h4>
       </div>
       <div class="modal-body">
-        <p>One fine body&hellip;</p>
+
+
+
+ <div class="form-group row">
+    <label class="col-md-2 col-form-label" for="text-input">Text Input</label>
+    <div class="col-md-4">
+        <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
+    </div>
+
+    <label class="col-md-2 col-form-label" for="text-input">Text Input2</label>
+    <div class="col-md-4">
+        <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
+    </div>
+</div>
+
+
+ <div class="form-group row">
+    <label class="col-md-2 col-form-label" for="text-input">Text Input</label>
+    <div class="col-md-4">
+        <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
+    </div>
+
+    <label class="col-md-2 col-form-label" for="text-input">Text Input2</label>
+    <div class="col-md-4">
+        <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
+    </div>
+</div>
+
+<div class="form-group row">
+<div class="col-sm-6">
+<input type="text" class="form-control" placeholder=".col-sm-6">
+</div>
+</div>
+
+          <div class="form-group row">
+<div class="col-sm-6">
+<input type="text" class="form-control" placeholder=".col-sm-6">
+</div>
+</div>
+
+
+
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary">提交</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@mdo">Open modal for @mdo</button>
+
+
+
 
       {% endblock containerfluid %}
       </main>
@@ -252,13 +353,28 @@
     }
 
     function newData(param){
-        console.log(111);
+
          $('#myModal').modal('show');
 
          var modal = $('#myModal')
-         modal.find('.modal-title').text('New message to ' + param)
+         modal.find('.modal-title').text('新增' + param)
     }
 
+    function updateData(param){
+
+         $('#myModal').modal('show');
+
+         var modal = $('#myModal')
+         modal.find('.modal-title').text('修改' + param)
+    }
+
+
+
+    //执行一个laydate实例
+    //常规用法
+    laydate.render({
+      elem: '#test1' //指定元素
+    });
 
 
 
