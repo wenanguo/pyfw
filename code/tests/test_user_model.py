@@ -26,6 +26,7 @@ class UserModelTestCase(unittest.TestCase):
             u.password
 
     def test_password_verification(self):
+        CommonUserInfo.generate_fake(100)
         u = CommonUserInfo(password='cat')
         self.assertTrue(u.verify_password('cat'))
         self.assertFalse(u.verify_password('dog'))
@@ -34,6 +35,12 @@ class UserModelTestCase(unittest.TestCase):
         u = CommonUserInfo(password='cat')
         u2 = CommonUserInfo(password='cat')
         self.assertTrue(u.login_password != u2.login_password)
+
+
+
+
+
+
 
 
 
