@@ -23,7 +23,7 @@ class Config:
     FLASKY_MAIL_SENDER = '系统通知-Admin <wenanguo1@163.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
 
-    FLASKY_POSTS_PER_PAGE = 2
+    FLASKY_POSTS_PER_PAGE = 20
 
 
 

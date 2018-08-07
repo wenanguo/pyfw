@@ -10,7 +10,6 @@
 
 
 
-
 {% block main %}
       <main class="main">
         <!-- Breadcrumb-->
@@ -179,52 +178,52 @@
       </div>
       <div class="modal-body">
 
+            <form id="editform" name="editform">
+            <input type="hidden" id="id" name="id" value="0">
+             <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">用户名</label>
+                <div class="col-md-4">
+                    <input type="text" id="login_account" name="login_account" class="form-control" placeholder="用户名">
+                </div>
+
+                <label class="col-md-2 col-form-label" for="text-input">真实姓名</label>
+                <div class="col-md-4">
+                    <input type="text" id="user_name" name="user_name" class="form-control" placeholder="真实姓名">
+                </div>
+            </div>
 
 
- <div class="form-group row">
-    <label class="col-md-2 col-form-label" for="text-input">Text Input</label>
-    <div class="col-md-4">
-        <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
-    </div>
+             <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">Text Input</label>
+                <div class="col-md-4">
+                    <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
+                </div>
 
-    <label class="col-md-2 col-form-label" for="text-input">Text Input2</label>
-    <div class="col-md-4">
-        <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
-    </div>
-</div>
+                <label class="col-md-2 col-form-label" for="text-input">Text Input2</label>
+                <div class="col-md-4">
+                    <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
+                </div>
+            </div>
 
+            <div class="form-group row">
+            <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder=".col-sm-6">
+            </div>
+            </div>
 
- <div class="form-group row">
-    <label class="col-md-2 col-form-label" for="text-input">Text Input</label>
-    <div class="col-md-4">
-        <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
-    </div>
-
-    <label class="col-md-2 col-form-label" for="text-input">Text Input2</label>
-    <div class="col-md-4">
-        <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
-    </div>
-</div>
-
-<div class="form-group row">
-<div class="col-sm-6">
-<input type="text" class="form-control" placeholder=".col-sm-6">
-</div>
-</div>
-
-          <div class="form-group row">
-<div class="col-sm-6">
-<input type="text" class="form-control" placeholder=".col-sm-6">
-</div>
-</div>
+                      <div class="form-group row">
+            <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder=".col-sm-6">
+            </div>
+            </div>
 
 
-
+            </form>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary">提交</button>
+        <button type="button" class="btn btn-primary" onclick="submitFrom()">提交</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -242,7 +241,7 @@
 {% raw %}
 
          {{if total!=0}}
-            <table class="table table-responsive-sm table-striped">
+            <table class="table table-responsive-sm table-hover">
 
                       <thead class="">
                         <tr>
@@ -309,8 +308,8 @@
                             <strong>${ID}</strong>
                           </td>
                           <td>
-                            <button class="btn btn-sm btn-primary" type="button" data-whatever="@mdo" onclick="updateData(1)"><i class="fa fa-edit fa-lg"></i>&nbsp;修改</button>
-                            <button class="btn btn-sm btn-danger" type="button" onclick="deleteData(1)"><i class="fa fa-close fa-lg "></i>&nbsp;删除</button>
+                            <button class="btn btn-sm btn-primary" type="button" data-whatever="@mdo" onclick="updateData(${id})"><i class="fa fa-edit fa-lg"></i>&nbsp;修改</button>
+                            <button class="btn btn-sm btn-danger" type="button" onclick="deleteSubmitFrom(${id})"><i class="fa fa-close fa-lg "></i>&nbsp;删除</button>
                           </td>
                         </tr>
 
@@ -357,12 +356,15 @@
         backdrop:true
     }
 
-    function newData(param){
+
+    function newData(){
 
          $('#myModal').modal('show');
 
          var modal = $('#myModal')
          modal.find('.modal-title').text('新增' + param)
+        $("#id").val(0)
+
     }
 
     function updateData(param){
@@ -371,6 +373,82 @@
 
          var modal = $('#myModal')
          modal.find('.modal-title').text('修改' + param)
+
+         $("#id").val(param)
+
+    }
+
+
+    /**
+     * 新增和修改方法
+     **/
+    function submitFrom(){
+
+        param=$("#editform").serialize();
+
+        var url,method
+
+        if($("#id").val()=="0"){
+            //新增
+            url='{{ url_for('api.commonuserinfos') }}'
+            method='post'
+        }else{
+            //编辑
+
+            url='{{ url_for('api.commonuserinfo',id=0) }}'
+            url=url.substr(0, url.length - 1)+$("#id").val()
+            method='put'
+        }
+
+        $.ajax({
+            url:url,
+            type:method,
+            data: param,
+            success:function(data){
+
+                Notify(data.msg, 'bottom-right', '5000', "info", 'fa-desktop', true);
+
+                $('#myModal').modal('hide')
+
+            }
+        });
+
+    }
+
+
+    /**
+     * 删除方法
+     **/
+    function deleteSubmitFrom(id){
+
+
+        if(window.confirm('你确定要删除吗？')){
+
+                var url,method;
+
+                    url='{{ url_for('api.commonuserinfo',id=0) }}'
+                    url=url.substr(0, url.length - 1)+id;
+                    method='delete'
+
+
+                $.ajax({
+                    url:url,
+                    type:method,
+                    data: param,
+                    success:function(data){
+
+                        Notify(data.msg, 'bottom-right', '5000', "info", 'fa-desktop', true);
+
+
+                    }
+                });
+
+                return true;
+             }else{
+
+                 return false;
+             }
+
     }
 
 
@@ -394,7 +472,7 @@
     function query(){
 
          //获得筛选条件
-        param=$("#queryform").serializeObject();
+        param=$("#queryform").serializeJson();
 
         $("#seleceid").val(JSON.stringify(param));
 
@@ -411,7 +489,9 @@
      */
     function pagination(page){
 
-        param={}
+        param={};
+
+
 
         //加入已确定搜索的筛选条件
         if ($("#seleceid").val()!="") {
@@ -423,7 +503,7 @@
 
 
         $.ajax({
-            url:'{{ url_for('api.users') }}',
+            url:'{{ url_for('api.commonuserinfos') }}',
             type:'get',
             data: param,
             success:function(data){
