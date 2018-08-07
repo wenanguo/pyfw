@@ -9,6 +9,10 @@ from flask_login import LoginManager
 
 from config import config
 
+
+__version__="v1.0.7"
+
+
 bootstrap = Bootstrap()
 mail = Mail()
 moment = Moment()
