@@ -7,7 +7,7 @@ import json
 from flask import request, jsonify, current_app
 from flask_restful import Resource
 
-from app.auth.models import CommonUserInfo, obj2dict
+from app.auth.models import CommonUserInfo
 
 __author__ = 'Andrew Wen'
 
@@ -16,20 +16,35 @@ todos = {}
 
 class Users(Resource):
     def get(self):
-        #userlist =  CommonUserInfo.query.all()
 
+
+
+        #查询字符串
+        filters=set()
+
+        #构建查询条件
+        user_name = request.args.get('name')
+
+        if user_name :filters.add(CommonUserInfo.login_account.contains(user_name))
+
+
+        #获取查询页
         page = request.args.get('page', 1, type=int)
-        pagination = CommonUserInfo.query.order_by(CommonUserInfo.id.desc()).paginate(
+
+        #===
+
+
+
+        pagination = CommonUserInfo.query.filter(*filters).order_by(CommonUserInfo.id.desc()).paginate(
             page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
             error_out=False)
 
-        userlist = pagination.items
 
-        for page1 in pagination.iter_pages():
-            print(page1)
+
+
 
         return jsonify({
-            'items': [user.to_json() for user in userlist],
+            'items': [user.to_json() for user in pagination.items],
             'page': pagination.page,
             'prev_num': pagination.prev_num,
             'next_num': pagination.next_num,
@@ -38,7 +53,7 @@ class Users(Resource):
             'pages': pagination.pages, #查询得到的总页数
             'per_page': pagination.per_page, #每页显示的记录数量
             'total': pagination.total,
-            'iter_pages':[pages for pages in pagination.iter_pages(left_edge = 2 ,left_current=2,right_current=5,right_edge=2)]
+            'iter_pages':[pages for pages in pagination.iter_pages(left_edge = 2 ,left_current=2,right_current=3,right_edge=2)]
 
         })
 

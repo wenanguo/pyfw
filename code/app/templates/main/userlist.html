@@ -19,11 +19,7 @@
         {% endblock breadcrumb %}
 
 
-
-
       {% block containerfluid %}
-
-
 
 
         <div class="container-fluid">
@@ -34,232 +30,142 @@
 
 
 
-
-
-
-
             <div class="card">
                   <div class="card-header">
                     <i class="fa fa-align-justify"></i> 用户列表
                     <div class="card-header-actions">
                       <button class="btn btn-sm  btn-success" type="button" onclick="newData('')"><i class="fa fa-plus-square-o fa-lg"></i>&nbsp;新增</button>
 
-
-
                     </div>
                   </div>
-                  <div class="card-body">
 
+                <div class="card-body">
 
-<!-- 筛选 -->
-<div class="row">
-  <div class="col-md-4">
+                <!-- 筛选 -->
+                <form id="queryform">
+                <div class="row">
+                  <div class="col-md-4">
 
-        <div class="input-group">
-        <div class="input-group-prepend">
-        <span class="input-group-text">
-        <i class="fa fa-user"></i>
-        </span>
-        </div>
-        <input type="text" id="input1-group1" name="input1-group1" class="form-control" placeholder="用户名/昵称/手机号/邮箱">
-        </div>
-
-
-
-  </div>
-
-  <div class="col-md-3">
-
-    <div class="input-group">
-    <span class="input-group-prepend">
-    <span class="input-group-text">
-    <i class="fa fa-calendar"></i>
-    </span>
-    </span>
-    <input type="text" id="test1" class="form-control" id="date" placeholder="开始时间">
-    </div>
-
-
-  </div>
-  <div class="col-md-3">
-
-    <div class="input-group">
-    <span class="input-group-prepend">
-    <span class="input-group-text">
-    <i class="fa fa-calendar"></i>
-    </span>
-    </span>
-    <input type="text" class="form-control" id="date" placeholder="结束时间">
-    </div>
-
-
-  </div>
-    <div class="col-md-2 text-right">
-
-
-    <button class="btn btn-sm  btn-secondary " type="button" ><i class="fa fa-search fa-lg"></i>&nbsp;查询</button>
-    <button class="btn btn-sm  btn-secondary" type="button" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
-                          <i class="fa fa-chevron-circle-down fa-lg"></i>&nbsp;高级筛选</button>
-  </div>
-
-</div>
-<br>
-<!-- 高级筛选 -->
-
-<div class="collapse" id="collapseExample" style="">
-
-<div class="row">
-  <div class="col-md-5">
-
-        <div class="input-group">
-        <div class="input-group-prepend">
-        <span class="input-group-text">
-        <i class="fa fa-user"></i>
-        </span>
-        </div>
-        <input type="text" id="input1-group1" name="input1-group1" class="form-control" placeholder="用户名/昵称/手机号/邮箱">
-        </div>
-
-
-
-  </div>
-
-  <div class="col-md-3">
-
-    <div class="input-group">
-    <span class="input-group-prepend">
-    <span class="input-group-text">
-    <i class="fa fa-calendar"></i>
-    </span>
-    </span>
-    <input type="text" class="form-control" id="date" placeholder="开始时间">
-    </div>
-
-
-  </div>
-  <div class="col-md-3">
-
-    <div class="input-group">
-    <span class="input-group-prepend">
-    <span class="input-group-text">
-    <i class="fa fa-calendar"></i>
-    </span>
-    </span>
-    <input type="text" class="form-control" id="date" placeholder="结束时间">
-    </div>
-
-
-  </div>
-    <div class="col-md-1 text-right">
-
-
-
-
-  </div>
-
-</div>
-
-</div>
-
-                  <br>
-
-
-                   <div id="grid">
-{#                   <table class="table table-responsive-sm table-striped">#}
-{##}
-{#                      <thead class="">#}
-{#                        <tr>#}
-{#                          <th class="text-center">#}
-{#                            <i class="icon-people"></i>#}
-{#                          </th>#}
-{#                          <th>用户名</th>#}
-{#                          <th class="text-center">性别</th>#}
-{#                          <th>资料完善度</th>#}
-{#                          <th>邮箱</th>#}
-{#                          <th>编号</th>#}
-{#                          <th class="text-center">方式</th>#}
-{#                          <th>活跃</th>#}
-{#                          <th>操作</th>#}
-{#                        </tr>#}
-{#                      </thead>#}
-{#                      <tbody >#}
-{#                        {% for user in userlist %}#}
-{#                        <tr>#}
-{#                          <td class="text-center">#}
-{#                            <div class="avatar">#}
-{#                              <img class="img-avatar" src="{{ url_for('static', filename=user.icon) }}" alt="admin@bootstrapmaster.com">#}
-{#                              <span class="avatar-status badge-success"></span>#}
-{#                            </div>#}
-{#                          </td>#}
-{#                          <td>#}
-{#                            <div>{{ user.user_name }}</div>#}
-{#                            <div class="small text-muted">#}
-{#                              <span>{{ user.login_account  }}</span> | 注册时间:#}
-{##}
-{#                                {{ user.operate_time  }}</div>#}
-{#                          </td>#}
-{#                          <td class="text-center">#}
-{##}
-{#                              {% if user.user_gender and user.user_gender == 1  %}#}
-{#                                <i class="icon-user-female icons font-2xl  mt-4" id="us" title="us"></i>#}
-{#                              {% elif user.user_gender %}#}
-{#                                <i class="icon-user icons font-2xl  mt-4" id="us" title="us"></i>#}
-{#                              {% else %}#}
-{#                                  {{ user.user_gender }}#}
-{#                              {% endif %}#}
-{##}
-{#                          </td>#}
-{#                          <td>#}
-{#                            <div class="clearfix">#}
-{#                              <div class="float-left">#}
-{#                                <strong>50%</strong>#}
-{#                              </div>#}
-{#                              <div class="float-right">#}
-{#                                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>#}
-{#                              </div>#}
-{#                            </div>#}
-{#                            <div class="progress progress-xs">#}
-{#                              <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>#}
-{#                            </div>#}
-{#                          </td>#}
-{#                          <td>{{ user.email }}</td>#}
-{#                          <td>{{ user.user_no }}</td>#}
-{#                          <td class="text-center">#}
-{#                            <i class="fa fa-cc-mastercard" style="font-size:24px"></i>#}
-{#                          </td>#}
-{#                          <td>#}
-{#                            <div class="small text-muted">最后登录时间</div>#}
-{#                            <strong>{{ user.Last_login }}</strong>#}
-{#                          </td>#}
-{#                          <td>#}
-{#                            <button class="btn btn-sm btn-primary" type="button" data-whatever="@mdo" onclick="updateData(1)"><i class="fa fa-edit fa-lg"></i>&nbsp;修改</button>#}
-{#                            <button class="btn btn-sm btn-danger" type="button" onclick="deleteData(1)"><i class="fa fa-close fa-lg "></i>&nbsp;删除</button>#}
-{#                          </td>#}
-{#                        </tr>#}
-{#                        {% endfor %}#}
-{##}
-{##}
-{#                      </tbody>#}
-{#                    </table>#}
-
-
-
-
-                    </div>
-
-
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            </div>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="用户名/昵称/手机号/邮箱">
+                        </div>
 
 
 
                   </div>
+
+                  <div class="col-md-3">
+
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </span>
+                        <input type="text" id="test1" class="form-control" id="date" placeholder="开始时间">
+                    </div>
+
+
+                  </div>
+                  <div class="col-md-3">
+
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </span>
+                        <input type="text" class="form-control" id="date" placeholder="结束时间">
+                    </div>
+
+
+                  </div>
+                  <div class="col-md-2 text-right">
+
+                    <button class="btn btn-sm  btn-secondary " type="button" onclick="query()"><i class="fa fa-search fa-lg"></i>&nbsp;查询</button>
+                    <button class="btn btn-sm  btn-secondary" type="button" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+                    <i class="fa fa-chevron-circle-down fa-lg"></i>&nbsp;高级筛选</button>
+                  </div>
+
                 </div>
-             </div>
-              <!-- /.col-->
-            </div>
-            <!-- /.row-->
+                </form>
+                    <input type="hidden" id="seleceid" name="selectid" value="">
+                <br>
+                <!-- 高级筛选 -->
 
-          </div>
-        </div>
+                <div class="collapse" id="collapseExample" style="">
+
+                <div class="row">
+                  <div class="col-md-5">
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text">
+                            <i class="fa fa-user"></i>
+                            </span>
+                            </div>
+                        <input type="text" id="input1-group1" name="input1-group1" class="form-control" placeholder="用户名/昵称/手机号/邮箱">
+                        </div>
+
+
+
+                  </div>
+
+                  <div class="col-md-3">
+
+                    <div class="input-group">
+                    <span class="input-group-prepend">
+                    <span class="input-group-text">
+                    <i class="fa fa-calendar"></i>
+                    </span>
+                    </span>
+                    <input type="text" class="form-control" id="date" placeholder="开始时间">
+                    </div>
+
+
+                  </div>
+                  <div class="col-md-3">
+
+                    <div class="input-group">
+                    <span class="input-group-prepend">
+                    <span class="input-group-text">
+                    <i class="fa fa-calendar"></i>
+                    </span>
+                    </span>
+                    <input type="text" class="form-control" id="date" placeholder="结束时间">
+                    </div>
+
+
+                  </div>
+                    <div class="col-md-1 text-right">
+
+                  </div>
+
+                </div>
+
+                </div>
+
+                <br>
+
+
+                <div id="grid">
+
+
+                </div>
+
+                    </div>
+                 </div>
+               </div>
+
+            </div>
+
+         </div>
+      </div>
 
 
 
@@ -334,6 +240,8 @@
 <script id="gridtable" type="text/x-jquery-tmpl">
 
 {% raw %}
+
+         {{if total!=0}}
             <table class="table table-responsive-sm table-striped">
 
                       <thead class="">
@@ -411,6 +319,14 @@
                          </tbody>
                     </table>
 
+
+              {{else}}
+            <div class="text-center">
+                <h3>无数据</h3>
+            </div>
+
+           {{/if}}
+
         {% endraw %}
 
                   <!-- 分页 -->
@@ -468,20 +384,48 @@
 
 
 
-    page(1)
+    pagination(1)
 
+
+    /**
+     * 查询方法
+     *
+     **/
+    function query(){
+
+         //获得筛选条件
+        param=$("#queryform").serializeObject();
+
+        $("#seleceid").val(JSON.stringify(param));
+
+
+
+        pagination(1);
+
+    }
 
 
     /**
      * 翻页
      * @param page
      */
-    function page(page,param){
+    function pagination(page){
+
+        param={}
+
+        //加入已确定搜索的筛选条件
+        if ($("#seleceid").val()!="") {
+            param = JSON.parse($("#seleceid").val());
+        }
+
+        //加入当前页
+        param.page=page;
+
 
         $.ajax({
             url:'{{ url_for('api.users') }}',
             type:'get',
-            data: {page:page},
+            data: param,
             success:function(data){
 
                 $("#grid").empty();
