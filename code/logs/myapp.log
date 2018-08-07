@@ -4702,3 +4702,15 @@ Context: /Users/wenanguo/project/PycharmProjects/crm/code/app/auth/models.py:85 
 
 2018-08-07 14:51:40,170 views.py[line:26] WARNING <common_user_info 'wenanguo'>
 2018-08-07 14:51:57,357 views.py[line:26] WARNING <common_user_info 'wenanguo'>
+2018-08-07 16:48:08,809 views.py[line:26] WARNING <common_user_info 'wenanguo'>
+2018-08-07 16:50:40,410 views.py[line:26] WARNING <common_user_info 'wenanguo'>
+2018-08-07 16:50:42,086 views.py[line:26] WARNING <common_user_info 'wenanguo'>
+2018-08-07 16:50:42,320 views.py[line:26] WARNING <common_user_info 'wenanguo'>
+2018-08-07 16:51:12,398 views.py[line:26] WARNING <common_user_info 'wenanguo'>
+2018-08-07 16:51:13,208 views.py[line:26] WARNING <common_user_info 'wenanguo'>
+2018-08-07 16:51:13,489 views.py[line:26] WARNING <common_user_info 'wenanguo'>
+2018-08-07 16:51:18,776 views.py[line:26] WARNING <common_user_info 'wenanguo'>
+2018-08-07 16:51:19,924 views.py[line:26] WARNING <common_user_info 'wenanguo'>
+2018-08-07 16:51:24,687 views.py[line:26] WARNING <common_user_info 'wenanguo'>
+2018-08-07 16:51:28,271 views.py[line:26] WARNING <common_user_info 'wenanguo'>
+2018-08-07 16:51:30,828 views.py[line:26] WARNING <common_user_info 'wenanguo'>
