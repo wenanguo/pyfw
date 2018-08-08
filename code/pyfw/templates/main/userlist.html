@@ -352,41 +352,59 @@
 
 <script type="application/javascript">
 
-    options={
-        backdrop:true
-    }
 
 
+    /**
+     * 打开新增窗口
+     **/
     function newData(){
 
          $('#myModal').modal('show');
 
-         var modal = $('#myModal')
-         modal.find('.modal-title').text('新增' + param)
-        $("#id").val(0)
+         $('#myModal').find('.modal-title').text('新增')
+
+         $("#id").val(0)
 
     }
 
+    /**
+     * 打开修改窗口
+     **/
     function updateData(param){
 
          $('#myModal').modal('show');
 
-         var modal = $('#myModal')
-         modal.find('.modal-title').text('修改' + param)
+         $('#myModal').find('.modal-title').text('修改' + param);
 
-         $("#id").val(param)
+         $("#id").val(param);
+
+         var url=subUrl('{{ url_for('api_1_1.get',id=0) }}')+param;
+
+
+
+         $.ajax({
+            url:url,
+            type:'get',
+            data: param,
+            success:function(data){
+
+               //填充表单
+               $("#editform").setForm(data.result);
+
+            }
+        });
 
     }
 
 
     /**
-     * 新增和修改方法
+     * 新增和修改提交
      **/
     function submitFrom(){
 
-        param=$("#editform").serialize();
+        var param=$("#editform").serialize();
 
-        var url,method
+        var url,method;
 
         if($("#id").val()=="0"){
             //新增
@@ -394,9 +412,7 @@
             method='post'
         }else{
             //编辑
-
-            url='{{ url_for('api_1_1.put',id=0) }}'
-            url=url.substr(0, url.length - 1)+$("#id").val()
+            url=subUrl('{{ url_for('api_1_1.put',id=0) }}')+$("#id").val()
             method='put'
         }
 
@@ -406,7 +422,7 @@
             data: param,
             success:function(data){
 
-                Notify(data.msg, 'bottom-right', '5000', "info", 'fa-desktop', true);
+                NotifyMsg(data.msg);
 
                 $('#myModal').modal('hide')
 
@@ -417,27 +433,21 @@
 
 
     /**
-     * 删除方法
+     * 删除提交
      **/
     function deleteSubmitFrom(id){
 
 
         if(window.confirm('你确定要删除吗？')){
 
-                var url,method;
-
-                    url='{{ url_for('api_1_1.delete',id=0) }}'
-                    url=url.substr(0, url.length - 1)+id;
-                    method='delete'
-
 
                 $.ajax({
-                    url:url,
-                    type:method,
+                    url:subUrl('{{ url_for('api_1_1.delete',id=0) }}')+id,
+                    type:'delete',
                     data: param,
                     success:function(data){
 
-                        Notify(data.msg, 'bottom-right', '5000', "info", 'fa-desktop', true);
+                        NotifyMsg(data.msg);
 
 
                     }
@@ -453,8 +463,8 @@
 
 
 
-    //执行一个laydate实例
-    //常规用法
+
+    //时间控件
     laydate.render({
       elem: '#test1' //指定元素
     });
@@ -462,7 +472,7 @@
 
 
 
-    pagination(1)
+    pagination();
 
 
     /**
@@ -471,12 +481,10 @@
      **/
     function query(){
 
-         //获得筛选条件
+        //获得筛选条件
         param=serializeNotNull($("#queryform").serialize());
 
         $("#seleceid").val(param);
-
-
 
         pagination();
 
@@ -493,8 +501,6 @@
 
         //加入当前页
         param="page="+page;
-
-
 
         //加入已确定搜索的筛选条件
         if ($("#seleceid").val()!="") {

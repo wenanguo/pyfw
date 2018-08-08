@@ -1,4 +1,13 @@
-/*Show Notification*/
+/**
+ * 提示消息弹窗方法，多参数版本
+ * @param message
+ * @param position
+ * @param timeout
+ * @param theme
+ * @param icon
+ * @param closable
+ * @constructor
+ */
 function Notify(message, position, timeout, theme, icon, closable) {
     toastr.options.positionClass = 'toast-' + position;
     toastr.options.extendedTimeOut = 0; //1000;
@@ -6,6 +15,15 @@ function Notify(message, position, timeout, theme, icon, closable) {
     toastr.options.closeButton = closable;
     toastr.options.iconClass = icon + ' toast-' + theme;
     toastr[theme](message);
+}
+
+/**
+ * 提示消息弹窗
+ * @param message
+ * @constructor
+ */
+function NotifyMsg(message) {
+     Notify(message, 'bottom-right', '5000', "success", 'fa-desktop', true);
 }
 
 
@@ -108,4 +126,15 @@ $.fn.setForm = function(jsonValue){
  */
 function serializeNotNull(serStr){
     return serStr.split("&").filter(function(str){return !str.endsWith("=")}).join("&");
+}
+
+
+/**
+ * 截取最后一位，返回url
+ * @param url
+ */
+function subUrl(url)
+{
+   url=url.substr(0, url.length - 1)
+   return url;
 }
