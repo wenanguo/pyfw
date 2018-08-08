@@ -4,6 +4,7 @@
 *.tmp
 *.MF
 *.iml
+*.log
 
 /code/**/.classpath
 /code/**/.mymetadata
