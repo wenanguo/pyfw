@@ -57,8 +57,11 @@ def create_app(config_name):
     from .system import system as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/system')
 
-    from .api_1_0 import api as api_1_0_blueprint
-    app.register_blueprint(api_1_0_blueprint, url_prefix='/api/v1.0')
+    # from .api_1_0 import api as api_1_0_blueprint
+    # app.register_blueprint(api_1_0_blueprint, url_prefix='/api/v1.0')
+
+    from .api_1_1 import api_1_1 as api_1_1_blueprint
+    app.register_blueprint(api_1_1_blueprint, url_prefix='/api/v1.1')
 
 
 

@@ -1,7 +1,7 @@
 from flask import render_template, session, abort, request, redirect, url_for, current_app, flash
 from flask_login import login_required
 
-from pyfw.auth.models import CommonUserInfo
+from pyfw.main.models import CommonUserInfo
 from . import main
 from .forms import NameForm
 

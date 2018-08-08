@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user, login_required, \
     current_user
 
 from pyfw.auth.forms import RegistrationForm
-from pyfw.auth.models import CommonUserInfo
+from pyfw.main.models import CommonUserInfo
 from . import auth
 from .. import db
 

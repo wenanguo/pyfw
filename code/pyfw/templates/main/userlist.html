@@ -390,12 +390,12 @@
 
         if($("#id").val()=="0"){
             //新增
-            url='{{ url_for('api.commonuserinfos') }}'
+            url='{{ url_for('api_1_1.post') }}'
             method='post'
         }else{
             //编辑
 
-            url='{{ url_for('api.commonuserinfo',id=0) }}'
+            url='{{ url_for('api_1_1.put',id=0) }}'
             url=url.substr(0, url.length - 1)+$("#id").val()
             method='put'
         }
@@ -426,7 +426,7 @@
 
                 var url,method;
 
-                    url='{{ url_for('api.commonuserinfo',id=0) }}'
+                    url='{{ url_for('api_1_1.delete',id=0) }}'
                     url=url.substr(0, url.length - 1)+id;
                     method='delete'
 
@@ -503,7 +503,7 @@
 
 
         $.ajax({
-            url:'{{ url_for('api.commonuserinfos') }}',
+            url:'{{ url_for('api_1_1.getList') }}',
             type:'get',
             data: param,
             success:function(data){
