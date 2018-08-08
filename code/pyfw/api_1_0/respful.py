@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-' module description'
+' api'
 import json
 
 from flask import request, jsonify, current_app
