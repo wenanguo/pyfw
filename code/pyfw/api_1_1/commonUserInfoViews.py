@@ -49,7 +49,7 @@ def getList():
 
 
 @api_1_1.route('/commonuserinfo', methods=['post'])
-def post(self):
+def post():
     """
     新增对象
     :param self:
@@ -69,7 +69,7 @@ def post(self):
 
 
 @api_1_1.route('/commonuserinfo/<int:id>', methods=['get'])
-def get(self,id):
+def get(id):
         """
         获得单对象
         :param id:
@@ -118,7 +118,7 @@ def get(self,id):
 
 
 @api_1_1.route('/commonuserinfo/<int:id>', methods=['put'])
-def put(self, id):
+def put( id):
         """
         更新对象
         :param id:
@@ -137,7 +137,7 @@ def put(self, id):
 
 
 @api_1_1.route('/commonuserinfo/<int:id>', methods=['delete'])
-def delete(self, id):
+def delete( id):
         """
         删除对象
         :param id:

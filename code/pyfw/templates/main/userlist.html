@@ -472,34 +472,34 @@
     function query(){
 
          //获得筛选条件
-        param=$("#queryform").serializeJson();
+        param=serializeNotNull($("#queryform").serialize());
 
-        $("#seleceid").val(JSON.stringify(param));
+        $("#seleceid").val(param);
 
 
 
-        pagination(1);
+        pagination();
 
     }
 
 
     /**
-     * 翻页
+     * 获得列表
      * @param page
      */
     function pagination(page){
 
-        param={};
+        if(page==null)page=1;
+
+        //加入当前页
+        param="page="+page;
 
 
 
         //加入已确定搜索的筛选条件
         if ($("#seleceid").val()!="") {
-            param = JSON.parse($("#seleceid").val());
+            param =param+"&"+ serializeNotNull($("#seleceid").val());
         }
-
-        //加入当前页
-        param.page=page;
 
 
         $.ajax({

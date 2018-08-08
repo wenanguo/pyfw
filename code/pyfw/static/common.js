@@ -100,3 +100,12 @@ $.fn.setForm = function(jsonValue){
     }
   })
 }
+
+
+/**
+ * 过滤jquery serialize方法获取表单空值问题
+ * @param serStr
+ */
+function serializeNotNull(serStr){
+    return serStr.split("&").filter(function(str){return !str.endsWith("=")}).join("&");
+}
