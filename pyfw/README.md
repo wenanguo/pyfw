@@ -57,9 +57,9 @@ DOC http://spin.webkom.co/docs/docs.html
 
 #### 打包
 ```
-python setup.py sdist
+python3 setup.py sdist bdist_wheel
 
-twine upload dist/pyfw-1.0.6.tar.gz
+twine upload  dist/*
 ```
 
 
