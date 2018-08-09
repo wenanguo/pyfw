@@ -2,7 +2,7 @@ from flask import render_template, session, abort, request, redirect, url_for, c
 from flask_login import login_required
 
 from pyfw.main.models import CommonUserInfo
-from . import api_1_1
+from pyfw.api_1_1 import api_1_1
 
 
 
@@ -75,8 +75,6 @@ def get(id):
         :param id:
         :return:
         """
-
-
         commonUserInfo = CommonUserInfo.query.get(id)
 
         return jsonify({

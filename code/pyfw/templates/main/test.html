@@ -3,30 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>test</title>
-{#<script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>#}
-{#    <script src="{{ url_for('static', filename='common/js/jquery-3.3.1.min.js') }}"></script>#}
-    <script src="{{ url_for('static', filename='coreui/vendors/jquery/js/jquery.min.js') }}"></script>
-    <!-- 模板引擎插件 -->
-         <script type="text/javascript" src="{{ url_for('static', filename='jquery-tmpl/jquery.tmpl.js') }}"></script>
+
+  <script src="//unpkg.com/vue/dist/vue.js"></script>
+<script src="//unpkg.com/iview/dist/iview.min.js"></script>
 
 </head>
 <body>
-<div id="div_demo"></div>
-{% raw %}
+<div id="app">
+    <checkbox-group v-model="social">
+        <checkbox label="twitter">
+            <icon type="logo-twitter"></icon>
+            <span>Twitter</span>
+        </checkbox>
+        <checkbox label="facebook">
+            <icon type="logo-facebook"></icon>
+            <span>Facebook</span>
+        </checkbox>
+        <checkbox label="github">
+            <icon type="logo-github"></icon>
+            <span>Github</span>
+        </checkbox>
+        <checkbox label="snapchat">
+            <icon type="logo-snapchat"></icon>
+            <span>Snapchat</span>
+        </checkbox>
+    </checkbox-group>
+    <checkbox-group v-model="fruit">
+        <checkbox label="香蕉"></checkbox>
+        <checkbox label="苹果"></checkbox>
+        <checkbox label="西瓜"></checkbox>
+    </checkbox-group>
+</div>
 
-
-<script id="demo" type="text/x-jquery-tmpl">
-    <div style="margin-bottom:10px;">
-    　　<span>${ID}</span>
-    　　<span style="margin-left:10px;">{{= Name}}</span>
-    　　<span style="margin-left:10px;">${Number(Num)+1}</span>
-    　　<span style="margin-left:10px;">${Status}</span>
-    </div>
-</script>
-{% endraw %}
 <script type="text/javascript">
-　　var users = [{ ID: 'think8848', Name: 'Joseph Chan', Num: '1', Status: 1 }, { ID: 'aCloud', Name: 'Mary Cheung', Num: '2'}];
-　　$("#demo").tmpl(users).appendTo('#div_demo');
+　　var Main = {
+        data() {
+            return {
+                social: ['facebook', 'github'],
+                fruit: ['苹果']
+            }
+        }
+    }
+
+var Component = Vue.extend(Main)
+new Component().$mount('#app')
 </script>
 </body>
 </html>
