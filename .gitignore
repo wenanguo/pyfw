@@ -45,6 +45,8 @@
 /code/**/.idea
 /code/**/node_modules
 /code/**/bower_components
+/**/node_modules
+/**/dist
 
 
 /code/**/.gradle

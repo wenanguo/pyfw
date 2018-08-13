@@ -1,0 +1,295 @@
+{% extends "coreui/coreui-base.html" %}
+
+{% import "macro/pagination.html" as pagination %}
+
+
+{% block title %}贵州移动自主研发框架-pyfw{% endblock title %}
+
+
+{% block body_attribs %} class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show" {% endblock body_attribs %}
+
+
+
+{% block main %}
+      <main class="main">
+        <!-- Breadcrumb-->
+        {% block breadcrumb %}
+       {{ super() }}
+        {% endblock breadcrumb %}
+
+
+      {% block containerfluid %}
+
+
+        <div class="container-fluid">
+          <div class="animated fadeIn">
+
+            <div class="row">
+              <div class="col-md-12">
+
+
+
+            <div class="card">
+                  <div class="card-header">
+                    <i class="fa fa-align-justify"></i> 用户列表
+                    <div class="card-header-actions">
+                      <button class="btn btn-sm  btn-success" type="button" onclick="newData('')"><i class="fa fa-plus-square-o fa-lg"></i>&nbsp;新增</button>
+
+                    </div>
+                  </div>
+
+                <div class="card-body">
+
+                <!-- 筛选 -->
+                <form id="queryform">
+                <div class="row">
+                  <div class="col-md-4">
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            </div>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="用户名/昵称/手机号/邮箱">
+                        </div>
+
+
+
+                  </div>
+
+                  <div class="col-md-3">
+
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </span>
+                        <input type="text" id="test1" class="form-control" id="date" placeholder="开始时间">
+                    </div>
+
+
+                  </div>
+                  <div class="col-md-3">
+
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </span>
+                        <input type="text" class="form-control" id="date" placeholder="结束时间">
+                    </div>
+
+
+                  </div>
+                  <div class="col-md-2 text-right">
+
+                    <button class="btn btn-sm  btn-secondary " type="button" onclick="query()"><i class="fa fa-search fa-lg"></i>&nbsp;查询</button>
+                    <button class="btn btn-sm  btn-secondary" type="button" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+                    <i class="fa fa-chevron-circle-down fa-lg"></i>&nbsp;高级筛选</button>
+                  </div>
+
+                </div>
+                </form>
+                    <input type="hidden" id="seleceid" name="selectid" value="">
+                <br>
+                <!-- 高级筛选 -->
+
+                <div class="collapse" id="collapseExample" style="">
+
+                <div class="row">
+                  <div class="col-md-5">
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text">
+                            <i class="fa fa-user"></i>
+                            </span>
+                            </div>
+                        <input type="text" id="input1-group1" name="input1-group1" class="form-control" placeholder="用户名/昵称/手机号/邮箱">
+                        </div>
+
+
+
+                  </div>
+
+                  <div class="col-md-3">
+
+                    <div class="input-group">
+                    <span class="input-group-prepend">
+                    <span class="input-group-text">
+                    <i class="fa fa-calendar"></i>
+                    </span>
+                    </span>
+                    <input type="text" class="form-control" id="date" placeholder="开始时间">
+                    </div>
+
+
+                  </div>
+                  <div class="col-md-3">
+
+                    <div class="input-group">
+                    <span class="input-group-prepend">
+                    <span class="input-group-text">
+                    <i class="fa fa-calendar"></i>
+                    </span>
+                    </span>
+                    <input type="text" class="form-control" id="date" placeholder="结束时间">
+                    </div>
+
+
+                  </div>
+                    <div class="col-md-1 text-right">
+
+                  </div>
+
+                </div>
+
+                </div>
+
+                <br>
+
+
+                <div id="app">
+
+
+                    {% raw %}
+
+                    <i-table :columns="columns8" :data="data7" ></i-table>
+
+
+                    {% endraw %}
+
+
+
+                </div>
+
+                    </div>
+                 </div>
+               </div>
+
+            </div>
+
+         </div>
+      </div>
+
+
+
+
+<div  id="myModal" class="modal fade" aria-hidden="true" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg"  role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">编辑</h4>
+      </div>
+      <div class="modal-body">
+
+            <form id="editform" name="editform">
+            <input type="hidden" id="id" name="id" value="0">
+             <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">用户名</label>
+                <div class="col-md-4">
+                    <input type="text" id="login_account" name="login_account" class="form-control" placeholder="用户名">
+                </div>
+
+                <label class="col-md-2 col-form-label" for="text-input">真实姓名</label>
+                <div class="col-md-4">
+                    <input type="text" id="user_name" name="user_name" class="form-control" placeholder="真实姓名">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">邮箱</label>
+                <div class="col-md-4">
+                    <input type="text" id="email" name="email" class="form-control" placeholder="邮箱">
+                </div>
+
+                <label class="col-md-2 col-form-label" for="text-input">用户编号</label>
+                <div class="col-md-4">
+                    <input type="text" id="user_no" name="user_no" class="form-control" placeholder="用户编号">
+                </div>
+            </div>
+
+
+             <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">性别</label>
+                <div class="col-md-4">
+                    <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="radio" id="inline-radio1" value="option1" name="inline-radios">
+                    <label class="form-check-label" for="inline-radio1">男</label>
+                    </div>
+                    <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" type="radio" id="inline-radio2" value="option2" name="inline-radios">
+                    <label class="form-check-label" for="inline-radio2">女</label>
+                    </div>
+                </div>
+
+
+                <label class="col-md-2 col-form-label" for="text-input">用户状态</label>
+                <div class="col-md-4">
+                    <select class="form-control">
+                      <option>正常</option>
+                      <option>锁定</option>
+                      <option>停用</option>
+
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+            <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder=".col-sm-6">
+            </div>
+            </div>
+
+                      <div class="form-group row">
+            <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder=".col-sm-6">
+            </div>
+            </div>
+
+
+            </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" onclick="submitFrom()">提交</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+
+
+      {% endblock containerfluid %}
+      </main>
+
+      {% endblock main %}
+
+
+{% block scripts %}
+
+     {{ super() }}
+
+<script src="{{ url_for('static', filename='app/main/vue6.js') }}"></script>
+<script type="application/javascript">
+
+
+</script>
+
+
+
+ {%- endblock scripts %}

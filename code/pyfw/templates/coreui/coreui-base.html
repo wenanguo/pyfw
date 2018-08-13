@@ -82,6 +82,17 @@
 
 
 
+         <!-- iview组件 -->
+         <!-- import Vue.js -->
+{#        <script src="//vuejs.org/js/vue.min.js"></script>#}
+
+            <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <!-- import stylesheet -->
+        <link rel="stylesheet" href="//unpkg.com/iview/dist/styles/iview.css">
+        <!-- import iView -->
+        <script src="//unpkg.com/iview/dist/iview.min.js"></script>
+
         {%- endblock styles %}
     {%- endblock head %}
   </head>
@@ -519,8 +530,8 @@
             </li>
             <li class="nav-title">主题</li>
             <li class="nav-item">
-              <a class="nav-link" href="colors.html">
-                <i class="nav-icon icon-drop"></i> 颜色</a>
+              <a class="nav-link" href="{{ url_for('main.vue') }}">
+                <i class="nav-icon icon-drop"></i> vue</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="typography.html">

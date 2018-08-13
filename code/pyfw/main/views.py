@@ -76,6 +76,13 @@ def test():
 
     return render_template('main/test.html')
 
+
+@main.route('/vue', methods=['GET', 'POST'])
+def vue():
+
+    return render_template('main/vue.html')
+
+
 @main.route('/shutdown')
 def server_shutdown():
     if not current_app.testing:

@@ -4,49 +4,29 @@
     <meta charset="UTF-8">
     <title>test</title>
 
-  <script src="//unpkg.com/vue/dist/vue.js"></script>
-<script src="//unpkg.com/iview/dist/iview.min.js"></script>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
 </head>
 <body>
+
+{% raw %}
 <div id="app">
-    <checkbox-group v-model="social">
-        <checkbox label="twitter">
-            <icon type="logo-twitter"></icon>
-            <span>Twitter</span>
-        </checkbox>
-        <checkbox label="facebook">
-            <icon type="logo-facebook"></icon>
-            <span>Facebook</span>
-        </checkbox>
-        <checkbox label="github">
-            <icon type="logo-github"></icon>
-            <span>Github</span>
-        </checkbox>
-        <checkbox label="snapchat">
-            <icon type="logo-snapchat"></icon>
-            <span>Snapchat</span>
-        </checkbox>
-    </checkbox-group>
-    <checkbox-group v-model="fruit">
-        <checkbox label="香蕉"></checkbox>
-        <checkbox label="苹果"></checkbox>
-        <checkbox label="西瓜"></checkbox>
-    </checkbox-group>
+  {{ message }}
 </div>
+ {% endraw %}
 
-<script type="text/javascript">
-　　var Main = {
-        data() {
-            return {
-                social: ['facebook', 'github'],
-                fruit: ['苹果']
-            }
-        }
-    }
 
-var Component = Vue.extend(Main)
-new Component().$mount('#app')
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
 </script>
+
+
 </body>
 </html>
