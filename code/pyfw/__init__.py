@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
+from flask_cors import CORS
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_mail import Mail
 from flask_moment import Moment
@@ -43,7 +44,7 @@ def create_app(config_name):
 
     login_manager.init_app(app)
 
-
+    CORS(app, supports_credentials=True)
 
 
 
