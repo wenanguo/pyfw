@@ -117,3 +117,23 @@ def delete( id):
             'result': id,
             'msg': '删除成功'
         })
+
+
+@api_1_1.route('/commonuserinfo/login', methods=['post'])
+def login():
+        """
+        登录
+        :param id:
+        :return:
+        """
+        user= {
+            'roles': ['admin'],
+            'token': 'admin',
+            'introduction': '我是超级管理员',
+            'avatar': 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+            'name': 'Super Admin'
+        }
+
+
+
+        return jsonify(user)
