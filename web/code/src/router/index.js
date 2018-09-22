@@ -11,6 +11,7 @@ import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
+import userinfo from './modules/userinfo'
 
 /** note: submenu only apppear when children.length>=1
  *  detail see  https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -149,6 +150,7 @@ export const asyncRouterMap = [
   chartsRouter,
   nestedRouter,
   tableRouter,
+  userinfo,
 
   {
     path: '/example',
