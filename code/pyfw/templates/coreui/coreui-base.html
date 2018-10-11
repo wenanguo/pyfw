@@ -333,7 +333,7 @@
 
 
 {%  if current_user.is_authenticated %}
-<img class="img-avatar" src="{{ url_for('static', filename=current_user.icon) }}" alt="{{ current_user.email }}">
+<img class="img-avatar" src="{{ url_for('static', filename=current_user.icon) }}" alt="{{ current_user.user_email }}">
 {% else %}
 未登陆
 {% endif %}

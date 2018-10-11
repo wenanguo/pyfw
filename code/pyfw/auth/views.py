@@ -85,7 +85,7 @@ def register():
     """
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = CommonUserInfo(email=form.email.data,
+        user = CommonUserInfo(user_email=form.email.data,
                     login_account=form.login_account.data,
                     password=form.password.data)
         db.session.add(user)

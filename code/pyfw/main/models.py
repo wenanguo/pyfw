@@ -12,7 +12,7 @@ from pyfw import db, login_manager
 
 #用户角色多对多关系表
 user_role_mapper = db.Table('user_role_mapper',
-                         db.Column('user_id', db.Integer, db.ForeignKey('common_user_info.id') , nullable=False, primary_key=True),
+                         db.Column('user_id', db.Integer, db.ForeignKey('common_user_info.user_id') , nullable=False, primary_key=True),
                          db.Column('role_id', db.Integer, db.ForeignKey('common_role_info.id') , nullable=False, primary_key=True)
                          )
 
@@ -25,19 +25,31 @@ class CommonUserInfo(UserMixin,db.Model):
     用户表
     """
     __tablename__ = 'common_user_info'
-    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True)
     #账户
     login_account = db.Column(db.String(64),unique=True)
     #密码
     login_password = db.Column(db.String(128))
-    #邮箱
-    email = db.Column(db.String(64))
-    #性别
-    user_gender = db.Column(db.Integer)
-    #真实名称
+
+    # 真实名称
     user_name = db.Column(db.String(64))
-    #用户编号
+    # 用户编号
     user_no = db.Column(db.String(64))
+    # 账号状态
+    user_status=db.Column(db.Integer)
+    # 所属系统
+    user_sys = db.Column(db.Integer)
+    # 手机号码
+    user_phone = db.Column(db.String(64))
+    # 邮箱
+    user_email = db.Column(db.String(64))
+    # 用户性别（1:男性，0:女性）
+    user_sex = db.Column(db.Integer)
+    # 用户分类（1：内部人员；2：外部人员）
+    user_type=db.Column(db.Integer)
+    # 备注
+    user_remark = db.Column(db.String(64))
+
     #所属组织机构
     user_org = db.Column(db.Integer)
 
@@ -47,7 +59,7 @@ class CommonUserInfo(UserMixin,db.Model):
                               lazy='dynamic')
 
     #extend
-    # 真实名称
+    # 头像
     icon = db.Column(db.String(64))
 
     #最后登录时间
@@ -86,31 +98,7 @@ class CommonUserInfo(UserMixin,db.Model):
 
     def to_json(self):
         json = {
-            'id' :self.id,
-            'login_account' : self.login_account,
 
-
-            # 邮箱
-            'email' : self.email,
-            # 性别
-            'user_gender' : self.user_gender,
-            # 真实名称
-            'user_name' : self.user_name,
-            # 用户编号
-            'user_no' : self.user_no,
-            # 所属组织机构
-            'user_org' : self.user_org,
-
-            # 真实名称
-            'icon' : self.icon,
-            # 最后登录时间
-            'last_login' : self.last_login,
-            # 用户状态
-            'status' : self.status,
-            # 操作人
-            'operate_user_id' : self.operate_user_id,
-            # 操作时间
-            'operate_time' : self.operate_time
         }
 
         return json
@@ -123,7 +111,7 @@ class CommonUserInfo(UserMixin,db.Model):
         import forgery_py
         seed()
         for i in range(count):
-            u = CommonUserInfo(email=forgery_py.internet.email_address(),
+            u = CommonUserInfo(user_email=forgery_py.internet.email_address(),
                                login_account=forgery_py.internet.user_name(True),
                                 password=forgery_py.lorem_ipsum.word(),
                                icon="images/2.jpg"
