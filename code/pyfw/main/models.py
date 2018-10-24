@@ -12,12 +12,9 @@ from pyfw import db, login_manager
 
 #用户角色多对多关系表
 user_role_mapper = db.Table('user_role_mapper',
-                         db.Column('user_id', db.Integer, db.ForeignKey('common_user_info.user_id') , nullable=False, primary_key=True),
+                         db.Column('user_id', db.Integer, db.ForeignKey('common_user_info.id') , nullable=False, primary_key=True),
                          db.Column('role_id', db.Integer, db.ForeignKey('common_role_info.id') , nullable=False, primary_key=True)
                          )
-
-
-
 
 
 class CommonUserInfo(UserMixin,db.Model):
@@ -25,7 +22,7 @@ class CommonUserInfo(UserMixin,db.Model):
     用户表
     """
     __tablename__ = 'common_user_info'
-    user_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     #账户
     login_account = db.Column(db.String(64),unique=True)
     #密码
