@@ -95,7 +95,23 @@ class CommonUserInfo(UserMixin,db.Model):
 
     def to_json(self):
         json = {
-
+            'id': self.id,
+            'login_account': self.login_account,
+            'login_password': self.login_password,
+            'user_name':self.user_name,
+            'user_no':self.user_no,
+            'user_status':self.user_status,
+            'user_sys':self.user_sys,
+            'user_phone': self.user_phone,
+            'user_email': self.user_email,
+            'user_sex': self.user_sex,
+            'user_type': self.user_type,
+            'user_remark': self.user_remark,
+            'user_org': self.user_org,
+            'last_login': self.last_login,
+            'status': self.status,
+            'operate_user_id': self.operate_user_id,
+            'operate_time': self.operate_time
         }
 
         return json
