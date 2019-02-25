@@ -4,7 +4,6 @@ from flask_login import UserMixin, AnonymousUserMixin
 from sqlalchemy import Table, Column, Integer, ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-
 from datetime import datetime
 from flask import current_app, request, url_for
 
@@ -14,6 +13,13 @@ from pyfw import db, login_manager
 user_role_mapper = db.Table('common_user_roles',
                          db.Column('user_id', db.Integer, db.ForeignKey('common_user_info.id') , nullable=False, primary_key=True),
                          db.Column('role_id', db.Integer, db.ForeignKey('common_role_info.id') , nullable=False, primary_key=True)
+                         )
+
+
+#用户组织多对多关系表
+user_org_mapper = db.Table('common_user_org',
+                         db.Column('user_id', db.Integer, db.ForeignKey('common_user_info.id') , nullable=False, primary_key=True),
+                         db.Column('org_id', db.Integer, db.ForeignKey('common_org_info.id') , nullable=False, primary_key=True)
                          )
 
 
@@ -70,11 +76,19 @@ class CommonUserInfo(UserMixin,db.Model):
 
     roles = db.relationship('CommonRoleInfo',
                             secondary=user_role_mapper,
-                            lazy='dynamic')
+                            lazy='dynamic',
+    backref = db.backref('users', lazy='dynamic')
+    )
+
+    orgs = db.relationship('CommonOrgInfo',
+                            secondary=user_org_mapper,
+                            lazy='dynamic',
+                            backref=db.backref('users', lazy='dynamic')
+                            )
 
 
     def __repr__(self):
-        return '<common_user_info %r>' % self.login_account
+        return '<common_user_info %r>' % self.user_name
 
     @property
     def password(self):
@@ -100,8 +114,6 @@ class CommonUserInfo(UserMixin,db.Model):
         json = {
             'id' :self.id,
             'login_account' : self.login_account,
-
-
             # 邮箱
             'email' : self.user_email,
             # 性别
@@ -112,7 +124,6 @@ class CommonUserInfo(UserMixin,db.Model):
             'user_no' : self.user_no,
             # 所属组织机构
             'user_org' : self.user_org,
-
             # 真实名称
             'icon' : self.icon,
             # 最后登录时间
@@ -160,7 +171,7 @@ class CommonRoleInfo(db.Model):
     #角色代码
     role_code = db.Column(db.String(64), unique=True)
     #角色名称
-    role_name = db.Column(db.String(64), unique=True)
+    role_name = db.Column(db.String(64))
     #角色顺序
     role_order=db.Column(db.Integer)
     #备注
@@ -229,7 +240,7 @@ class CommonOrgInfo(db.Model):
 
 
     def __repr__(self):
-        return '<common_org_info %r>' % self.role_name
+        return '<common_org_info %r>' % self.org_name
 
 
 
@@ -293,3 +304,38 @@ class CommonMenuInfo(db.Model):
 
     def __repr__(self):
         return '<common_org_info %r>' % self.role_name
+
+
+
+class CommonMenuOptInfo(db.Model):
+    """
+        菜单操作表
+    """
+    __tablename__ = 'common_menu_opt_info'
+    id = db.Column(db.Integer, primary_key=True)
+    #操作编号
+    menu_id = db.Column(db.Integer)
+    #操作代码
+    opt_code = db.Column(db.String(64))
+    #操作名称
+    opt_name = db.Column(db.String(64))
+    #操作url
+    opt_url = db.Column(db.String(64))
+    #操作方法
+    opt_method = db.Column(db.String(64))
+    #操作状态
+    opt_status = db.Column(db.Integer)
+    #操作备注
+    opt_remark = db.Column(db.String(64))
+    #排序
+    opt_order = db.Column(db.Integer)
+
+    # 状态
+    status = db.Column(db.Integer)
+    # 操作人
+    operate_user_id = db.Column(db.Integer)
+    # 操作时间
+    operate_time = db.Column(db.DateTime(), default=datetime.utcnow)
+
+    def __repr__(self):
+        return '<common_org_info %r>' % self.opt_name
