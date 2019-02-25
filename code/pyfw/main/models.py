@@ -25,40 +25,52 @@ class CommonUserInfo(UserMixin,db.Model):
     用户表
     """
     __tablename__ = 'common_user_info'
+
     id = db.Column(db.Integer, primary_key=True)
-    #账户
-    login_account = db.Column(db.String(64),unique=True)
-    #密码
+    # 账户
+    login_account = db.Column(db.String(64), unique=True)
+    # 密码
     login_password = db.Column(db.String(128))
-    #邮箱
-    email = db.Column(db.String(64))
-    #性别
-    user_gender = db.Column(db.Integer)
-    #真实名称
+    # 真实名称
     user_name = db.Column(db.String(64))
-    #用户编号
+    # 用户编号
     user_no = db.Column(db.String(64))
-    #所属组织机构
+    # 账号状态
+    user_status = db.Column(db.String(64))
+    # 所属系统
+    user_sys = db.Column(db.String(64))
+    # 手机号
+    user_phone = db.Column(db.String(64))
+    # 用户分类（1：内部人员；2：外部人员）
+    user_type = db.Column(db.String(64))
+    # 备注
+    user_remark = db.Column(db.String(64))
+    # 用户性别（1:男性，0:女性）
+    user_sex = db.Column(db.String(64))
+    # 性别
+    user_gender = db.Column(db.Integer)
+    # 邮箱
+    user_email = db.Column(db.String(64))
+    # 所属组织机构
     user_org = db.Column(db.Integer)
 
-
-    roles = db.relationship('CommonRoleInfo',
-                              secondary=user_role_mapper,
-                              lazy='dynamic')
-
-    #extend
+    # extend
     # 真实名称
     icon = db.Column(db.String(64))
 
-    #最后登录时间
-    last_login=db.Column(db.DateTime(), default=datetime.utcnow)
+    # 最后登录时间
+    last_login = db.Column(db.DateTime(), default=datetime.utcnow)
 
-    #用户状态
+    # 用户状态
     status = db.Column(db.Integer)
-    #操作人
-    operate_user_id=db.Column(db.Integer)
-    #操作时间
+    # 操作人
+    operate_user_id = db.Column(db.Integer)
+    # 操作时间
     operate_time = db.Column(db.DateTime(), default=datetime.utcnow)
+
+    roles = db.relationship('CommonRoleInfo',
+                            secondary=user_role_mapper,
+                            lazy='dynamic')
 
 
     def __repr__(self):
