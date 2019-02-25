@@ -1,6 +1,7 @@
 import unittest
-from app import create_app, db
-from app.auth.models import CommonUserInfo
+
+from pyfw import create_app, db
+from pyfw.main.models import CommonUserInfo
 
 
 class UserModelTestCase(unittest.TestCase):

@@ -1,9 +1,6 @@
 import unittest
 from flask import current_app
-from app import create_app, db
-from flask import url_for
 
-from app.models import PassProjectContainerInfo
 
 
 class BasicsTestCase(unittest.TestCase):

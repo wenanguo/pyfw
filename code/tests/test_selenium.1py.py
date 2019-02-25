@@ -2,8 +2,10 @@ import re
 import threading
 import time
 import unittest
+
+from pyfw import create_app
 from selenium import webdriver
-from app import create_app, db
+
 import os
 
 path =os.path.join(os.path.abspath(os.path.dirname(os.path.realpath(__file__))+os.path.sep+".."),"driver/chromedriver_mac64")

@@ -11,7 +11,7 @@ from flask import current_app, request, url_for
 from pyfw import db, login_manager
 
 #用户角色多对多关系表
-user_role_mapper = db.Table('user_role_mapper',
+user_role_mapper = db.Table('common_user_roles',
                          db.Column('user_id', db.Integer, db.ForeignKey('common_user_info.id') , nullable=False, primary_key=True),
                          db.Column('role_id', db.Integer, db.ForeignKey('common_role_info.id') , nullable=False, primary_key=True)
                          )
@@ -103,7 +103,7 @@ class CommonUserInfo(UserMixin,db.Model):
 
 
             # 邮箱
-            'email' : self.email,
+            'email' : self.user_email,
             # 性别
             'user_gender' : self.user_gender,
             # 真实名称
@@ -135,9 +135,9 @@ class CommonUserInfo(UserMixin,db.Model):
         import forgery_py
         seed()
         for i in range(count):
-            u = CommonUserInfo(email=forgery_py.internet.email_address(),
+            u = CommonUserInfo(user_email=forgery_py.internet.email_address(),
                                login_account=forgery_py.internet.user_name(True),
-                                password=forgery_py.lorem_ipsum.word(),
+                               login_password=forgery_py.lorem_ipsum.word(),
                                icon="images/2.jpg"
                                 )
             db.session.add(u)
@@ -165,6 +165,11 @@ class CommonRoleInfo(db.Model):
     role_order=db.Column(db.Integer)
     #备注
     role_remark=db.Column(db.Text)
+    # 角色装
+    role_status = db.Column(db.Integer)
+    # 所属系统
+    sys_id = db.Column(db.Integer)
+
     # 用户状态
     status = db.Column(db.Integer)
     # 操作人
@@ -189,18 +194,28 @@ class CommonOrgInfo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     #组织机构代码
     org_code = db.Column(db.String(64), unique=True)
-    #组织机构全称
-    org_fullname = db.Column(db.String(64), unique=True)
     # 组织机构名称
     org_name = db.Column(db.String(64), unique=True)
+    #组织机构全称
+    org_fullname = db.Column(db.String(64), unique=True)
 
-    #顺序
-    org_order=db.Column(db.Integer)
-    #父节点编号
-    org_pid = db.Column(db.Integer)
+    # 节点状态
+    org_status = db.Column(db.Integer)
 
-    #备注
-    role_remark=db.Column(db.Text)
+    org_area_id = db.Column(db.String(64))
+
+    org_remark = db.Column(db.String(200))
+    # 父节点编号
+    org_parent_id = db.Column(db.Integer)
+    # 排序
+    org_sort  = db.Column(db.Integer)
+
+    # 机构类别
+    org_type  = db.Column(db.Integer)
+
+
+
+
 
     # 状态
     status = db.Column(db.Integer)
@@ -226,29 +241,46 @@ class CommonMenuInfo(db.Model):
     """
     __tablename__ = 'common_menu_info'
     id = db.Column(db.Integer, primary_key=True)
+    # 菜单代码
+    menu_code = db.Column(db.String(64), unique=True)
+    # 菜单名称
+    menu_name = db.Column(db.String(64))
+    # 菜单导航
+    menu_nav = db.Column(db.String(64))
+    # 备注
+    menu_remark = db.Column(db.String(64))
+    # url
+    menu_url = db.Column(db.String(64))
     #菜单样式
     menu_cls = db.Column(db.String(64), unique=True)
-    #菜单代码
-    menu_code = db.Column(db.String(64), unique=True)
+
 
     #菜单级别
     menu_level=db.Column(db.Integer)
-    #菜单名称
-    menu_name=db.Column(db.String(64))
-    #菜单导航
-    menu_nav=db.Column(db.String(64))
+    # 类别
+    menu_type = db.Column(db.Integer)
+
+
     #菜单排序
     menu_order=db.Column(db.Integer)
+    # 状态
+    menu_status = db.Column(db.Integer)
     #父节点
     menu_pid=db.Column(db.String(64))
-    #备注
-    menu_remark=db.Column(db.String(64))
-    #所属系统
-    menu_sysid=db.Column(db.String(64))
-    #类别
-    menu_type=db.Column(db.Integer)
-    #url
-    menu_url=db.Column(db.String(64))
+    #是否隐藏
+    menu_hidden = db.Column(db.Integer)
+    #布局
+    menu_use_sys_layout = db.Column(db.Integer)
+    #目标
+    menu_target = db.Column(db.String(64))
+    # 所属系统
+    menu_sysid = db.Column(db.String(64))
+    #spt
+    menu_spt = db.Column(db.String(64))
+
+
+
+
 
     # 状态
     status = db.Column(db.Integer)

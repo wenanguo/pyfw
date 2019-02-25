@@ -1,7 +1,7 @@
 import re
 import unittest
 from flask import url_for
-from app import create_app, db
+from pyfw import create_app
 
 
 class FlaskClientTestCase(unittest.TestCase):

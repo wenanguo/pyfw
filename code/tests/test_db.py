@@ -4,8 +4,8 @@
 ' module description'
 import unittest
 
-from app import create_app, db
-from app.auth.models import CommonUserInfo, CommonRoleInfo
+from pyfw import create_app, db
+from pyfw.main.models import CommonUserInfo, CommonRoleInfo
 
 __author__ = 'Andrew Wen'
 
