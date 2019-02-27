@@ -4,13 +4,13 @@ import re, os
 
 
 requirements = []
-with open('pyfw/requirements.txt') as f:
+with open('../code/requirements.txt') as f:
   requirements = f.read().splitlines()
 
 
 
 version = ''
-with open('pyfw/__init__.py') as f:
+with open('../code/pyfw/__init__.py') as f:
     version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)
 
 if not version:
