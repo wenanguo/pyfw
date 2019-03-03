@@ -30,7 +30,7 @@ if app.config["LOGS_START"]:
     logdir = os.path.join(basedir, 'logs/myapp.log')
     Rthandler = RotatingFileHandler(logdir, maxBytes=10*1024*1024,backupCount=5)
     Rthandler.setLevel(logging.DEBUG)
-    formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
+    formatter = logging.Formatter('%(pathname)s %(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
     Rthandler.setFormatter(formatter)
     app.logger.addHandler(Rthandler)
 

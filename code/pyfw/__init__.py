@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
+from flask_cors import CORS
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_mail import Mail
 from flask_moment import Moment
@@ -29,6 +30,9 @@ login_manager.login_message_category = "info"
 def create_app(config_name):
 
     app = Flask(__name__)
+
+    CORS(app, supports_credentials=True)
+
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
 
@@ -60,8 +64,8 @@ def create_app(config_name):
     # from .api_1_0 import api as api_1_0_blueprint
     # app.register_blueprint(api_1_0_blueprint, url_prefix='/api/v1.0')
 
-    from .api_1_1 import api_1_1 as api_1_1_blueprint
-    app.register_blueprint(api_1_1_blueprint, url_prefix='/api/v1.1')
+    from .api_1_1 import api_1_1_system
+    app.register_blueprint(api_1_1_system, url_prefix='/api/v1/system')
 
 
 

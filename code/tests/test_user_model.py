@@ -1,3 +1,4 @@
+import json
 import unittest
 
 from pyfw import create_app, db
@@ -14,7 +15,7 @@ class UserModelTestCase(unittest.TestCase):
 
     def tearDown(self):
         db.session.remove()
-        db.drop_all()
+        #db.drop_all()
         self.app_context.pop()
 
     def test_password_setter(self):
@@ -35,39 +36,56 @@ class UserModelTestCase(unittest.TestCase):
 
     def test_password_salts_are_random(self):
         u = CommonUserInfo(password='cat')
-        u2 = CommonUserInfo(password='cat')
-        self.assertTrue(u.login_password != u2.login_password)
+        u2 = CommonUserInfo(password='ant.design')
+
+        u2.password="cat"
+        self.assertTrue(u.login_password == u2.login_password)
 
 
 
 
-    def test_data(self):
+    # def test_data(self):
+    #     u1=CommonUserInfo(user_name="文安国")
+    #
+    #     r1 = CommonRoleInfo(role_name="系统管理员")
+    #
+    #
+    #     o1 =CommonOrgInfo(org_name="项目研发室")
+    #
+    #     #r2 = CommonRoleInfo(role_name="项目经理")
+    #     u1.roles.append(r1)
+    #     u1.orgs.append(o1)
+    #
+    #
+    #     db.session.add(u1)
+    #     #db.session.add(r1)
+    #     db.session.commit()
+    #
+    #
+    #     print(u1.roles.all())
+    #     print(u1.orgs.all())
+    #     print(r1.users.all())
+    #     print(o1.users.all())
+    #     #
+    #     # u1.roles.append(r2)
+    #     # db.session.add(u1)
+    #     #
+    #     # print(u1.roles.all())
+
+    def test_sy_data(self):
         u1=CommonUserInfo(user_name="文安国")
 
-        r1 = CommonRoleInfo(role_name="系统管理员")
+        ctdict=u1.__dict__
+        ctdict.pop('_sa_instance_state')
 
+        print(json.dumps(ctdict))
 
-        o1 =CommonOrgInfo(org_name="项目研发室")
+        #ctdict=json.dumps(u1,default=lambda obj:obj.__dict__)
+        print(ctdict)
+        # for key in ctdict:
+        #     if hasattr(ct, key):
+        #         setattr(ct, key, ctdict[key])
 
-        #r2 = CommonRoleInfo(role_name="项目经理")
-        u1.roles.append(r1)
-        u1.orgs.append(o1)
-
-
-        db.session.add(u1)
-        #db.session.add(r1)
-        db.session.commit()
-
-
-        print(u1.roles.all())
-        print(u1.orgs.all())
-        print(r1.users.all())
-        print(o1.users.all())
-        #
-        # u1.roles.append(r2)
-        # db.session.add(u1)
-        #
-        # print(u1.roles.all())
 
 
 

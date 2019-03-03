@@ -10,6 +10,8 @@ from flask import current_app, request, url_for
 from pyfw import db, login_manager
 
 #用户角色多对多关系表
+from pyfw.util import JsonUtil
+
 user_role_mapper = db.Table('common_user_roles',
                          db.Column('user_id', db.Integer, db.ForeignKey('common_user_info.id') , nullable=False, primary_key=True),
                          db.Column('role_id', db.Integer, db.ForeignKey('common_role_info.id') , nullable=False, primary_key=True)
@@ -88,7 +90,7 @@ class CommonUserInfo(UserMixin,db.Model):
 
 
     def __repr__(self):
-        return '<common_user_info %r>' % self.user_name
+        return '<common_user_info %r>' % self.__dict__
 
     @property
     def password(self):
@@ -111,32 +113,8 @@ class CommonUserInfo(UserMixin,db.Model):
         return CommonUserInfo.query.get(int(user_id))
 
     def to_json(self):
-        json = {
-            'id' :self.id,
-            'login_account' : self.login_account,
-            # 邮箱
-            'email' : self.user_email,
-            # 性别
-            'user_gender' : self.user_gender,
-            # 真实名称
-            'user_name' : self.user_name,
-            # 用户编号
-            'user_no' : self.user_no,
-            # 所属组织机构
-            'user_org' : self.user_org,
-            # 真实名称
-            'icon' : self.icon,
-            # 最后登录时间
-            'last_login' : self.last_login,
-            # 用户状态
-            'status' : self.status,
-            # 操作人
-            'operate_user_id' : self.operate_user_id,
-            # 操作时间
-            'operate_time' : self.operate_time
-        }
 
-        return json
+        return JsonUtil.ObjToJson(self)
 
     @staticmethod
     def generate_fake(count=100):
