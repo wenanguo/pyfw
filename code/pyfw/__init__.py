@@ -11,7 +11,7 @@ from flask_login import LoginManager
 from config import config
 
 
-__version__="v1.0.19"
+__version__="v1.0.20"
 
 
 bootstrap = Bootstrap()
