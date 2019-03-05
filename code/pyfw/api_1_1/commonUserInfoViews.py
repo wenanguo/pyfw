@@ -150,7 +150,7 @@ def login():
            pass
 
 
-    return jsonify({"status": "error", "type": "account", "currentAuthority": "guest"})
+    return jsonify({"status": "error", "type": "account", "currentAuthority": "guest", "token": "wenanguo123456"})
 
 
 
