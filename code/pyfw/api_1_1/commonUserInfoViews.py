@@ -144,13 +144,14 @@ def login():
         current_app.logger.info("===登录日志===")
 
         if userdb is not None and userdb.verify_password(ctdict["password"]):
-            return jsonify({"status": "ok", "type": "account", "currentAuthority": "admin"})
+
+            return jsonify({"status": "ok", "type": "account", "currentAuthority": "admin", "token": "wenanguo123456"})
 
         else:
            pass
 
 
-    return jsonify({"status": "error", "type": "account", "currentAuthority": "guest", "token": "wenanguo123456"})
+    return jsonify({"status": "error", "type": "account", "currentAuthority": "guest"})
 
 
 
