@@ -3,14 +3,13 @@
 
 import json
 
-from flask import render_template, session, abort, request, redirect, url_for, current_app, flash, jsonify, \
+from flasgger import swag_from
+from flask import  request,  current_app, jsonify, \
     make_response
-from flask_login import login_required
-
-from pyfw import db
+from init import db
 from pyfw.main.models import CommonUserInfo
 from pyfw.util.JsonUtil import JsonStrToObj, CopyObj, GetResult
-from . import api_1_1_system
+from . import system_blue
 
 
 #@api_1_1_system.after_request
@@ -27,11 +26,42 @@ def af_request(resp):
     return resp
 
 
-@api_1_1_system.route('/commonuserinfos', methods=['GET'])
+
+
+@system_blue.route('/commonuserinfos', methods=['GET'])
 def getList():
     """
-    获取数据列表
+    新增对象
+    :param self:
     :return:
+
+    Example endpoint returning a list of colors by palette
+    This is using docstrings for specifications.
+    ---
+    parameters:
+      - name: palette
+        in: path
+        type: string
+        enum: ['all', 'rgb', 'cmyk']
+        required: true
+        default: all
+    definitions:
+      Palette:
+        type: object
+        properties:
+          palette_name:
+            type: array
+            items:
+              $ref: '#/definitions/Color'
+      Color:
+        type: string
+    responses:
+      200:
+        description: A list of colors (may be filtered by palette)
+        schema:
+          $ref: '#/definitions/Palette'
+        examples:
+          rgb: ['red', 'green', 'blue']
     """
 
     # 查询字符串
@@ -52,12 +82,22 @@ def getList():
     return resp
 
 
-@api_1_1_system.route('/commonuserinfo', methods=['post'])
+@system_blue.route('/commonuserinfo', methods=['post'])
 def post():
     """
     新增对象
     :param self:
     :return:
+    新增对象
+    :param self:
+    :return:
+    新增对象
+    :param self:
+    :return:新增对象
+    :param self:
+    :return:
+
+
     """
     result="0000"
     msg=""
@@ -129,7 +169,7 @@ def getUserList(filters=None,page=1):
 
 
 
-@api_1_1_system.route('/login', methods=['POST'])
+@system_blue.route('/login', methods=['POST'])
 def login():
     """
        登录方法
@@ -161,7 +201,7 @@ def login():
 
 
 
-@api_1_1_system.route('/auth_routes', methods=['get'])
+@system_blue.route('/auth_routes', methods=['get'])
 def auth_routes():
     """
        获得角色方法
@@ -172,7 +212,7 @@ def auth_routes():
     return jsonify({"/form/advanced-form":{"authority":["admin","user"]}})
 
 
-@api_1_1_system.route('/currentUser', methods=['get'])
+@system_blue.route('/currentUser', methods=['get'])
 def currentUser():
     """
        获得当前用户数据

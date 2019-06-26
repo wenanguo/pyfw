@@ -7,7 +7,7 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from datetime import datetime
 from flask import current_app, request, url_for
 
-from pyfw import db, login_manager
+from init import db, login_manager
 
 #用户角色多对多关系表
 from pyfw.util import JsonUtil
@@ -63,8 +63,8 @@ class CommonUserInfo(UserMixin,db.Model):
     user_org = db.Column(db.Integer)
 
     # extend
-    # 真实名称
-    icon = db.Column(db.String(64))
+    # 真实头像
+    user_icon = db.Column(db.String(64))
 
     # 最后登录时间
     last_login = db.Column(db.DateTime(), default=datetime.now)

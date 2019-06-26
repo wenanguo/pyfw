@@ -1,19 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import json
+
 
 from flask import request,  current_app
-
 from pyfw.main.models import  CommonHttpRequestLogs
 from pyfw.util.JsonUtil import  GetResult
-from . import api_1_1_system
+from . import system_blue
 
 
 
 
 
-@api_1_1_system.route('/commonhttprequestlogslist', methods=['GET'])
+@system_blue.route('/commonhttprequestlogslist', methods=['GET'])
 def getCommonHttpRequestLogsList():
     """
     获取数据列表

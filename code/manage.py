@@ -2,19 +2,23 @@
 # -*- coding: utf-8 -*-
 
 import os
-from pyfw import create_app, db
+
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
-
 import logging
 from logging.handlers import RotatingFileHandler
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
 
-
+from init import create_app, db
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
+
+
+
+
+
 
 manager = Manager(app)
 migrate = Migrate(app, db)
@@ -125,8 +129,10 @@ def test(coverage=False):
 
 
 if __name__ == '__main__':
+    print("========启动web=========")
     http_server = HTTPServer(WSGIContainer(app))
     http_server.listen(5000)
     IOLoop.instance().start()
+
 
 
