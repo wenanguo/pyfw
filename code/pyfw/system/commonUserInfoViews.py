@@ -31,13 +31,12 @@ def af_request(resp):
 @system_blue.route('/commonuserinfos', methods=['GET'])
 def getList():
     """
-    新增对象
-    :param self:
-    :return:
-
-    Example endpoint returning a list of colors by palette
-    This is using docstrings for specifications.
+    获取用户列表
     ---
+    tags:
+        - 用户管理
+    produce:
+        - application/json
     parameters:
       - name: palette
         in: path
@@ -45,6 +44,12 @@ def getList():
         enum: ['all', 'rgb', 'cmyk']
         required: true
         default: all
+      - name: paasid
+        in: path
+        description: create paasid
+        required: true
+        type: string
+        default: 'wenat'
     definitions:
       Palette:
         type: object
@@ -85,18 +90,33 @@ def getList():
 @system_blue.route('/commonuserinfo', methods=['post'])
 def post():
     """
-    新增对象
-    :param self:
-    :return:
-    新增对象
-    :param self:
-    :return:
-    新增对象
-    :param self:
-    :return:新增对象
-    :param self:
-    :return:
+    新增用户对象
 
+    ---
+    tags:
+        - 用户管理
+    produce:
+        - application/json
+    parameters:
+      - name: palette
+        in: path
+        type: string
+        enum: ['all', 'rgb', 'cmyk']
+        required: true
+        default: all
+      - name: paasid
+        in: path
+        description: create paasid
+        required: true
+        type: string
+        default: 'wenat'
+    responses:
+      200:
+        description: A list of colors (may be filtered by palette)
+        schema:
+          $ref: '#/definitions/Palette'
+        examples:
+          rgb: ['red', 'green', 'blue']
 
     """
     result="0000"

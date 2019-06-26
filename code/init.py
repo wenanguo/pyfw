@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 ' 项目初始化'
+import re
 
 __author__ = 'Andrew Wen'
 
@@ -72,16 +73,21 @@ def create_app(config_name):
 def init_swagger(app_c):
 
 
+    # 获取版本
+    version = ''
+    with open('./pyfw/__init__.py') as f:
+        version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)
+
     # api文档模板
     template = {
         "swagger": "2.0",
         "info": {
             "title": "基础框架api",
             "description": "本文档描述基础开发框架相关api",
-            "version": "1.0.1"
+            "version": version
         },
-        "host": "mysite.com",  # overrides localhost:500
-        "basePath": "/api",  # base bash for blueprint registration
+        #"host": "mysite.com",  # overrides localhost:500
+        #"basePath": "/api",  # base bash for blueprint registration
         "schemes": [
             "http",
             "https"
