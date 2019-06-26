@@ -11,22 +11,15 @@ from pyfw import db
 from pyfw.main.models import CommonUserInfo
 from pyfw.util.JsonUtil import JsonStrToObj, CopyObj, GetResult
 from . import api_1_1_system
-from manage import app
 
 
-@api_1_1_system.after_request
+#@api_1_1_system.after_request
 def af_request(resp):
     """
     #请求钩子，在所有的请求发生后执行，加入headers。
     :param resp:
     :return:
     """
-
-
-    print("||||"+request.remote_addr)
-    list=app.config["HDH_AUTHIPLIST"]
-    print(list)
-
     resp = make_response(resp)
     resp.headers['Access-Control-Allow-Origin'] = '*'
     resp.headers['Access-Control-Allow-Methods'] = 'GET,POST'
@@ -54,9 +47,9 @@ def getList():
 
     pagination = getUserList(filters,page)
 
-    return jsonify(GetResult(pagination))
+    resp, respdict = GetResult(pagination=pagination)
 
-
+    return resp
 
 
 @api_1_1_system.route('/commonuserinfo', methods=['post'])
@@ -74,7 +67,7 @@ def post():
 
     user = CommonUserInfo();
 
-    method,user = JsonStrToObj(jsonStr,user)
+    user,method = JsonStrToObj(jsonStr,user)
 
 
     if method=="post":
@@ -109,10 +102,13 @@ def post():
 
 
 
-    return jsonify(GetResult(getUserList(),{
-            "code": "0000",
-            "msg":msg
-     }))
+    #return GetResult(code="0000",msg="操作成功",pagination=getUserList())
+    pagination = getUserList()
+
+
+    resp, respdict = GetResult(pagination=pagination)
+
+    return resp
 
 
 
@@ -163,6 +159,27 @@ def login():
 
     return jsonify({"status": "error", "type": "account", "currentAuthority": "guest"})
 
+
+
+@api_1_1_system.route('/auth_routes', methods=['get'])
+def auth_routes():
+    """
+       获得角色方法
+       :return:
+       """
+
+
+    return jsonify({"/form/advanced-form":{"authority":["admin","user"]}})
+
+
+@api_1_1_system.route('/currentUser', methods=['get'])
+def currentUser():
+    """
+       获得当前用户数据
+       :return:
+       """
+
+    return jsonify({"name":"系统管理员","avatar":"https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png","userid":"00000001","email":"wenanguo110@163.com","signature":"海纳百川，有容乃大","title":"前端小菜","group":"某某某事业群－某某平台部－某某技术部－UED","tags":[{"key":"0","label":"很有想法的"},{"key":"1","label":"专注设计"},{"key":"2","label":"辣~"},{"key":"3","label":"眼镜男"},{"key":"4","label":"汉子"},{"key":"5","label":"海纳百川"}],"notifyCount":12,"unreadCount":0,"country":"China","geographic":{"province":{"label":"浙江省","key":"330000"},"city":{"label":"杭州市","key":"330100"}},"address":"西湖区工专路 77 号","phone":"0752-xxxxxx"})
 
 
 

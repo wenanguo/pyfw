@@ -67,14 +67,14 @@ class CommonUserInfo(UserMixin,db.Model):
     icon = db.Column(db.String(64))
 
     # 最后登录时间
-    last_login = db.Column(db.DateTime(), default=datetime.utcnow)
+    last_login = db.Column(db.DateTime(), default=datetime.now)
 
     # 用户状态
     status = db.Column(db.Integer)
     # 操作人
     operate_user_id = db.Column(db.Integer)
     # 操作时间
-    operate_time = db.Column(db.DateTime(), default=datetime.utcnow)
+    operate_time = db.Column(db.DateTime(), default=datetime.now)
 
     roles = db.relationship('CommonRoleInfo',
                             secondary=user_role_mapper,
@@ -164,7 +164,7 @@ class CommonRoleInfo(db.Model):
     # 操作人
     operate_user_id = db.Column(db.Integer)
     # 操作时间
-    operate_time = db.Column(db.DateTime(), default=datetime.utcnow)
+    operate_time = db.Column(db.DateTime(), default=datetime.now)
 
 
 
@@ -211,7 +211,7 @@ class CommonOrgInfo(db.Model):
     # 操作人
     operate_user_id = db.Column(db.Integer)
     # 操作时间
-    operate_time = db.Column(db.DateTime(), default=datetime.utcnow)
+    operate_time = db.Column(db.DateTime(), default=datetime.now)
 
 
 
@@ -276,7 +276,7 @@ class CommonMenuInfo(db.Model):
     # 操作人
     operate_user_id = db.Column(db.Integer)
     # 操作时间
-    operate_time = db.Column(db.DateTime(), default=datetime.utcnow)
+    operate_time = db.Column(db.DateTime(), default=datetime.now)
 
 
 
@@ -313,7 +313,125 @@ class CommonMenuOptInfo(db.Model):
     # 操作人
     operate_user_id = db.Column(db.Integer)
     # 操作时间
-    operate_time = db.Column(db.DateTime(), default=datetime.utcnow)
+    operate_time = db.Column(db.DateTime(), default=datetime.now)
 
     def __repr__(self):
         return '<common_org_info %r>' % self.opt_name
+
+
+
+
+
+class CommonHttpRequestLogs(db.Model):
+    """
+       http请求日志表
+    """
+    __tablename__ = 'common_http_request_logs'
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    # 请求流水号
+    timestamp = db.Column(db.String(500))
+    # 分类
+    catalog = db.Column(db.String(50))
+    #请求url
+    request_url = db.Column(db.String(500))
+    #请求数据
+    request_data = db.Column(db.Text)
+    # 返回状态码
+    response_status_code = db.Column(db.String(100))
+    # 返回数据
+    response_data = db.Column(db.Text)
+
+    # 请求类别 1 外部请求本应用 2 本应用请求外部
+    type= db.Column(db.Integer)
+
+    # 开始时间
+    start_time= db.Column(db.DateTime(), default=datetime.now)
+
+
+    # 结束时间
+    end_time= db.Column(db.DateTime(), default=datetime.now)
+
+    # 请求耗时
+    time_consuming= db.Column(db.String(100))
+
+    # 状态
+    status = db.Column(db.Integer)
+    # 操作人
+    operate_user_id = db.Column(db.Integer)
+    # 操作时间
+    operate_time = db.Column(db.DateTime(), default=datetime.now)
+
+    def __repr__(self):
+        return '<common_http_request_logs %r>' % self.id
+
+    def to_json(self):
+        return JsonUtil.ObjToJson(self)
+
+
+    def start(self,timestamp="20190308000000",catalog="1001",request_url="",type="1",request_data=""):
+
+        self.timestamp=str(timestamp)
+        self.catalog = str(catalog)
+        self.request_url = str(request_url)
+        self.type = str(type)
+        self.request_data = str(request_data)
+        self.start_time = datetime.now()
+
+
+    def end(self,response_status_code="200",response_data=""):
+
+        self.response_status_code = response_status_code
+        self.response_data = str(response_data)
+
+        self.end_time = datetime.now()
+        self.time_consuming = (self.end_time - self.start_time).total_seconds()
+
+
+
+
+
+class CommonHealth(db.Model):
+    """
+       健康检查
+    """
+    __tablename__ = 'common_health'
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    # 请求流水号
+    timestamp = db.Column(db.String(500))
+    # 分类
+    catalog = db.Column(db.String(50))
+
+    #请求数据
+    request_data = db.Column(db.Text)
+    # 返回状态码
+    response_status_code = db.Column(db.String(100))
+    # 返回数据
+    response_data = db.Column(db.Text)
+
+    # 开始时间
+    start_time= db.Column(db.DateTime(), default=datetime.now)
+
+    # 结束时间
+    end_time= db.Column(db.DateTime(), default=datetime.now)
+
+    # 请求耗时
+    time_consuming= db.Column(db.String(100))
+
+    # 状态
+    status = db.Column(db.Integer)
+    # 操作人
+    operate_user_id = db.Column(db.Integer)
+    # 操作时间
+    operate_time = db.Column(db.DateTime(), default=datetime.now)
+
+    def __repr__(self):
+        return '<common_health %r>' % self.id
+
+    def to_json(self):
+        return JsonUtil.ObjToJson(self)
+
+
