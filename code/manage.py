@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import os
-import threading
+
 
 from pyfw import create_app, db
 

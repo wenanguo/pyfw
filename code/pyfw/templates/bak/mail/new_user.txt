@@ -1,2 +1,0 @@
-小小txt {{ user.username }}
-哈哈哈
