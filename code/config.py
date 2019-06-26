@@ -25,6 +25,7 @@ class Config:
 
     FLASKY_POSTS_PER_PAGE = 20
 
+    HDH_AUTHIPLIST=["192.168.9.1","192.168.9.2"]
 
 
     #其他配置

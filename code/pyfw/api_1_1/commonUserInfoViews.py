@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import json
 
 from flask import render_template, session, abort, request, redirect, url_for, current_app, flash, jsonify, \
@@ -8,15 +11,22 @@ from pyfw import db
 from pyfw.main.models import CommonUserInfo
 from pyfw.util.JsonUtil import JsonStrToObj, CopyObj, GetResult
 from . import api_1_1_system
+from manage import app
 
 
-#@api_1_1_system.after_request
+@api_1_1_system.after_request
 def af_request(resp):
     """
     #请求钩子，在所有的请求发生后执行，加入headers。
     :param resp:
     :return:
     """
+
+
+    print("||||"+request.remote_addr)
+    list=app.config["HDH_AUTHIPLIST"]
+    print(list)
+
     resp = make_response(resp)
     resp.headers['Access-Control-Allow-Origin'] = '*'
     resp.headers['Access-Control-Allow-Methods'] = 'GET,POST'
@@ -141,7 +151,7 @@ def login():
 
         userdb = CommonUserInfo.query.filter_by(login_account=ctdict["userName"]).first()
 
-        current_app.logger.info("===登录日志===")
+        # current_app.logger.info("===登录日志===")
 
         if userdb is not None and userdb.verify_password(ctdict["password"]):
 

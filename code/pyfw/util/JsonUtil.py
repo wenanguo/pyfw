@@ -41,7 +41,10 @@ def JsonStrToObj(jsonStr,targetObj):
     """
     ctdict = json.loads(jsonStr)
 
-    method = ctdict["method"]
+    if 'method' in ctdict:
+        method = ctdict["method"]
+    else:
+        method = "get"
 
 
 
