@@ -1,0 +1,37 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: 基础框架api
+  description: 本文档描述基础开发框架相关api
+
+securityDefinitions:
+  BaseSecurity:
+    type: apiKey
+    in: header
+    name: SIMPLE-API-KEY
+
+definitions:
+      Palette:
+        type: object
+        properties:
+          palette_name:
+            type: array
+            items:
+              $ref: '#/definitions/Color'
+      Color:
+        type: string
+
+parameters:
+  pageSize:
+    name: pageSize
+    in: query
+    description: 分页大小
+    type: integer
+    default: 20
+  pageNumber:
+    name: pageNumber
+    in: query
+    description: 当前页
+    type: integer
+    default: 1

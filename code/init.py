@@ -2,7 +2,10 @@
 # -*- coding: utf-8 -*-
 
 ' 项目初始化'
+import json
 import re
+
+import yaml
 
 __author__ = 'Andrew Wen'
 
@@ -63,7 +66,7 @@ def create_app(config_name):
 
     # 蓝图注册
     from pyfw.system import system_blue
-    app.register_blueprint(system_blue, url_prefix='/api/v1/system')
+    app.register_blueprint(system_blue, url_prefix='/api/v1/common')
 
 
 
@@ -71,6 +74,13 @@ def create_app(config_name):
 
 
 def init_swagger(app_c):
+    """
+    初始化swagger文档生成
+    语法参考 ： https://huangwenchao.gitbooks.io/swagger/content/
+    :param app_c:
+    :return:
+    """
+
 
 
     # 获取版本
@@ -78,21 +88,58 @@ def init_swagger(app_c):
     with open('./pyfw/__init__.py') as f:
         version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)
 
+    template = None
+
+    with open('./swagger/template.yaml',encoding='utf-8') as f:
+
+        template = yaml.load(f)
+
+
+    template["info"]["version"]=version
     # api文档模板
-    template = {
-        "swagger": "2.0",
-        "info": {
-            "title": "基础框架api",
-            "description": "本文档描述基础开发框架相关api",
-            "version": version
-        },
-        #"host": "mysite.com",  # overrides localhost:500
-        #"basePath": "/api",  # base bash for blueprint registration
-        "schemes": [
-            "http",
-            "https"
-        ],
-        "operationId": "getmyData"
+    # template = {
+    #     "swagger": "2.0",
+    #     "info": {
+    #         "title": "基础框架api",
+    #         "description": "本文档描述基础开发框架相关api",
+    #         "version": version
+    #     }
+    #     #"host": "mysite.com",  # overrides localhost:500
+    #     #"basePath": "/api",  # base bash for blueprint registration
+    #     # "schemes": [
+    #     #     "http",
+    #     #     "https"
+    #     # ],
+    #     # "operationId": "getmyData",
+    #     # "definitions": {
+    #     #     "Palette": {
+    #     #       "type": "object",
+    #     #       "properties": {
+    #     #         "palette_name": {
+    #     #           "type": "array",
+    #     #           "items": {
+    #     #             "$ref": "#/definitions/Color"
+    #     #           }
+    #     #         }
+    #     #       }
+    #     #     },
+    #     #     "Color": {
+    #     #       "type": "string"
+    #     #     }
+    #     #   }
+    # }
+
+    #print(template)
+    template["definitions"]["user"]={
+        "type": "object",
+        "properties": {
+             "palette_name": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Color"
+                  }
+                }
+        }
     }
 
     swagger = Swagger(app_c, template=template)

@@ -3,7 +3,6 @@
 
 import json
 
-from flasgger import swag_from
 from flask import  request,  current_app, jsonify, \
     make_response
 from init import db
@@ -28,18 +27,31 @@ def af_request(resp):
 
 
 
-@system_blue.route('/commonuserinfos', methods=['GET'])
+@system_blue.route('/user/commonuserinfos', methods=['GET'])
 def getList():
     """
     获取用户列表
     ---
     tags:
         - 用户管理
+    security:
+        - BaseSecurity: []
     produce:
         - application/json
     parameters:
+      - $ref: "#/parameters/pageSize"
+      - $ref: "#/parameters/pageNumber"
       - name: palette
         in: path
+        description: |
+          An item can be of different type:
+
+          type | definition
+          -----|-----------
+          Vinyl| #/definitions/Vinyl
+          VHS  | #/definitions/VHS
+          AudioCassette | #/definitions/AudioCassette
+
         type: string
         enum: ['all', 'rgb', 'cmyk']
         required: true
@@ -50,21 +62,35 @@ def getList():
         required: true
         type: string
         default: 'wenat'
-    definitions:
-      Palette:
-        type: object
-        properties:
-          palette_name:
-            type: array
-            items:
-              $ref: '#/definitions/Color'
-      Color:
-        type: string
+
     responses:
       200:
         description: A list of colors (may be filtered by palette)
         schema:
-          $ref: '#/definitions/Palette'
+            type: object
+            properties:
+                status:
+                    type: string
+                message:
+                    type: string
+                timestamp:
+                    type: string
+                result:
+                    type: object
+                    properties:
+                        totalCount:
+                            type: integer
+                        pageSize:
+                            type: integer
+                        totalPage:
+                            type: integer
+                        pageNo:
+                            type: integer
+                        data:
+                            type: array
+                            items:
+                              $ref: '#/definitions/Color'
+
         examples:
           rgb: ['red', 'green', 'blue']
     """
@@ -87,7 +113,7 @@ def getList():
     return resp
 
 
-@system_blue.route('/commonuserinfo', methods=['post'])
+@system_blue.route('/user/commonuserinfo', methods=['post'])
 def post():
     """
     新增用户对象
