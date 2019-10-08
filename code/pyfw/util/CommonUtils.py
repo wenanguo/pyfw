@@ -5,14 +5,6 @@
 import random
 import time
 
-import requests
-from flask import current_app
-from manage import app
-
-
-from pyfw.main.models import CommonHttpRequestLogs
-from pyfw.util.CommonStatusUtils import LogCatalog
-
 __author__ = 'Andrew Wen'
 
 def getDateRandomName():

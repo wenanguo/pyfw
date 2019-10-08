@@ -4,12 +4,14 @@
 import time
 from flask import current_app, jsonify
 from flask import request
+from flask_cachecontrol import cache_for, cache, dont_cache
+
 from pyfw.system import system_blue
 from pyfw.util.CommonJsonUtils import getJsonResponse
 
 
 
-@system_blue.route('/auth/login', methods=['post'])
+@system_blue.route('/auth/login', methods=['get','post'])
 def crm_ybquery_v2():
     """
     crm根据用户手机号查询subId

@@ -5,8 +5,10 @@ import json
 
 from flask import  request,  current_app, jsonify, \
     make_response
+
 from init import db
-from pyfw.main.models import CommonUserInfo
+from pyfw.models import CommonUserInfo
+from pyfw.system.forms import searchForm
 from pyfw.util.JsonUtil import JsonStrToObj, CopyObj, GetResult
 from . import system_blue
 
@@ -27,8 +29,10 @@ def af_request(resp):
 
 
 
-@system_blue.route('/user/commonuserinfos', methods=['GET'])
-def getList():
+
+
+@system_blue.route('/user/commonuserinfos', methods=['GET','POST'])
+def get_commonuserinfos():
     """
     获取用户列表
     ---
@@ -95,13 +99,25 @@ def getList():
           rgb: ['red', 'green', 'blue']
     """
 
+    form = searchForm(request.args)
+    if request.method == 'GET' and form.validate():
+        print(form.name.data)
+        print(form.pageNo.data)
+        print(form.pageSize.data)
+    else:
+        print(form.errors, "错误信息")
+
+
+
+
+
     # 查询字符串
     filters = set()
 
     # 构建查询条件
     user_name = request.args.get('name')
 
-    if user_name: filters.add(CommonUserInfo.login_account.contains(user_name))
+    if form.name.data: filters.add(CommonUserInfo.login_account.contains(user_name))
 
     # 获取查询页
     page = request.args.get('currentPage', 1, type=int)
@@ -145,6 +161,7 @@ def post():
           rgb: ['red', 'green', 'blue']
 
     """
+
     result="0000"
     msg=""
 

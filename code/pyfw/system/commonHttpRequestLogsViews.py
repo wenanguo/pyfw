@@ -4,7 +4,7 @@
 
 
 from flask import request,  current_app
-from pyfw.main.models import  CommonHttpRequestLogs
+from pyfw.models import  CommonHttpRequestLogs
 from pyfw.util.JsonUtil import  GetResult
 from . import system_blue
 

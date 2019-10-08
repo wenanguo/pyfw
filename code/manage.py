@@ -3,10 +3,13 @@
 
 import os
 
+import tornado
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 import logging
 from logging.handlers import RotatingFileHandler
+
+from tornado import options
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
@@ -28,7 +31,7 @@ migrate = Migrate(app, db)
 日志配置
 定义一个RotatingFileHandler，最多备份5个日志文件，每个日志文件最大10M
 """
-if app.config["LOGS_START"]:
+if app.config["LOGS_START"]==True:
     basedir = os.path.abspath(os.path.dirname(__file__))
     logdir = os.path.join(basedir, 'logs/myapp.log')
     Rthandler = RotatingFileHandler(logdir, maxBytes=10*1024*1024,backupCount=5)
@@ -129,7 +132,17 @@ def test(coverage=False):
 
 
 if __name__ == '__main__':
-    print("========启动web=========")
+
+    # 打开命令行日志显示
+    logger = logging.getLogger()
+    fm = tornado.log.LogFormatter(fmt='[%(asctime)s]%(color)s[%(levelname)s]%(end_color)s[(module)s:%(lineno)d] %(message)s',datefmt = '%Y-%m-%d %H:%M:%S')
+    tornado.log.enable_pretty_logging(logger=logger)
+    logger.handlers[0].setFormatter(fm)
+
+
+
+    logging.info('web is starting...')
+
     http_server = HTTPServer(WSGIContainer(app))
     http_server.listen(5000)
     IOLoop.instance().start()

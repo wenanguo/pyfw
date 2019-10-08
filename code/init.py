@@ -2,10 +2,17 @@
 # -*- coding: utf-8 -*-
 
 ' 项目初始化'
+import functools
+import hashlib
 import json
 import re
 
+import flask
+import werkzeug
 import yaml
+
+from flask_cachecontrol import FlaskCacheControl
+from werkzeug.exceptions import PreconditionRequired
 
 __author__ = 'Andrew Wen'
 

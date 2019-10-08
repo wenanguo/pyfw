@@ -2,7 +2,7 @@ import json
 import unittest
 
 from pyfw import create_app, db
-from pyfw.main.models import CommonUserInfo, CommonRoleInfo, CommonOrgInfo
+from pyfw.models import CommonUserInfo
 
 
 class UserModelTestCase(unittest.TestCase):
